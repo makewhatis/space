@@ -1,0 +1,1254 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Namespace: configchannel &mdash; Space 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Space 0.0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">Space 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-space.lib.configchannel"></span><div class="section" id="namespace-configchannel">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">configchannel</span></tt><a class="headerlink" href="#namespace-configchannel" title="Permalink to this headline">¶</a></h1>
+<p>Provides methods to access and
+modify many aspects of configuration channels.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.configchannel.channelExists" title="space.lib.configchannel.channelExists"><tt class="xref py py-func docutils literal"><span class="pre">channelExists()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.create" title="space.lib.configchannel.create"><tt class="xref py py-func docutils literal"><span class="pre">create()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.createOrUpdatePath" title="space.lib.configchannel.createOrUpdatePath"><tt class="xref py py-func docutils literal"><span class="pre">createOrUpdatePath()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.createOrUpdateSymlink" title="space.lib.configchannel.createOrUpdateSymlink"><tt class="xref py py-func docutils literal"><span class="pre">createOrUpdateSymlink()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.deleteChannels" title="space.lib.configchannel.deleteChannels"><tt class="xref py py-func docutils literal"><span class="pre">deleteChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.deleteFileRevisions" title="space.lib.configchannel.deleteFileRevisions"><tt class="xref py py-func docutils literal"><span class="pre">deleteFileRevisions()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.deleteFiles" title="space.lib.configchannel.deleteFiles"><tt class="xref py py-func docutils literal"><span class="pre">deleteFiles()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.deployAllSystems" title="space.lib.configchannel.deployAllSystems"><tt class="xref py py-func docutils literal"><span class="pre">deployAllSystems()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.getDetails" title="space.lib.configchannel.getDetails"><tt class="xref py py-func docutils literal"><span class="pre">getDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.getEncodedFileRevision" title="space.lib.configchannel.getEncodedFileRevision"><tt class="xref py py-func docutils literal"><span class="pre">getEncodedFileRevision()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.getFileRevision" title="space.lib.configchannel.getFileRevision"><tt class="xref py py-func docutils literal"><span class="pre">getFileRevision()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.getFileRevisions" title="space.lib.configchannel.getFileRevisions"><tt class="xref py py-func docutils literal"><span class="pre">getFileRevisions()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.listFiles" title="space.lib.configchannel.listFiles"><tt class="xref py py-func docutils literal"><span class="pre">listFiles()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.listGlobals" title="space.lib.configchannel.listGlobals"><tt class="xref py py-func docutils literal"><span class="pre">listGlobals()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.listSubscribedSystems" title="space.lib.configchannel.listSubscribedSystems"><tt class="xref py py-func docutils literal"><span class="pre">listSubscribedSystems()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.lookupChannelInfo" title="space.lib.configchannel.lookupChannelInfo"><tt class="xref py py-func docutils literal"><span class="pre">lookupChannelInfo()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.lookupFileInfo" title="space.lib.configchannel.lookupFileInfo"><tt class="xref py py-func docutils literal"><span class="pre">lookupFileInfo()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.scheduleFileComparisons" title="space.lib.configchannel.scheduleFileComparisons"><tt class="xref py py-func docutils literal"><span class="pre">scheduleFileComparisons()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.configchannel.update" title="space.lib.configchannel.update"><tt class="xref py py-func docutils literal"><span class="pre">update()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.configchannel.channelExists">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">channelExists</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.channelExists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Check for the existence of the config channel provided.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - Channel to check for.</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>1 if exists, 0 otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.create">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">create</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>channelname</em>, <em>channeldescription</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Create a new global config channel. Caller must be at least a
+config admin or an organization admin.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel</li>
+<li>string channelName</li>
+<li>string channelDescription</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel information</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.createOrUpdatePath">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">createOrUpdatePath</tt><big>(</big><em>sw</em>, <em>configlabel</em>, <em>path</em>, <em>isdir</em>, <em>path_info</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.createOrUpdatePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Create a new file or directory with the given path, or update
+an existing path.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string configChannelLabel</p>
+</li>
+<li><p class="first">string path</p>
+</li>
+<li><p class="first">boolean isDir</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - path info</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;contents&#8221; - Contents of the file</p>
+</li>
+<li><dl class="first docutils">
+<dt>boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</dt>
+<dd><dl class="first last docutils">
+<dt>(default: disabled,</dt>
+<dd><p class="first last">only for non-directories)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - Owner of the file/directory.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - Group name of the file/directory.</p>
+</li>
+<li><p class="first">string &#8220;permissions&#8221; - Octal file/directory permissions (eg: 644)</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Security context (optional)</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Config file macro start</dt>
+<dd><p class="first last">delimiter. Use null or empty
+string to accept the default.
+(only for non-directories)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-end-delimiter&#8221; - Config file macro end delimiter.</dt>
+<dd><p class="first last">Use null or empty string to accept
+the default.
+(only for non-directories)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - next revision number, auto increment for null</p>
+</li>
+<li><dl class="first docutils">
+<dt>boolean &#8220;binary&#8221; - mark the binary content, if True,</dt>
+<dd><p class="first last">base64 encoded content is expected
+(only for non-directories)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><p class="first">struct - Configuration Revision information</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents (base64 encoded according to</dt>
+<dd><p class="first last">the contents_enc64 attribute)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><dl class="first docutils">
+<dt>int &#8220;permissions&#8221; - File Permissions (Deprecated). Present for</dt>
+<dd><p class="first last">files or directories only.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;permissions_mode&#8221; - File Permissions. Present for files</dt>
+<dd><p class="first last">or directories only.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for a</dt>
+<dd><p class="first last">config file.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.createOrUpdateSymlink">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">createOrUpdateSymlink</tt><big>(</big><em>sw</em>, <em>configlabel</em>, <em>path</em>, <em>isdir</em>, <em>path_info</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.createOrUpdateSymlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Create a new symbolic link with the given path, or update an existing path</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string configChannelLabel</p>
+</li>
+<li><p class="first">string path</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - path info</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;target_path&#8221; - The target path for the symbolic link</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Security context (optional)</p>
+</li>
+<li><dl class="first docutils">
+<dt>int &#8220;revision&#8221; - next revision number, skip this field</dt>
+<dd><p class="first last">for automatic revision number assignment</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Revision information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents (base64 encoded according</dt>
+<dd><p class="first last">to the contents_enc64 attribute)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><p class="first">int &#8220;permissions&#8221; - File Permissions (Deprecated).</p>
+</li>
+<li><p class="first">string &#8220;permissions_mode&#8221; - File Permissions.</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for</dt>
+<dd><p class="first last">a config file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-end-delimiter&#8221; - Macro end delimiter for a config</dt>
+<dd><p class="first last">file. Present for text files only.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.deleteChannels">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">deleteChannels</tt><big>(</big><em>sw</em>, <em>channellabels</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.deleteChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Delete a list of global config channels. Caller must be a config admin.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - configuration channel labels to delete.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.deleteFileRevisions">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">deleteFileRevisions</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>filepath</em>, <em>revisions</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.deleteFileRevisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Delete specified revisions of a given configuration file</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - Label of config channel to lookup on.</p>
+</li>
+<li><p class="first">string filePath - Configuration file path.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - List of revisions to delete</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.deleteFiles">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">deleteFiles</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>filepaths</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.deleteFiles" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><ul class="first last simple">
+<li>Remove file paths from a global channel.</li>
+</ul>
+</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - Channel to remove the files from.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - file paths to remove.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.deployAllSystems">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">deployAllSystems</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>date_time</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.deployAllSystems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Schedule an immediate configuration deployment for all
+systems subscribed to a particular configuration channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - The configuration channel&#8217;s label.</li>
+<li>dateTime.iso8601 date - The date to schedule the action (OPTIONAL)</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.getDetails">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">getDetails</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.getDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lookup config channel details.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel or int channelid</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><p class="first">struct - Configuration Channel information</p>
+</li>
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.getEncodedFileRevision">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">getEncodedFileRevision</tt><big>(</big><em>sw</em>, <em>configchan</em>, <em>filepath</em>, <em>revision</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.getEncodedFileRevision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Get revision of the specified config file</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string configChannelLabel - label of config channel to lookup on</li>
+<li>string filePath - config file path to examine</li>
+<li>int revision - config file revision to examine</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Revision information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents</dt>
+<dd><dl class="first last docutils">
+<dt>(base64 encoded according to the</dt>
+<dd><p class="first last">contents_enc64 attribute)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><dl class="first docutils">
+<dt>int &#8220;permissions&#8221; - File Permissions (Deprecated). Present for files</dt>
+<dd><p class="first last">or directories only.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;permissions_mode&#8221; - File Permissions. Present for files</dt>
+<dd><p class="first last">or directories only.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for a config file.</dt>
+<dd><p class="first last">Present for text files only.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-end-delimiter&#8221; - Macro end delimiter for a config file.</dt>
+<dd><p class="first last">Present for text files only.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.getFileRevision">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">getFileRevision</tt><big>(</big><em>sw</em>, <em>configchan</em>, <em>filepath</em>, <em>revision</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.getFileRevision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Get revision of the specified config file</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string configChannelLabel - label of config channel to lookup on</li>
+<li>string filePath - config file path to examine</li>
+<li>int revision - config file revision to examine</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Revision information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents (base64 encoded according</dt>
+<dd><p class="first last">to the contents_enc64 attribute)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><p class="first">int &#8220;permissions&#8221; - File Permissions (Deprecated).</p>
+</li>
+<li><p class="first">string &#8220;permissions_mode&#8221; - File Permissions.</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for</dt>
+<dd><p class="first last">a config file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-end-delimiter&#8221; - Macro end delimiter for</dt>
+<dd><p class="first last">a config file.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.getFileRevisions">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">getFileRevisions</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>filepath</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.getFileRevisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Get list of revisions for specified config file</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of config channel to lookup on</li>
+<li>string filePath - config file path to examine</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>array:</li>
+</ul>
+</dd>
+<dt>struct - Configuration Revision information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents (base64 encoded according</dt>
+<dd><p class="first last">to the contents_enc64 attribute)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><p class="first">int &#8220;permissions&#8221; - File Permissions (Deprecated).</p>
+</li>
+<li><p class="first">string &#8220;permissions_mode&#8221; - File Permissions.</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for a config</dt>
+<dd><p class="first last">file.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;macro-end-delimiter&#8221; - Macro end delimiter for a config file</p>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.listFiles">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">listFiles</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.listFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Return a list of files in a channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of config channel to list files on.</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration File information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221; - Last Modified Date</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.listGlobals">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">listGlobals</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.listGlobals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List all the global config channels accessible to the logged-in user.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel information</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;type&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.listSubscribedSystems">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">listSubscribedSystems</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.listSubscribedSystems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Return a list of systems subscribed to a configuration channel</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of config channel to list subscribed
+systems.</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - system</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.lookupChannelInfo">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">lookupChannelInfo</tt><big>(</big><em>sw</em>, <em>configchannel</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.lookupChannelInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists details on a list channels given their channel labels.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - configuration channel label</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel information</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.lookupFileInfo">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">lookupFileInfo</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>filepaths</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.lookupFileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Given a list of paths and a channel, returns details about the latest
+revisions of the paths.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - label of config channel to lookup on</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - List of paths to examine.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Revision information</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;type&#8221;</dt>
+<dd><ul class="first last simple">
+<li>file</li>
+<li>directory</li>
+<li>symlink</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;path&#8221; - File Path</p>
+</li>
+<li><p class="first">string &#8220;target_path&#8221; - Symbolic link Target File Path.</p>
+</li>
+<li><p class="first">string &#8220;channel&#8221; - Channel Name</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;contents&#8221; - File contents (base64 encoded according</dt>
+<dd><p class="first last">to the contents_enc64 attribute)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;contents_enc64&#8221; - Identifies base64 encoded content</p>
+</li>
+<li><p class="first">int &#8220;revision&#8221; - File Revision</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;creation&#8221; - Creation Date</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;modified&#8221; - Last Modified Date</p>
+</li>
+<li><p class="first">string &#8220;owner&#8221; - File Owner.</p>
+</li>
+<li><p class="first">string &#8220;group&#8221; - File Group.</p>
+</li>
+<li><p class="first">int &#8220;permissions&#8221; - File Permissions (Deprecated).</p>
+</li>
+<li><p class="first">string &#8220;permissions_mode&#8221; - File Permissions.</p>
+</li>
+<li><p class="first">string &#8220;selinux_ctx&#8221; - SELinux Context (optional).</p>
+</li>
+<li><p class="first">boolean &#8220;binary&#8221; - true/false , Present for files only.</p>
+</li>
+<li><p class="first">string &#8220;md5&#8221; - File&#8217;s md5 signature. Present for files only.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-start-delimiter&#8221; - Macro start delimiter for a</dt>
+<dd><p class="first last">config file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;macro-end-delimiter&#8221; - Macro end delimiter for a</dt>
+<dd><p class="first last">config file.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.scheduleFileComparisons">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">scheduleFileComparisons</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>filepath</em>, <em>serverids</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.scheduleFileComparisons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Schedule a comparison of the latest revision of a file against the version
+deployed on a list of systems.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - Label of config channel</p>
+</li>
+<li><p class="first">string path - File path</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>long - The list of server id that the comparison will be</dt>
+<dd><p class="first last">performed on</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int actionId - The action id of the scheduled action</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.configchannel.update">
+<tt class="descclassname">space.lib.configchannel.</tt><tt class="descname">update</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>channelname</em>, <em>description</em><big>)</big><a class="headerlink" href="#space.lib.configchannel.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Update a global config channel. Caller must be at least a config admin or
+an organization admin, or have access to a system containing this config
+channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel</li>
+<li>string channelName</li>
+<li>string description</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel information</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/spaceman.png" alt="Logo"/>
+  </a>
+</p>
+
+<p>
+  Space is a command line interface to Spacewalk's xmlrpc api.
+</p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/lib/configchannel.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, David Johansen.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

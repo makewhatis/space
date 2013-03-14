@@ -1,0 +1,10 @@
+[spacewalk]
+hostname = 
+login = 
+password = 
+
+[main]
+module_dir =
+
+[tests]
+pkgid = 

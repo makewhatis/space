@@ -1,0 +1,963 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Namespace: activationkey &mdash; Space 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Space 0.0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">Space 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-space.lib.activationkey"></span><div class="section" id="namespace-activationkey">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">activationkey</span></tt><a class="headerlink" href="#namespace-activationkey" title="Permalink to this headline">¶</a></h1>
+<p>Contains methods to access common activation key functions available
+from the web interface.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.activationkey.addChildChannels" title="space.lib.activationkey.addChildChannels"><tt class="xref py py-func docutils literal"><span class="pre">addChildChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.addConfigChannels" title="space.lib.activationkey.addConfigChannels"><tt class="xref py py-func docutils literal"><span class="pre">addConfigChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.addEntitlements" title="space.lib.activationkey.addEntitlements"><tt class="xref py py-func docutils literal"><span class="pre">addEntitlements()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.addPackages" title="space.lib.activationkey.addPackages"><tt class="xref py py-func docutils literal"><span class="pre">addPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.addServerGroups" title="space.lib.activationkey.addServerGroups"><tt class="xref py py-func docutils literal"><span class="pre">addServerGroups()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.checkConfigDeployment" title="space.lib.activationkey.checkConfigDeployment"><tt class="xref py py-func docutils literal"><span class="pre">checkConfigDeployment()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.create" title="space.lib.activationkey.create"><tt class="xref py py-func docutils literal"><span class="pre">create()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.create" title="space.lib.activationkey.create"><tt class="xref py py-func docutils literal"><span class="pre">create()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.delete" title="space.lib.activationkey.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.disableConfigDeployment" title="space.lib.activationkey.disableConfigDeployment"><tt class="xref py py-func docutils literal"><span class="pre">disableConfigDeployment()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.enableConfigDeployment" title="space.lib.activationkey.enableConfigDeployment"><tt class="xref py py-func docutils literal"><span class="pre">enableConfigDeployment()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.getDetails" title="space.lib.activationkey.getDetails"><tt class="xref py py-func docutils literal"><span class="pre">getDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.listActivatedSystems" title="space.lib.activationkey.listActivatedSystems"><tt class="xref py py-func docutils literal"><span class="pre">listActivatedSystems()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.listActivationKeys" title="space.lib.activationkey.listActivationKeys"><tt class="xref py py-func docutils literal"><span class="pre">listActivationKeys()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.listConfigChannels" title="space.lib.activationkey.listConfigChannels"><tt class="xref py py-func docutils literal"><span class="pre">listConfigChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.removeChildChannels" title="space.lib.activationkey.removeChildChannels"><tt class="xref py py-func docutils literal"><span class="pre">removeChildChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.removeConfigChannels" title="space.lib.activationkey.removeConfigChannels"><tt class="xref py py-func docutils literal"><span class="pre">removeConfigChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.removeEntitlements" title="space.lib.activationkey.removeEntitlements"><tt class="xref py py-func docutils literal"><span class="pre">removeEntitlements()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.removePackages" title="space.lib.activationkey.removePackages"><tt class="xref py py-func docutils literal"><span class="pre">removePackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.removeServerGroups" title="space.lib.activationkey.removeServerGroups"><tt class="xref py py-func docutils literal"><span class="pre">removeServerGroups()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.setConfigChannels" title="space.lib.activationkey.setConfigChannels"><tt class="xref py py-func docutils literal"><span class="pre">setConfigChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.activationkey.setDetails" title="space.lib.activationkey.setDetails"><tt class="xref py py-func docutils literal"><span class="pre">setDetails()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.activationkey.addChildChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">addChildChannels</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>channels</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.addChildChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Add child channels to an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - childChannelLabel</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<p>int - 1 on success, exception thrown otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.addConfigChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">addConfigChannels</tt><big>(</big><em>sw</em>, <em>key</em>, <em>channellabels</em>, <em>addtotop=False</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.addConfigChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Given a list of activation keys and configuration channels, this method
+adds given configuration channels to either the top or the bottom
+(whichever you specify) of an activation key&#8217;s configuration channels
+list. The ordering of the configuration channels provided in the add
+list is maintained while adding.
+If one of the configuration channels in the &#8216;add&#8217; list already exists in
+an activation key, the configuration channel will be re-ranked to the
+appropriate place.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - activationKey</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string - List of configuration channel labels in the ranked</dt>
+<dd><p class="first last">order.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>boolean addToTop</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>true - To prepend the given channels to the beginning of</dt>
+<dd><p class="first last">the activation key&#8217;s config channel list</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>false - To append the given channels to the end of the</dt>
+<dd><p class="first last">activation key&#8217;s config channel list</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd>-int - 1 on success, exception thrown otherwise.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.addEntitlements">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">addEntitlements</tt><big>(</big><em>sw</em>, <em>key</em>, <em>entitlement_label</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.addEntitlements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Add entitlements to an activation key. Currently only add-on
+entitlements are permitted. (monitoring_entitled, provisioning_entitled,</p>
+<blockquote>
+<div>virtualization_host, virtualization_host_platform)</div></blockquote>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string - entitlement label</dt>
+<dd><ul class="first last simple">
+<li>monitoring_entitled</li>
+<li>provisioning_entitled</li>
+<li>virtualization_host</li>
+<li>virtualization_host_platform</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.addPackages">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">addPackages</tt><big>(</big><em>sw</em>, <em>key</em>, <em>packages</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.addPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+-  Add packages to an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - packages</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - Package name</li>
+<li>string &#8220;arch&#8221; - Arch label - Optional</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.addServerGroups">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">addServerGroups</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>groupid</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.addServerGroups" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt><em>Description</em>:</dt>
+<dd>Add server groups to an activation key.</dd>
+<dt><em>Parameters</em>:</dt>
+<dd><p class="first">string sessionKey
+string key
+array:</p>
+<blockquote class="last">
+<div>int - serverGroupId</div></blockquote>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<p>int - 1 on success, exception thrown otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.checkConfigDeployment">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">checkConfigDeployment</tt><big>(</big><em>sw</em>, <em>key</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.checkConfigDeployment" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt><em>Description</em>:</dt>
+<dd><ul class="first last simple">
+<li>Check configuration file deployment status for the activation
+key specified.</li>
+</ul>
+</dd>
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>1 if enabled, 0 if disabled, exception thrown otherwise.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.create">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">create</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>description</em>, <em>baseChannelLabel</em>, <em>entitlements=</em><span class="optional">[</span><span class="optional">]</span>, <em>universalDefault=False</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.create" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Create a new activation key with unlimited usage. The activation key
+parameter passed in will be prefixed with the organization ID, and
+this value will be returned from the create call. Eg. If the caller
+passes in the key &#8220;foo&#8221; and belong to an organization with the ID 100,
+the actual activation key will be &#8220;100-foo&#8221;.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key - Leave empty to have new key autogenerated.</p>
+</li>
+<li><p class="first">string description</p>
+</li>
+<li><p class="first">string baseChannelLabel - Leave empty to accept default.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - Add-on entitlement label to associate with the key.</li>
+<li>monitoring_entitled</li>
+<li>provisioning_entitled</li>
+<li>virtualization_host</li>
+<li>virtualization_host_platform</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean universalDefault</p>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>string - The new activation key.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.delete">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">delete</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Delete an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.disableConfigDeployment">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">disableConfigDeployment</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.disableConfigDeployment" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Disable configuration file deployment for the specified
+activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.enableConfigDeployment">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">enableConfigDeployment</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.enableConfigDeployment" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Enable configuration file deployment for the specified
+activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.getDetails">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">getDetails</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.getDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Lookup an activation key&#8217;s details.</p>
+<p><em>Parameters</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</div></blockquote>
+<p><em>Returns</em>:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>struct - activation key</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;key&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">int &#8220;usage_limit&#8221;</p>
+</li>
+<li><p class="first">string &#8220;base_channel_label&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;child_channel_labels&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string childChannelLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;entitlements&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string entitlementLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;server_group_ids&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string serverGroupId</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;package_names&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string packageName - (deprecated by packages)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;packages&#8221;</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - packageName</li>
+<li>string &#8220;arch&#8221; - archLabel - optional</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;universal_default&#8221;</p>
+</li>
+<li><p class="first">boolean &#8220;disabled&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.listActivatedSystems">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">listActivatedSystems</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.listActivatedSystems" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+List the systems activated with the key provided.</p>
+<p><em>Parameters</em>:
+string sessionKey
+string key</p>
+<dl class="docutils">
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - system structure</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - System id</li>
+<li>string &#8220;hostname&#8221;</li>
+<li>dateTime.iso8601 &#8220;last_checkin&#8221; - Last time server
+successfully checked in</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.listActivationKeys">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">listActivationKeys</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.listActivationKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+List activation keys that are visible to the user.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - activation key</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;key&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">int &#8220;usage_limit&#8221;</p>
+</li>
+<li><p class="first">string &#8220;base_channel_label&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;child_channel_labels&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string childChannelLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;entitlements&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string entitlementLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;server_group_ids&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string serverGroupId</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;package_names&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string packageName - (deprecated by packages)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;packages&#8221;</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - packageName</li>
+<li>string &#8220;arch&#8221; - archLabel - optional</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean &#8220;universal_default&#8221;</p>
+</li>
+<li><p class="first">boolean &#8220;disabled&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.listConfigChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">listConfigChannels</tt><big>(</big><em>sw</em>, <em>keyname</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.listConfigChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+List configuration channels associated to an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string key</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">array:</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel information</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">int &#8220;orgId&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">struct &#8220;configChannelType&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - Configuration Channel Type information</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>int &#8220;priority&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.removeChildChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">removeChildChannels</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.removeChildChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove child channels from an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><p class="first last">= string - childChannelLabel</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.removeConfigChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">removeConfigChannels</tt><big>(</big><em>sw</em>, <em>activationkeys</em>, <em>channellabels</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.removeConfigChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove configuration channels from the given activation keys.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - activationKey</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - configChannelLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:
+- int - 1 on success, exception thrown otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.removeEntitlements">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">removeEntitlements</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>entitlements</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.removeEntitlements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove entitlements (by label) from an activation key. Currently only
+add-on entitlements are permitted.</p>
+<blockquote>
+<div><ul class="simple">
+<li>monitoring_entitled,</li>
+<li>provisioning_entitled,</li>
+<li>virualization_host,</li>
+<li>virtualization_host_platform</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><p class="first last">-string - entitlement label
+- monitoring_entitled
+- provisioning_entitled
+- virtualization_host
+- virtualization_host_platform</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.removePackages">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">removePackages</tt><big>(</big><em>sw</em>, <em>packages</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.removePackages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove package names from an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - packages</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - Package name</li>
+<li>string &#8220;arch&#8221; - Arch label - Optional</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.removeServerGroups">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">removeServerGroups</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>servergroups</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.removeServerGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove server groups from an activation key.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - serverGroupId</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.setConfigChannels">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">setConfigChannels</tt><big>(</big><em>sw</em>, <em>activationkeys</em>, <em>channellabels</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.setConfigChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Replace the existing set of configuration channels on the
+given activation keys. Channels are ranked by their order in the array.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - activationKey</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - configChannelLabel</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.activationkey.setDetails">
+<tt class="descclassname">space.lib.activationkey.</tt><tt class="descname">setDetails</tt><big>(</big><em>sw</em>, <em>keyname</em>, <em>keystruct</em><big>)</big><a class="headerlink" href="#space.lib.activationkey.setDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Update the details of an activation key.
+<em>Parameters</em>:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string key</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - activation key</dt>
+<dd><blockquote class="first">
+<div><ul class="simple">
+<li>string &#8220;description&#8221; - optional</li>
+<li>string &#8220;base_channel_label&#8221; - optional</li>
+<li>int &#8220;usage_limit&#8221; - optional</li>
+<li>boolean &#8220;unlimited_usage_limit&#8221; - Set true for unlimited
+usage and to override usage_limit</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>boolean &#8220;universal_default&#8221; - optional</li>
+</ul>
+<blockquote class="last">
+<div><ul class="simple">
+<li>boolean &#8220;disabled&#8221; - optional</li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/spaceman.png" alt="Logo"/>
+  </a>
+</p>
+
+<p>
+  Space is a command line interface to Spacewalk's xmlrpc api.
+</p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/lib/activationkey.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, David Johansen.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

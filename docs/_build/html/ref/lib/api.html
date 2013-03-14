@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Namespace: api &mdash; Space 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Space 0.0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">Space 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-space.lib.api"></span><div class="section" id="namespace-api">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">api</span></tt><a class="headerlink" href="#namespace-api" title="Permalink to this headline">¶</a></h1>
+<p>Methods providing information about the API.</p>
+<p>Available methods:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.api.getApiCallList" title="space.lib.api.getApiCallList"><tt class="xref py py-func docutils literal"><span class="pre">getApiCallList()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.api.getApiNamespaceCallList" title="space.lib.api.getApiNamespaceCallList"><tt class="xref py py-func docutils literal"><span class="pre">getApiNamespaceCallList()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.api.getApiNamespaces" title="space.lib.api.getApiNamespaces"><tt class="xref py py-func docutils literal"><span class="pre">getApiNamespaces()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.api.getVersion" title="space.lib.api.getVersion"><tt class="xref py py-func docutils literal"><span class="pre">getVersion()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.api.systemVersion" title="space.lib.api.systemVersion"><tt class="xref py py-func docutils literal"><span class="pre">systemVersion()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.api.getApiCallList">
+<tt class="descclassname">space.lib.api.</tt><tt class="descname">getApiCallList</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.api.getApiCallList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists all available api calls grouped by namespace</p>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+</ul>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>struct - method_info</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - method name</li>
+<li>string &#8220;parameters&#8221; - method parameters</li>
+<li>string &#8220;exceptions&#8221; - method exceptions</li>
+<li>string &#8220;return&#8221; - method return type</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.api.getApiNamespaceCallList">
+<tt class="descclassname">space.lib.api.</tt><tt class="descname">getApiNamespaceCallList</tt><big>(</big><em>sw</em>, <em>namespace</em><big>)</big><a class="headerlink" href="#space.lib.api.getApiNamespaceCallList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists all available api calls for the specified namespace</p>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+<li>string namespace</li>
+</ul>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>struct - method_info</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221; - method name</li>
+<li>string &#8220;parameters&#8221; - method parameters</li>
+<li>string &#8220;exceptions&#8221; - method exceptions</li>
+<li>string &#8220;return&#8221; - method return type</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.api.getApiNamespaces">
+<tt class="descclassname">space.lib.api.</tt><tt class="descname">getApiNamespaces</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.api.getApiNamespaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists available API namespaces</p>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+</ul>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>struct - namespace</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;namespace&#8221; - API namespace</li>
+<li>string &#8220;handler&#8221; - API Handler</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.api.getVersion">
+<tt class="descclassname">space.lib.api.</tt><tt class="descname">getVersion</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.api.getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><dl class="first last docutils">
+<dt>Returns the version of the API. Since Spacewalk 0.4 (Satellie 5.3)</dt>
+<dd>it is no more related to server version.</dd>
+</dl>
+</dd>
+</dl>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>string</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.api.systemVersion">
+<tt class="descclassname">space.lib.api.</tt><tt class="descname">systemVersion</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.api.systemVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns the server version.</p>
+<p>Parameters:</p>
+<p>Returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/spaceman.png" alt="Logo"/>
+  </a>
+</p>
+
+<p>
+  Space is a command line interface to Spacewalk's xmlrpc api.
+</p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/lib/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, David Johansen.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

@@ -1,0 +1,2166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Namespace: channel &mdash; Space 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Space 0.0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">Space 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-space.lib.channel"></span><div class="section" id="namespace-channel">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel</span></tt><a class="headerlink" href="#namespace-channel" title="Permalink to this headline">¶</a></h1>
+<p>Provides method to get back a list of Software Channels.</p>
+<p>Available methods:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.channel.listAllChannels" title="space.lib.channel.listAllChannels"><tt class="xref py py-func docutils literal"><span class="pre">listAllChannels()</span></tt></a> *</li>
+<li><a class="reference internal" href="#space.lib.channel.listMyChannels" title="space.lib.channel.listMyChannels"><tt class="xref py py-func docutils literal"><span class="pre">listMyChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.listPopularChannels" title="space.lib.channel.listPopularChannels"><tt class="xref py py-func docutils literal"><span class="pre">listPopularChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.listRetiredChannels" title="space.lib.channel.listRetiredChannels"><tt class="xref py py-func docutils literal"><span class="pre">listRetiredChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.listSharedChannels" title="space.lib.channel.listSharedChannels"><tt class="xref py py-func docutils literal"><span class="pre">listSharedChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.listSoftwareChannels" title="space.lib.channel.listSoftwareChannels"><tt class="xref py py-func docutils literal"><span class="pre">listSoftwareChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.listVendorChannels" title="space.lib.channel.listVendorChannels"><tt class="xref py py-func docutils literal"><span class="pre">listVendorChannels()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.channel.listAllChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listAllChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listAllChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List all software channels that belong to the user&#8217;s organization.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session object</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel info</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listMyChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listMyChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listMyChannels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>List all software channels that belong to the user&#8217;s organization.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session object</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel info</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listPopularChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listPopularChannels</tt><big>(</big><em>sw</em>, <em>popcount</em><big>)</big><a class="headerlink" href="#space.lib.channel.listPopularChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List the most popular software channels. Channels that
+have at least the number of systems subscribed as specified by
+the popularity count will be returned.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>int &#8220;popularityCount&#8221;</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel info</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listRetiredChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listRetiredChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listRetiredChannels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>List all retired software channels. These are channels that the
+user&#8217;s organization is entitled to, but are no longer supported
+because they have reached their &#8216;end-of-life&#8217; date.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session object</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>struct - channel info</li>
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listSharedChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listSharedChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listSharedChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List all software channels that may be shared by the user&#8217;s organization.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session object</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel info</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listSoftwareChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listSoftwareChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listSoftwareChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List all software channels that the user&#8217;s organization is
+entitled to.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session object</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>struct - channel info</li>
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.listVendorChannels">
+<tt class="descclassname">space.lib.channel.</tt><tt class="descname">listVendorChannels</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.listVendorChannels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Lists all the vendor software channels that the user&#8217;s
+organization is entitled to.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel info</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;provider_name&#8221;</li>
+<li>int &#8220;packages&#8221;</li>
+<li>int &#8220;systems&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-space.lib.channel.access"></span><div class="section" id="namespace-channel-access">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.access</span></tt><a class="headerlink" href="#namespace-channel-access" title="Permalink to this headline">¶</a></h1>
+<p>Provides methods to retrieve and alter channel access restrictions.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.channel.access.disableUserRestrictions" title="space.lib.channel.access.disableUserRestrictions"><tt class="xref py py-func docutils literal"><span class="pre">disableUserRestrictions()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.access.enableUserRestrictions" title="space.lib.channel.access.enableUserRestrictions"><tt class="xref py py-func docutils literal"><span class="pre">enableUserRestrictions()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.access.getOrgSharing" title="space.lib.channel.access.getOrgSharing"><tt class="xref py py-func docutils literal"><span class="pre">getOrgSharing()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.access.setOrgSharing" title="space.lib.channel.access.setOrgSharing"><tt class="xref py py-func docutils literal"><span class="pre">setOrgSharing()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.channel.access.disableUserRestrictions">
+<tt class="descclassname">space.lib.channel.access.</tt><tt class="descname">disableUserRestrictions</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.access.disableUserRestrictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Disable user restrictions for the given channel. If disabled,
+all users within the organization may subscribe to the channel.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channellabel - label of the channel</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.access.enableUserRestrictions">
+<tt class="descclassname">space.lib.channel.access.</tt><tt class="descname">enableUserRestrictions</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.access.enableUserRestrictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Enable user restrictions for the given channel. If enabled,
+only selected users within the organization may subscribe to
+the channel.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channellabel - label of the channel</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.access.getOrgSharing">
+<tt class="descclassname">space.lib.channel.access.</tt><tt class="descname">getOrgSharing</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.access.getOrgSharing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Get organization sharing access control.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channellabel - label of the channel</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string - The access value (one of the following: &#8216;public&#8217;,</dt>
+<dd><p class="first last">&#8216;private&#8217;, or &#8216;protected&#8217;.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.access.setOrgSharing">
+<tt class="descclassname">space.lib.channel.access.</tt><tt class="descname">setOrgSharing</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>accesslevel</em><big>)</big><a class="headerlink" href="#space.lib.channel.access.setOrgSharing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Set organization sharing access control.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">sw session</p>
+</li>
+<li><p class="first">string channelLabel - label of the channel</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;access&#8221; - Access (one of the following: &#8216;public&#8217;, &#8216;private&#8217;,</dt>
+<dd><p class="first last">or &#8216;protected&#8217;</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-space.lib.channel.org"></span><div class="section" id="namespace-channel-org">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.org</span></tt><a class="headerlink" href="#namespace-channel-org" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Provides methods to retrieve and alter organization trust relationships</dt>
+<dd>for a channel.</dd>
+</dl>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.channel.org.disableAccess" title="space.lib.channel.org.disableAccess"><tt class="xref py py-func docutils literal"><span class="pre">disableAccess()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.org.enableAccess" title="space.lib.channel.org.enableAccess"><tt class="xref py py-func docutils literal"><span class="pre">enableAccess()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.org.list" title="space.lib.channel.org.list"><tt class="xref py py-func docutils literal"><span class="pre">list()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.channel.org.disableAccess">
+<tt class="descclassname">space.lib.channel.org.</tt><tt class="descname">disableAccess</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>orgid</em><big>)</big><a class="headerlink" href="#space.lib.channel.org.disableAccess" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Disable access to the channel for the given organization.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channelLabel - label of the channel</li>
+<li>int orgId - id of org being removed access</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.org.enableAccess">
+<tt class="descclassname">space.lib.channel.org.</tt><tt class="descname">enableAccess</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>orgid</em><big>)</big><a class="headerlink" href="#space.lib.channel.org.enableAccess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Enable access to the channel for the given organization.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channelLabel - label of the channel</li>
+<li>int orgId - id of org being granted access</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.org.list">
+<tt class="descclassname">space.lib.channel.org.</tt><tt class="descname">list</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.org.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List the organizations associated with the given channel that may be
+trusted.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channelLabel - label of the channel</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>struct - org</li>
+<li>int &#8220;org_id&#8221;</li>
+<li>string &#8220;org_name&#8221;</li>
+<li>boolean &#8220;access_enabled&#8221;</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-space.lib.channel.software"></span><div class="section" id="namespace-channel-software">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.software</span></tt><a class="headerlink" href="#namespace-channel-software" title="Permalink to this headline">¶</a></h1>
+<p>Provides methods to access and modify many aspects of a channel.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.channel.software.addPackages" title="space.lib.channel.software.addPackages"><tt class="xref py py-func docutils literal"><span class="pre">addPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.availableEntitlements" title="space.lib.channel.software.availableEntitlements"><tt class="xref py py-func docutils literal"><span class="pre">availableEntitlements()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.clone" title="space.lib.channel.software.clone"><tt class="xref py py-func docutils literal"><span class="pre">clone()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.create" title="space.lib.channel.software.create"><tt class="xref py py-func docutils literal"><span class="pre">create()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.delete" title="space.lib.channel.software.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.disassociateRepo" title="space.lib.channel.software.disassociateRepo"><tt class="xref py py-func docutils literal"><span class="pre">disassociateRepo()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.getChannelLastBuildById" title="space.lib.channel.software.getChannelLastBuildById"><tt class="xref py py-func docutils literal"><span class="pre">getChannelLastBuildById()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.getDetails" title="space.lib.channel.software.getDetails"><tt class="xref py py-func docutils literal"><span class="pre">getDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.getRepoDetails" title="space.lib.channel.software.getRepoDetails"><tt class="xref py py-func docutils literal"><span class="pre">getRepoDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.getRepoSyncCronExpression" title="space.lib.channel.software.getRepoSyncCronExpression"><tt class="xref py py-func docutils literal"><span class="pre">getRepoSyncCronExpression()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.isGloballySubscribable" title="space.lib.channel.software.isGloballySubscribable"><tt class="xref py py-func docutils literal"><span class="pre">isGloballySubscribable()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.isUserManageable" title="space.lib.channel.software.isUserManageable"><tt class="xref py py-func docutils literal"><span class="pre">isUserManageable()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.isUserSubscribable" title="space.lib.channel.software.isUserSubscribable"><tt class="xref py py-func docutils literal"><span class="pre">isUserSubscribable()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listAllPackages" title="space.lib.channel.software.listAllPackages"><tt class="xref py py-func docutils literal"><span class="pre">listAllPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listArches" title="space.lib.channel.software.listArches"><tt class="xref py py-func docutils literal"><span class="pre">listArches()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listChannelRepos" title="space.lib.channel.software.listChannelRepos"><tt class="xref py py-func docutils literal"><span class="pre">listChannelRepos()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listChildren" title="space.lib.channel.software.listChildren"><tt class="xref py py-func docutils literal"><span class="pre">listChildren()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listErrata" title="space.lib.channel.software.listErrata"><tt class="xref py py-func docutils literal"><span class="pre">listErrata()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listErrataByType" title="space.lib.channel.software.listErrataByType"><tt class="xref py py-func docutils literal"><span class="pre">listErrataByType()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listLatestPackages" title="space.lib.channel.software.listLatestPackages"><tt class="xref py py-func docutils literal"><span class="pre">listLatestPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listPackagesWithoutChannel" title="space.lib.channel.software.listPackagesWithoutChannel"><tt class="xref py py-func docutils literal"><span class="pre">listPackagesWithoutChannel()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listRepoFilters" title="space.lib.channel.software.listRepoFilters"><tt class="xref py py-func docutils literal"><span class="pre">listRepoFilters()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listSubscribedSystems" title="space.lib.channel.software.listSubscribedSystems"><tt class="xref py py-func docutils literal"><span class="pre">listSubscribedSystems()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listSystemChannels" title="space.lib.channel.software.listSystemChannels"><tt class="xref py py-func docutils literal"><span class="pre">listSystemChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.listUserRepos" title="space.lib.channel.software.listUserRepos"><tt class="xref py py-func docutils literal"><span class="pre">listUserRepos()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.mergeErrata" title="space.lib.channel.software.mergeErrata"><tt class="xref py py-func docutils literal"><span class="pre">mergeErrata()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.mergePackages" title="space.lib.channel.software.mergePackages"><tt class="xref py py-func docutils literal"><span class="pre">mergePackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.regenerateYumCache" title="space.lib.channel.software.regenerateYumCache"><tt class="xref py py-func docutils literal"><span class="pre">regenerateYumCache()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">removeErrata()</span></tt></li>
+<li><a class="reference internal" href="#space.lib.channel.software.removePackages" title="space.lib.channel.software.removePackages"><tt class="xref py py-func docutils literal"><span class="pre">removePackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.removeRepo" title="space.lib.channel.software.removeRepo"><tt class="xref py py-func docutils literal"><span class="pre">removeRepo()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">removeRepoFilter()</span></tt></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setContactDetails" title="space.lib.channel.software.setContactDetails"><tt class="xref py py-func docutils literal"><span class="pre">setContactDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setDetails" title="space.lib.channel.software.setDetails"><tt class="xref py py-func docutils literal"><span class="pre">setDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setGloballySubscribable" title="space.lib.channel.software.setGloballySubscribable"><tt class="xref py py-func docutils literal"><span class="pre">setGloballySubscribable()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">setRepoFilters()</span></tt></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setSystemChannels" title="space.lib.channel.software.setSystemChannels"><tt class="xref py py-func docutils literal"><span class="pre">setSystemChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setUserManageable" title="space.lib.channel.software.setUserManageable"><tt class="xref py py-func docutils literal"><span class="pre">setUserManageable()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.channel.software.setUserSubscribable" title="space.lib.channel.software.setUserSubscribable"><tt class="xref py py-func docutils literal"><span class="pre">setUserSubscribable()</span></tt></a></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">subscribeSystem()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">syncRepo()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">updateRepo()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">updateRepoLabel()</span></tt></li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">updateRepoUrl()</span></tt></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.channel.software.addPackages">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">addPackages</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>packagelist</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.addPackages" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Adds a given list of packages to the given channel.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">sw session</p>
+</li>
+<li><p class="first">string channelLabel - target channel.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - packageId - id of a package to add to the channel.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.associateRepo">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">associateRepo</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>repositorylabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.associateRepo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Associates a repository with a channel</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>sw session</li>
+<li>string channelLabel - channel label</li>
+<li>string repoLabel - repository label</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;arch_name&#8221;</li>
+<li>string &#8220;summary&#8221;</li>
+<li>string &#8220;description&#8221;</li>
+<li>string &#8220;checksum_label&#8221;</li>
+<li>dateTime.iso8601 &#8220;last_modified&#8221;</li>
+<li>string &#8220;maintainer_name&#8221;</li>
+<li>string &#8220;maintainer_email&#8221;</li>
+<li>string &#8220;maintainer_phone&#8221;</li>
+<li>string &#8220;support_policy&#8221;</li>
+<li>string &#8220;gpg_key_url&#8221;</li>
+<li>string &#8220;gpg_key_id&#8221;</li>
+<li>string &#8220;gpg_key_fp&#8221;</li>
+<li>string &#8220;yumrepo_source_url&#8221;</li>
+<li>string &#8220;yumrepo_label&#8221;</li>
+<li>dateTime.iso8601 &#8220;yumrepo_last_sync&#8221;</li>
+<li>string &#8220;end_of_life&#8221;</li>
+<li>string &#8220;parent_channel_label&#8221;</li>
+<li>string &#8220;clone_original&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.availableEntitlements">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">availableEntitlements</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.availableEntitlements" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>channellabel</li>
+</ul>
+</dd>
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Reports the number of available entitlements
+for the given channel</li>
+</ul>
+</dd>
+<dt>returns:</dt>
+<dd><ul class="first last simple">
+<li>available entitlement count (int)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.clone">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">clone</tt><big>(</big><em>sw</em>, <em>source_channel</em>, <em>name</em>, <em>label</em>, <em>summary</em>, <em>parent_label=None</em>, <em>arch_label=None</em>, <em>gpg_url=None</em>, <em>gpg_id=None</em>, <em>gpg_fingerprint=None</em>, <em>description=None</em>, <em>no_errata=False</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.clone" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Clone a channel. If arch_label is omitted, the arch label of the
+original channel will be used. If parent_label is omitted, the
+clone will be a base channel.</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string original_label</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - channel details</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;summary&#8221;</li>
+<li>string &#8220;parent_label&#8221; - (optional)</li>
+<li>string &#8220;arch_label&#8221; - (optional)</li>
+<li>string &#8220;gpg_key_url&#8221; - (optional), gpg_url</li>
+<li>string &#8220;gpg_key_id&#8221; - (optional), gpg_id</li>
+<li>string &#8220;gpg_key_fp&#8221; - (optional), gpg_fingerprint</li>
+<li>string &#8220;description&#8221; - (optional)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean original_state</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li>int the cloned channel ID</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.create">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">create</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>channame</em>, <em>summary</em>, <em>arch</em>, <em>parent=''</em>, <em>checksum=None</em>, <em>gpgkey=None</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.create" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><ul class="first last simple">
+<li>Creates a software channel</li>
+</ul>
+</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string label - label of the new channel</p>
+</li>
+<li><p class="first">string name - name of the new channel</p>
+</li>
+<li><p class="first">string summary - summary of the channel</p>
+</li>
+<li><dl class="first docutils">
+<dt>string archLabel - the label of the architecture the channel</dt>
+<dd><blockquote class="first">
+<div><p>corresponds to</p>
+</div></blockquote>
+<ul class="last">
+<li><p class="first">channel-ia32 - For 32 bit channel architecture</p>
+</li>
+<li><p class="first">channel-ia64 - For 64 bit channel architecture</p>
+</li>
+<li><p class="first">channel-sparc - For Sparc channel architecture</p>
+</li>
+<li><p class="first">channel-alpha - For Alpha channel architecture</p>
+</li>
+<li><p class="first">channel-s390 - For s390 channel architecture</p>
+</li>
+<li><p class="first">channel-s390x - For s390x channel architecture</p>
+</li>
+<li><p class="first">channel-iSeries - For i-Series channel architecture</p>
+</li>
+<li><p class="first">channel-pSeries - For p-Series channel architecture</p>
+</li>
+<li><p class="first">channel-x86_64 - For x86_64 channel architecture</p>
+</li>
+<li><p class="first">channel-ppc - For PPC channel architecture</p>
+</li>
+<li><dl class="first docutils">
+<dt>channel-sparc-sun-solaris - For Sparc Solaris channel</dt>
+<dd><p class="first last">architecture</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">channel-i386-sun-solaris - For i386 Solaris channel architecture</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string parentLabel - label of the parent of this channel, an empty</dt>
+<dd><p class="first last">string if it does not have one</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string checksumType - checksum type for this channel, used for yum</dt>
+<dd><blockquote class="first">
+<div><p>repository metadata generation</p>
+</div></blockquote>
+<ul class="last">
+<li><p class="first">sha1 - Offers widest compatibility with clients</p>
+</li>
+<li><dl class="first docutils">
+<dt>sha256 - Offers highest security, but is compatible only with</dt>
+<dd><p class="first last">newer clients: Fedora 11 and newer, or Enterprise Linux
+6 and newer.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>struct - gpgKey</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;url&#8221; - GPG key URL</li>
+<li>string &#8220;id&#8221; - GPG key ID</li>
+<li>string &#8220;fingerprint&#8221; - GPG key Fingerprint</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.createRepo">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">createRepo</tt><big>(</big><em>sw</em>, <em>repolabel</em>, <em>repotype</em>, <em>repourl</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.createRepo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><ul class="first last simple">
+<li>Creates a repository</li>
+</ul>
+</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string label - repository label</li>
+<li>string type - repository type (only YUM is supported)</li>
+<li>string url - repository url</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<dl class="docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.delete">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">delete</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.delete" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><ul class="first last simple">
+<li>Deletes a custom software channel</li>
+</ul>
+</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to delete</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.disassociateRepo">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">disassociateRepo</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>repoLabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.disassociateRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Disassociates a repository from a channel</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel label</li>
+<li>string repoLabel - repository label</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><p class="first">struct - channel</p>
+</li>
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;summary&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;checksum_label&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_email&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_phone&#8221;</p>
+</li>
+<li><p class="first">string &#8220;support_policy&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_url&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_fp&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;yumrepo_last_sync&#8221; - (optional)</p>
+</li>
+<li><p class="first">string &#8220;end_of_life&#8221;</p>
+</li>
+<li><p class="first">string &#8220;parent_channel_label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;clone_original&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - contentSources</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.getChannelLastBuildById">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">getChannelLastBuildById</tt><big>(</big><em>sw</em>, <em>channel_id</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.getChannelLastBuildById" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns the last build date of the repomd.xml file for the given
+channel as a localised string.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>int id - id of channel wanted</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<p>the last build date of the repomd.xml file as a localised string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.getDetails">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">getDetails</tt><big>(</big><em>sw</em>, <em>chan</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.getDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns details of the given channel as a map</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>int id | string name - channel to query</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;summary&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;checksum_label&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_email&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_phone&#8221;</p>
+</li>
+<li><p class="first">string &#8220;support_policy&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_url&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_fp&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;yumrepo_last_sync&#8221; - (optional)</p>
+</li>
+<li><p class="first">string &#8220;end_of_life&#8221;</p>
+</li>
+<li><p class="first">string &#8220;parent_channel_label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;clone_original&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - contentSources</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.getRepoDetails">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">getRepoDetails</tt><big>(</big><em>sw</em>, <em>repolabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.getRepoDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns details of the given repository</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string repoLabel - repo to query</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.getRepoSyncCronExpression">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">getRepoSyncCronExpression</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.getRepoSyncCronExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns repo synchronization cron expression</p>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel label</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>string quartz expression</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.isGloballySubscribable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">isGloballySubscribable</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.isGloballySubscribable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd>Returns whether the channel is subscribable by any user in the
+organization</dd>
+</dl>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to query</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 if true, 0 otherwise</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.isUserManageable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">isUserManageable</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>login</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.isUserManageable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns whether the channel may be managed by the given user.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of the channel</li>
+<li>string login - login of the target user</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 if manageable, 0 if not</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.isUserSubscribable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">isUserSubscribable</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>username</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.isUserSubscribable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns whether the channel may be subscribed to by the given user.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of the channel</li>
+<li>string login - login of the target user</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 if subscribable, 0 if not</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listAllPackages">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listAllPackages</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>start_date=None</em>, <em>end_date=None</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listAllPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+If start and end are giving:</p>
+<blockquote>
+<div>Lists all packages in the channel, regardless of package version,
+between the given dates.</div></blockquote>
+<dl class="docutils">
+<dt>If start is given:</dt>
+<dd>Lists all packages in the channel, regardless of version
+whose last modified date is greater than given date.</dd>
+<dt>If only channelLabel is given:</dt>
+<dd>Lists all packages in the channel, regardless of the package version</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to query</li>
+<li>dateTime.iso8601 startDate</li>
+<li>dateTime.iso8601 endDate</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;version&#8221;</li>
+<li>string &#8220;release&#8221;</li>
+<li>string &#8220;epoch&#8221;</li>
+<li>string &#8220;checksum&#8221;</li>
+<li>string &#8220;checksum_type&#8221;</li>
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;arch_label&#8221;</li>
+<li>string &#8220;last_modified_date&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listArches">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listArches</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listArches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists the potential software channel architectures that can be created</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>struct - channel arch</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listChannelRepos">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listChannelRepos</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listChannelRepos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists associated repos with the given channel</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel label</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listChildren">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listChildren</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listChildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List the children of a channel</p>
+<p>Parameters:
+string sessionKey
+string channelLabel - the label of the channel</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;summary&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;checksum_label&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_email&#8221;</p>
+</li>
+<li><p class="first">string &#8220;maintainer_phone&#8221;</p>
+</li>
+<li><p class="first">string &#8220;support_policy&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_url&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_fp&#8221;</p>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;yumrepo_last_sync&#8221; - (optional)</p>
+</li>
+<li><p class="first">string &#8220;end_of_life&#8221;</p>
+</li>
+<li><p class="first">string &#8220;parent_channel_label&#8221;</p>
+</li>
+<li><p class="first">string &#8220;clone_original&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - contentSources</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;sourceUrl&#8221;</li>
+<li>string &#8220;type&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listErrata">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listErrata</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>start_date=None</em>, <em>end_date=None</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listErrata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List the errata applicable to a channel between startDate and endDate.</p>
+<dl class="docutils">
+<dt>If start and end are giving:</dt>
+<dd>List the errata applicable to a channel between startDate and endDate.</dd>
+<dt>If start is given:</dt>
+<dd>List the errata applicable to a channel after given startDate</dd>
+<dt>If only channelLabel is given:</dt>
+<dd>List the errata applicable to a channel</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to query</li>
+<li>dateTime.iso8601 startDate</li>
+<li>dateTime.iso8601 endDate</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221; - Errata ID.</p>
+</li>
+<li><p class="first">string &#8220;date&#8221; - Date erratum was created.</p>
+</li>
+<li><p class="first">string &#8220;update_date&#8221; - Date erratum was updated.</p>
+</li>
+<li><p class="first">string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;advisory_type&#8221; - Type label such as Security,</dt>
+<dd><p class="first last">Bug Fix</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;advisory_name&#8221; - Name such as RHSA, etc</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listErrataByType">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listErrataByType</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>errtype</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listErrataByType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+List the errata of a specific type that are applicable to a channel</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - channel to query</p>
+</li>
+<li><dl class="first docutils">
+<dt>string advisoryType - type of advisory (one of of the following:</dt>
+<dd><p class="first last">&#8216;Security Advisory&#8217;,
+&#8216;Product Enhancement Advisory&#8217;,
+&#8216;Bug Fix Advisory&#8217;</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;advisory&#8221; - name of the advisory</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;issue_date&#8221; - date format follows</dt>
+<dd><p class="first last">YYYY-MM-DD HH24:MI:SS</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;update_date&#8221; - date format follows</dt>
+<dd><p class="first last">YYYY-MM-DD HH24:MI:SS</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;synopsis&#8221;</p>
+</li>
+<li><p class="first">string &#8220;advisory_type&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;last_modified_date&#8221; - date format follows</dt>
+<dd><p class="first last">YYYY-MM-DD HH24:MI:SS</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listLatestPackages">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listLatestPackages</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listLatestPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists the packages with the latest version (including release and epoch)
+for the given channel</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to query</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;version&#8221;</li>
+<li>string &#8220;release&#8221;</li>
+<li>string &#8220;epoch&#8221;</li>
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;arch_label&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listPackagesWithoutChannel">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listPackagesWithoutChannel</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listPackagesWithoutChannel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists all packages that are not associated with a channel. Typically
+these are custom packages.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;version&#8221;</p>
+</li>
+<li><p class="first">string &#8220;release&#8221;</p>
+</li>
+<li><p class="first">string &#8220;epoch&#8221;</p>
+</li>
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_label&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;path&#8221; - The path on that file system that the</dt>
+<dd><p class="first last">package resides</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;provider&#8221; - The provider of the package,</dt>
+<dd><p class="first last">determined by the gpg key it was
+signed with.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listRepoFilters">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listRepoFilters</tt><big>(</big><em>sw</em>, <em>repolabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listRepoFilters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Lists the filters for a repo</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string label - repository label</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - filter</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;sortOrder&#8221;</li>
+<li>string &#8220;filter&#8221;</li>
+<li>string &#8220;flag&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listSubscribedSystems">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listSubscribedSystems</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listSubscribedSystems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns list of subscribed systems for the given channel label</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - channel to query</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - system</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listSystemChannels">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listSystemChannels</tt><big>(</big><em>sw</em>, <em>systemid</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listSystemChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns a list of channels that a system is subscribed to for
+the given system id</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>int serverId</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.listUserRepos">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">listUserRepos</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.listUserRepos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns a list of ContentSource (repos) that the user can see</p>
+<p>Parameters:
+string sessionKey</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - map</dt>
+<dd><ul class="first last simple">
+<li>long &#8220;id&#8221; - ID of the repo</li>
+<li>string &#8220;label&#8221; - label of the repo</li>
+<li>string &#8220;sourceUrl&#8221; - URL of the repo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.mergeErrata">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">mergeErrata</tt><big>(</big><em>sw</em>, <em>sourcechan</em>, <em>destchan</em>, <em>start_date=None</em>, <em>end_date=None</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.mergeErrata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Merges all errata from one channel into another</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string mergeFromLabel - the label of the channel to pull errata from</li>
+<li>string mergeToLabel - the label to push the errata into</li>
+<li>string startDate (Not Required)</li>
+<li>string endDate   (Not Required)</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>struct - errata</li>
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.mergePackages">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">mergePackages</tt><big>(</big><em>sw</em>, <em>sourcechan</em>, <em>destchan</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.mergePackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Merges all packages from one channel into another</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>string mergeFromLabel - the label of the channel to pull</dt>
+<dd><p class="first last">packages from</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string mergeToLabel - the label to push the packages into</p>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;version&#8221;</p>
+</li>
+<li><p class="first">string &#8220;release&#8221;</p>
+</li>
+<li><p class="first">string &#8220;epoch&#8221;</p>
+</li>
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_label&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;path&#8221; - The path on that file system that</dt>
+<dd><p class="first last">the package resides</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;provider&#8221; - The provider of the package, determined</dt>
+<dd><p class="first last">by the gpg key it was signed with.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">dateTime.iso8601 &#8220;last_modified&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.regenerateNeededCache">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">regenerateNeededCache</tt><big>(</big><em>sw</em>, <em>channellabel=None</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.regenerateNeededCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Completely clear and regenerate the needed Errata and Package cache
+or all systems subscribed to the specified channel. This should be
+used only if you believe your cache is incorrect for all the systems
+in a given channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - the label of the channel</li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<blockquote>
+<div><ul class="simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.regenerateYumCache">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">regenerateYumCache</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.regenerateYumCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Regenerate yum cache for the specified channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - the label of the channel</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.removePackages">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">removePackages</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>package_ids</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.removePackages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Removes a given list of packages from the given channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - target channel.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - packageId - id of a package to remove from the channel.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.removeRepo">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">removeRepo</tt><big>(</big><em>sw</em>, <em>repository</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.removeRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Removes a repository</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>long id - ID of repo to be removed or repo label (string)</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setContactDetails">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setContactDetails</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>name</em>, <em>email</em>, <em>phone</em>, <em>policy</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setContactDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Set contact/support information for given channel.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of the channel</li>
+<li>string maintainerName - name of the channel maintainer</li>
+<li>string maintainerEmail - email of the channel maintainer</li>
+<li>string maintainerPhone - phone number of the channel maintainer</li>
+<li>string supportPolicy - channel support policy</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setDetails">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setDetails</tt><big>(</big><em>sw</em>, <em>channel_id</em>, <em>channel_map</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Allows to modify channel attributes</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">int channelDd - channel id</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - channel_map</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string &#8220;checksum_label&#8221; - new channel repository checksum label</dt>
+<dd><p class="first last">(optional)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;name&#8221; - new channel name (optional)</p>
+</li>
+<li><p class="first">string &#8220;summary&#8221; - new channel summary (optional)</p>
+</li>
+<li><p class="first">string &#8220;description&#8221; - new channel description (optional)</p>
+</li>
+<li><p class="first">string &#8220;maintainer_name&#8221; - new channel maintainer name (optional)</p>
+</li>
+<li><p class="first">string &#8220;maintainer_email&#8221; - new channel email address (optional)</p>
+</li>
+<li><p class="first">string &#8220;maintainer_phone&#8221; - new channel phone number (optional)</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_url&#8221; - new channel gpg key url (optional)</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_id&#8221; - new channel gpg key id (optional)</p>
+</li>
+<li><p class="first">string &#8220;gpg_key_fp&#8221; - new channel gpg key fingerprint (optional)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setGloballySubscribable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setGloballySubscribable</tt><big>(</big><em>sw</em>, <em>channellabel</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setGloballySubscribable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Description:</dt>
+<dd><ul class="first last simple">
+<li>Set globally subscribable attribute for given channel.</li>
+</ul>
+</dd>
+<dt>Parameters:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channelLabel - label of the channel</p>
+</li>
+<li><dl class="first docutils">
+<dt>boolean subscribable - true if the channel is to be</dt>
+<dd><p class="first last">globally subscribable. False otherwise.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setSystemChannels">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setSystemChannels</tt><big>(</big><em>sw</em>, <em>systemid</em>, <em>chanlist</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setSystemChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Returns a list of ContentSource (repos) that the
+user can see</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - map</dt>
+<dd><ul class="first last simple">
+<li>long &#8220;id&#8221; - ID of the repo</li>
+<li>string &#8220;label&#8221; - label of the repo</li>
+<li>string &#8220;sourceUrl&#8221; - URL of the repo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setUserManageable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setUserManageable</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>login</em>, <em>action</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setUserManageable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Set the manageable flag for a given channel and user.</p>
+<p>If value is set to &#8216;true&#8217;, this method will give the user
+manage permissions to the channel. Otherwise, that
+privilege is revoked.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of the channel</li>
+<li>string login - login of the target user</li>
+<li>boolean value - value of the flag to set</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd>int - 1 on success, exception thrown otherwise.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.channel.software.setUserSubscribable">
+<tt class="descclassname">space.lib.channel.software.</tt><tt class="descname">setUserSubscribable</tt><big>(</big><em>sw</em>, <em>channellabel</em>, <em>username</em><big>)</big><a class="headerlink" href="#space.lib.channel.software.setUserSubscribable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:
+Set the subscribable flag for a given channel and user. If value is set to
+&#8216;true&#8217;, this method will give the user subscribe permissions to the
+channel. Otherwise, that privilege is revoked.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string channelLabel - label of the channel</li>
+<li>string login - login of the target user</li>
+<li>boolean value - value of the flag to set</li>
+</ul>
+</dd>
+<dt>Returns:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/spaceman.png" alt="Logo"/>
+  </a>
+</p>
+
+<p>
+  Space is a command line interface to Spacewalk's xmlrpc api.
+</p>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel</span></tt></a></li>
+<li><a class="reference internal" href="#namespace-channel-access"><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.access</span></tt></a></li>
+<li><a class="reference internal" href="#namespace-channel-org"><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.org</span></tt></a></li>
+<li><a class="reference internal" href="#namespace-channel-software"><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">channel.software</span></tt></a></li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/lib/channel.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, David Johansen.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

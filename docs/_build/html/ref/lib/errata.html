@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Namespace: errata &mdash; Space 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Space 0.0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">Space 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-space.lib.errata"></span><div class="section" id="namespace-errata">
+<h1><tt class="docutils literal"><span class="pre">Namespace:</span> <span class="pre">errata</span></tt><a class="headerlink" href="#namespace-errata" title="Permalink to this headline">¶</a></h1>
+<p>Provides methods to access and modify distribution channel information.</p>
+<p>Available methods:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#space.lib.errata.addPackages" title="space.lib.errata.addPackages"><tt class="xref py py-func docutils literal"><span class="pre">addPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.applicableToChannels" title="space.lib.errata.applicableToChannels"><tt class="xref py py-func docutils literal"><span class="pre">applicableToChannels()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.bugzillaFixes" title="space.lib.errata.bugzillaFixes"><tt class="xref py py-func docutils literal"><span class="pre">bugzillaFixes()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.clone" title="space.lib.errata.clone"><tt class="xref py py-func docutils literal"><span class="pre">clone()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.cloneAsOriginal" title="space.lib.errata.cloneAsOriginal"><tt class="xref py py-func docutils literal"><span class="pre">cloneAsOriginal()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.cloneAsOriginalAsync" title="space.lib.errata.cloneAsOriginalAsync"><tt class="xref py py-func docutils literal"><span class="pre">cloneAsOriginalAsync()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.cloneAsync" title="space.lib.errata.cloneAsync"><tt class="xref py py-func docutils literal"><span class="pre">cloneAsync()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.create" title="space.lib.errata.create"><tt class="xref py py-func docutils literal"><span class="pre">create()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.delete" title="space.lib.errata.delete"><tt class="xref py py-func docutils literal"><span class="pre">delete()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.findByCve" title="space.lib.errata.findByCve"><tt class="xref py py-func docutils literal"><span class="pre">findByCve()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.getDetails" title="space.lib.errata.getDetails"><tt class="xref py py-func docutils literal"><span class="pre">getDetails()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.listAffectedSystems" title="space.lib.errata.listAffectedSystems"><tt class="xref py py-func docutils literal"><span class="pre">listAffectedSystems()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.listCves" title="space.lib.errata.listCves"><tt class="xref py py-func docutils literal"><span class="pre">listCves()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.listKeywords" title="space.lib.errata.listKeywords"><tt class="xref py py-func docutils literal"><span class="pre">listKeywords()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.listPackages" title="space.lib.errata.listPackages"><tt class="xref py py-func docutils literal"><span class="pre">listPackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.listUnpublishedErrata" title="space.lib.errata.listUnpublishedErrata"><tt class="xref py py-func docutils literal"><span class="pre">listUnpublishedErrata()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.publish" title="space.lib.errata.publish"><tt class="xref py py-func docutils literal"><span class="pre">publish()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.publishAsOriginal" title="space.lib.errata.publishAsOriginal"><tt class="xref py py-func docutils literal"><span class="pre">publishAsOriginal()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.removePackages" title="space.lib.errata.removePackages"><tt class="xref py py-func docutils literal"><span class="pre">removePackages()</span></tt></a></li>
+<li><a class="reference internal" href="#space.lib.errata.setDetails" title="space.lib.errata.setDetails"><tt class="xref py py-func docutils literal"><span class="pre">setDetails()</span></tt></a></li>
+</ul>
+<dl class="function">
+<dt id="space.lib.errata.addPackages">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">addPackages</tt><big>(</big><em>sw</em>, <em>advisoryname</em>, <em>packageids</em><big>)</big><a class="headerlink" href="#space.lib.errata.addPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Add a set of packages to an erratum with the given advisory name.
+This method will only allow for modification of custom errata created
+either through the UI or API.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string advisoryName</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - packageId</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><em>Returns</em>:</p>
+<p>int - representing the number of packages added, exception otherwise</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.applicableToChannels">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">applicableToChannels</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.applicableToChannels" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Returns a list of channels applicable to the erratum with the given
+advisory name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - channel</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;channel_id&#8221;</li>
+<li>string &#8220;label&#8221;</li>
+<li>string &#8220;name&#8221;</li>
+<li>string &#8220;parent_channel_label&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.bugzillaFixes">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">bugzillaFixes</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.bugzillaFixes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Get the Bugzilla fixes for an erratum matching the given advisoryName. The
+bugs will be returned in a struct where the bug id is the key.
+i.e. 208144=&#8221;errata.bugzillaFixes Method Returns different results than
+docs say&#8221;</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>struct - Bugzilla info</li>
+<li>string &#8220;bugzilla_id&#8221; - actual bug number is the key into the struct</li>
+<li>string &#8220;bug_summary&#8221; - summary who&#8217;s key is the bug id</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.clone">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">clone</tt><big>(</big><em>sw</em>, <em>channel_label</em>, <em>advisories</em><big>)</big><a class="headerlink" href="#space.lib.errata.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Clone a list of errata into the specified channel.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channel_label</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - advisory - The advisory name of the errata to clone.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.cloneAsOriginal">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">cloneAsOriginal</tt><big>(</big><em>sw</em>, <em>channel_label</em>, <em>advisories</em><big>)</big><a class="headerlink" href="#space.lib.errata.cloneAsOriginal" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Clones a list of errata into a specified cloned channel according the
+original erratas.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channel_label</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - advisory - The advisory name of the errata to clone.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.cloneAsOriginalAsync">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">cloneAsOriginalAsync</tt><big>(</big><em>sw</em>, <em>channel_label</em>, <em>advisories</em><big>)</big><a class="headerlink" href="#space.lib.errata.cloneAsOriginalAsync" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Asynchronously clones a list of errata into a specified cloned channel
+according the original erratas</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channel_label</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - advisory - The advisory name of the errata to clone.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.cloneAsync">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">cloneAsync</tt><big>(</big><em>sw</em>, <em>channel_label</em>, <em>advisories</em><big>)</big><a class="headerlink" href="#space.lib.errata.cloneAsync" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Asynchronously clone a list of errata into the specified channel.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string channel_label</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - advisory - The advisory name of the errata to clone.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.create">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">create</tt><big>(</big><em>sw</em>, <em>errata_info</em>, <em>bug_dict</em>, <em>keywords</em>, <em>packageids</em>, <em>publish</em>, <em>channel_labels</em><big>)</big><a class="headerlink" href="#space.lib.errata.create" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Create a custom errata. If &#8220;publish&#8221; is set to true, the errata will be
+published as well</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - errata info</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;synopsis&#8221;</p>
+</li>
+<li><p class="first">string &#8220;advisory_name&#8221;</p>
+</li>
+<li><p class="first">int &#8220;advisory_release&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;advisory_type&#8221; - Type of advisory (one of the following:</dt>
+<dd><p class="first last">&#8216;Security Advisory&#8217;,
+&#8216;Product Enhancement Advisory&#8217;, or
+&#8216;Bug Fix Advisory&#8217;</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;product&#8221;</p>
+</li>
+<li><p class="first">string &#8220;errataFrom&#8221;</p>
+</li>
+<li><p class="first">string &#8220;topic&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;references&#8221;</p>
+</li>
+<li><p class="first">string &#8220;notes&#8221;</p>
+</li>
+<li><p class="first">string &#8220;solution&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - bug</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Bug Id</li>
+<li>string &#8220;summary&#8221;</li>
+<li>string &#8220;url&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - keyword - List of keywords to associate with the errata.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - packageId</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">boolean publish - Should the errata be published.</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string - channelLabel - list of channels the errata should be</dt>
+<dd><p class="first last">published too, ignored if publish is set
+to false</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.delete">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">delete</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Delete an erratum. This method will only allow for deletion of custom
+errata created either through the UI or API.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.findByCve">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">findByCve</tt><big>(</big><em>sw</em>, <em>cvename</em><big>)</big><a class="headerlink" href="#space.lib.errata.findByCve" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Lookup the details for errata associated with the given CVE
+(e.g. CVE-2008-3270)</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string cveName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.getDetails">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">getDetails</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.getDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Retrieves the details for the erratum matching the given advisory name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - erratum</dt>
+<dd><ul class="first last">
+<li><p class="first">string &#8220;issue_date&#8221;</p>
+</li>
+<li><p class="first">string &#8220;update_date&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>string &#8220;last_modified_date&#8221; - This date is only included for</dt>
+<dd><p class="first last">published erratum and it represents
+the last time the erratum was
+modified.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;synopsis&#8221;</p>
+</li>
+<li><p class="first">int &#8220;release&#8221;</p>
+</li>
+<li><p class="first">string &#8220;type&#8221;</p>
+</li>
+<li><p class="first">string &#8220;product&#8221;</p>
+</li>
+<li><p class="first">string &#8220;errataFrom&#8221;</p>
+</li>
+<li><p class="first">string &#8220;topic&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;references&#8221;</p>
+</li>
+<li><p class="first">string &#8220;notes&#8221;</p>
+</li>
+<li><p class="first">string &#8220;solution&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.listAffectedSystems">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">listAffectedSystems</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.listAffectedSystems" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Return the list of systems affected by the erratum with advisory name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - system</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>dateTime.iso8601 &#8220;last_checkin&#8221; - Last time server</dt>
+<dd><p class="first last">successfully checked in</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.listCves">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">listCves</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.listCves" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Returns a list of CVEs applicable to the erratum with the given advisory
+name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - cveName</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.listKeywords">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">listKeywords</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.listKeywords" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Get the keywords associated with an erratum matching the given advisory
+name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - Keyword associated with erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.listPackages">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">listPackages</tt><big>(</big><em>sw</em>, <em>advisoryname</em><big>)</big><a class="headerlink" href="#space.lib.errata.listPackages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Returns a list of the packages affected by the erratum with the given
+advisory name.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+<li>string advisoryName</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - package</dt>
+<dd><ul class="first last">
+<li><p class="first">int &#8220;id&#8221;</p>
+</li>
+<li><p class="first">string &#8220;name&#8221;</p>
+</li>
+<li><p class="first">string &#8220;epoch&#8221;</p>
+</li>
+<li><p class="first">string &#8220;version&#8221;</p>
+</li>
+<li><p class="first">string &#8220;release&#8221;</p>
+</li>
+<li><p class="first">string &#8220;arch_label&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;providing_channels&#8221;</dt>
+<dd><ul class="first last simple">
+<li>string - Channel label providing this package.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">string &#8220;build_host&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;checksum&#8221;</p>
+</li>
+<li><p class="first">string &#8220;checksum_type&#8221;</p>
+</li>
+<li><p class="first">string &#8220;vendor&#8221;</p>
+</li>
+<li><p class="first">string &#8220;summary&#8221;</p>
+</li>
+<li><p class="first">string &#8220;cookie&#8221;</p>
+</li>
+<li><p class="first">string &#8220;license&#8221;</p>
+</li>
+<li><p class="first">string &#8220;path&#8221;</p>
+</li>
+<li><p class="first">string &#8220;file&#8221;</p>
+</li>
+<li><p class="first">string &#8220;build_date&#8221;</p>
+</li>
+<li><p class="first">string &#8220;last_modified_date&#8221;</p>
+</li>
+<li><p class="first">string &#8220;size&#8221;</p>
+</li>
+<li><p class="first">string &#8220;payload_size&#8221;</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.listUnpublishedErrata">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">listUnpublishedErrata</tt><big>(</big><em>sw</em><big>)</big><a class="headerlink" href="#space.lib.errata.listUnpublishedErrata" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Returns a list of unpublished errata</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last simple">
+<li>string sessionKey</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - erratum</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221;</li>
+<li>int &#8220;published&#8221;</li>
+<li>string &#8220;advisory&#8221;</li>
+<li>string &#8220;advisory_name&#8221;</li>
+<li>string &#8220;advisory_type&#8221;</li>
+<li>string &#8220;synopsis&#8221;</li>
+<li>dateTime.iso8601 &#8220;created&#8221;</li>
+<li>dateTime.iso8601 &#8220;update_date&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.publish">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">publish</tt><big>(</big><em>sw</em>, <em>advisoryname</em>, <em>channel_labels</em><big>)</big><a class="headerlink" href="#space.lib.errata.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Publish an existing (unpublished) errata to a set of channels.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string advisoryName</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - channelLabel - list of channel labels to publish to</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.publishAsOriginal">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">publishAsOriginal</tt><big>(</big><em>sw</em>, <em>advisoryname</em>, <em>channel_labels</em><big>)</big><a class="headerlink" href="#space.lib.errata.publishAsOriginal" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Publishes an existing (unpublished) cloned errata to a set of cloned
+channels according to its original erratum</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string advisoryName</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>string - channelLabel - list of channel labels to publish to</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - errata</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Errata Id</li>
+<li>string &#8220;date&#8221; - Date erratum was created.</li>
+<li>string &#8220;advisory_type&#8221; - Type of the advisory.</li>
+<li>string &#8220;advisory_name&#8221; - Name of the advisory.</li>
+<li>string &#8220;advisory_synopsis&#8221; - Summary of the erratum.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.removePackages">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">removePackages</tt><big>(</big><em>sw</em>, <em>advisoryname</em>, <em>packageids</em><big>)</big><a class="headerlink" href="#space.lib.errata.removePackages" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Remove a set of packages from an erratum with the given advisory name. This
+method will only allow for modification of custom errata created either
+through the UI or API.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string advisoryName</p>
+</li>
+<li><dl class="first docutils">
+<dt>array:</dt>
+<dd><ul class="first last simple">
+<li>int - packageId</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>int - representing the number of packages removed, exception</dt>
+<dd><p class="first last">otherwise</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="space.lib.errata.setDetails">
+<tt class="descclassname">space.lib.errata.</tt><tt class="descname">setDetails</tt><big>(</big><em>sw</em>, <em>advisoryname</em>, <em>errata_info</em><big>)</big><a class="headerlink" href="#space.lib.errata.setDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Description</em>:
+Set erratum details. All arguments are optional and will only be modified
+if included in the struct. This method will only allow for modification of
+custom errata created either through the UI or API.</p>
+<dl class="docutils">
+<dt><em>Parameters</em>:</dt>
+<dd><ul class="first last">
+<li><p class="first">string sessionKey</p>
+</li>
+<li><p class="first">string advisoryName</p>
+</li>
+<li><dl class="first docutils">
+<dt>struct - errata details</dt>
+<dd><ul class="first simple">
+<li>string &#8220;synopsis&#8221;</li>
+</ul>
+<p>string &#8220;advisory_name&#8221;
+- int &#8220;advisory_release&#8221;
+- string &#8220;advisory_type&#8221; - Type of advisory (one of the following:</p>
+<blockquote>
+<div><p>&#8216;Security Advisory&#8217;,
+&#8216;Product Enhancement Advisory&#8217;, or
+&#8216;Bug Fix Advisory&#8217;</p>
+</div></blockquote>
+<ul class="last">
+<li><p class="first">string &#8220;product&#8221;</p>
+</li>
+<li><p class="first">string &#8220;errataFrom&#8221;</p>
+</li>
+<li><p class="first">string &#8220;topic&#8221;</p>
+</li>
+<li><p class="first">string &#8220;description&#8221;</p>
+</li>
+<li><p class="first">string &#8220;references&#8221;</p>
+</li>
+<li><p class="first">string &#8220;notes&#8221;</p>
+</li>
+<li><p class="first">string &#8220;solution&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;bugs&#8221; - &#8216;bugs&#8217; is the key into the struct</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>struct - bug</dt>
+<dd><ul class="first last simple">
+<li>int &#8220;id&#8221; - Bug Id</li>
+<li>string &#8220;summary&#8221;</li>
+<li>string &#8220;url&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;keywords&#8221; - &#8216;keywords&#8217; is the key into the struct</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>string - keyword - List of keywords to associate with the</dt>
+<dd><p class="first last">errata.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>array &#8220;CVEs&#8221; - &#8216;cves&#8217; is the key into the struct</dt>
+<dd><ul class="first last simple">
+<li>string - cves - List of CVEs to associate with the errata.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><em>Returns</em>:</dt>
+<dd><ul class="first last simple">
+<li>int - 1 on success, exception thrown otherwise.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/spaceman.png" alt="Logo"/>
+  </a>
+</p>
+
+<p>
+  Space is a command line interface to Spacewalk's xmlrpc api.
+</p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/lib/errata.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, David Johansen.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>
