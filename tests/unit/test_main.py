@@ -122,6 +122,21 @@ class TestMain(unittest.TestCase):
                 os.path.dirname(
                 os.path.abspath(__file__)), 'test.ini'
             )
+        moduledir = os.path.join(
+                os.path.dirname(
+                os.path.abspath(__file__)), 'testmodules'
+            )
+        with open(cfg, 'w+') as c:
+            c.write("[spacewalk]\n" +
+                "hostname = localhost \n" +
+                "login = testuser\n" +
+                "password = letmein\n" +
+                "[localhost]\n" +
+                "login = testuser\n" + 
+                "password = letmein\n" +
+                "[main]\n" +
+                "module_dir = %s" % moduledir
+            )
         auth = getauth(cfg, 'localhost')
         self.assertEqual(auth, ('testuser', 'letmein'), auth)
 
