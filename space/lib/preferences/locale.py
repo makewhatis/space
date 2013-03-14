@@ -1,6 +1,6 @@
 """
 ``Namespace: preferences.locale``
-======================
+=================================
 
 Provides methods to access and modify user locale information
 

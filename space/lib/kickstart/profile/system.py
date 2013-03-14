@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.profile.system``
-======================
+=======================================
 
 Provides methods to set various properties of a kickstart profile.
 

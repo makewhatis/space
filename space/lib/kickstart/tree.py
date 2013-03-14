@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.tree``
-======================
+=============================
 
 Provides methods to access and modify the kickstart trees.
 

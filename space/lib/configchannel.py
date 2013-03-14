@@ -1,6 +1,6 @@
 """
 ``Namespace: configchannel``
-======================
+============================
 
 Provides methods to access and
 modify many aspects of configuration channels.

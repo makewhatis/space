@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.filepreservation``
-======================
+=========================================
 
 Provides methods to retrieve and manipulate kickstart file preservation lists.
 

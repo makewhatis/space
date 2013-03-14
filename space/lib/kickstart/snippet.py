@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.snippet``
-======================
+================================
 
 Provides methods to create kickstart files
 

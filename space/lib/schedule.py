@@ -1,6 +1,6 @@
 """
 ``Namespace: schedule``
-======================
+=======================
 
 Methods to retrieve information about scheduled actions.
 

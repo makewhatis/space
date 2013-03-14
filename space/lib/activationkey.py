@@ -1,6 +1,6 @@
 """
 ``Namespace: activationkey``
-======================
+============================
 
 Contains methods to access common activation key functions available
 from the web interface.

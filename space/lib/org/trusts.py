@@ -1,6 +1,6 @@
 """
 ``Namespace: org.trusts``
-======================
+=========================
 
 Contains methods to access common organization management functions available
 from the web interface.

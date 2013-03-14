@@ -1,6 +1,6 @@
 """
 ``Namespace: system.config``
-======================
+============================
 
 Provides methods to access and modify many aspects of configuration channels
 and server association. basically system.config name space
@@ -403,32 +403,33 @@ def lookupFileInfo(
         - array:
             - string - paths to lookup on.
         - int searchlocal
-            - 1 - to search configuration file paths in the system's local
+            - 1 to search configuration file paths in the system's local
                 override configuration or systems subscribed central channels
-            - 0 - to search configuration file paths in the system's sandbox
+            - 0 to search configuration file paths in the system's sandbox
                 configuration channel
 
     Returns:
         - array:
             - struct - Configuration Revision information
                - string "type"
-                    - file
-                    - directory
-                    - symlink
+                    * file
+                    * directory
+                    * symlink
+
                 - string "path" - File Path
                 - string "target_path" - Symbolic link Target File Path.
-                                        Present for Symbolic links only.
+                    Present for Symbolic links only.
                 - string "channel" - Channel Name
                 - string "contents" - File contents (base64 encoded according
-                                    to the contents_enc64 attribute)
+                    to the contents_enc64 attribute)
                 - boolean "contents_enc64" - Identifies base64 encoded content
                 - int "revision" - File Revision
                 - dateTime.iso8601 "creation" - Creation Date
                 - dateTime.iso8601 "modified" - Last Modified Date
                 - string "owner" - File Owner. Present for files or directories
-                                    only.
+                    only.
                 - string "group" - File Group. Present for files or directories
-                                    only.
+                    only.
                 - int "permissions" - File Permissions (Deprecated). Present
                                     for files or directories only.
                 - string "permissions_mode" - File Permissions. Present for
@@ -500,7 +501,7 @@ def setChannels(
     array.
 
     Parameters:
-        object session
+        - object session
         - system_ids - array:
             - int - IDs of the systems to set the channels on.
         - channel_labels - array:

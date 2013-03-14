@@ -1,6 +1,6 @@
 """
 ``Namespace: packages.search``
-======================
+==============================
 
 Methods to interface to package search capabilities in search server.
 

@@ -1,6 +1,6 @@
 """
 ``Namespace: systemgroup``
-======================
+==========================
 
 Provides methods to access and modify system groups.
 
@@ -358,11 +358,11 @@ def listSystems(
                 - int "id" - System id
                 - string "profile_name"
                 - string "base_entitlement" - System's base entitlement label.
-                                       (enterprise_entitled or sw_mgr_entitled)
+                    (enterprise_entitled or sw_mgr_entitled)
                 - array "string"
                     - addon_entitlements System's addon entitlements labels,
-                    including monitoring_entitled, provisioning_entitled,
-                    virtualization_host, virtualization_host_platform
+                        including monitoring_entitled, provisioning_entitled,
+                        virtualization_host, virtualization_host_platform
                 - boolean "auto_update" - True if system has auto errata
                                           updates enabled.
                 - string "release" - The Operating System release

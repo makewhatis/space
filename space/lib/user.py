@@ -633,13 +633,13 @@ def removeDefaultSystemGroups(
     Remove system groups from a user's list of default system groups.
 
     Parameters:
-        string sessionKey
-        string login - User's login name.
-        array:
-            string - serverGroupName
+        - string sessionKey
+        - string login - User's login name.
+        - array:
+            - string - server_group_name
 
     Returns:
-    int - 1 on success, exception thrown otherwise.
+        - int - 1 on success, exception thrown otherwise.
     """
     try:
         result = sw.session.user.removeDefaultSystemGroups(

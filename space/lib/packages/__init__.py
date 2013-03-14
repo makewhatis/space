@@ -1,6 +1,6 @@
 """
 ``Namespace: packages``
-======================
+=======================
 
 Methods to retrieve information about the Packages contained within
 this server.

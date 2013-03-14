@@ -1,6 +1,6 @@
 """
 ``Namespace: system.scap``
-======================
+==========================
 
 Provides methods to schedule SCAP scans and access the results.
 

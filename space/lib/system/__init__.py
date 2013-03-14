@@ -2036,9 +2036,9 @@ def listNewerInstalledPackages(
 ):
     """
     Description:
-        - Given a package name, version, release, and epoch,
-          returns the list of packages installed on the system w/
-          the same name that are newer.
+    Given a package name, version, release, and epoch,
+    returns the list of packages installed on the system w/
+    the same name that are newer.
 
         - Parameters:
             - session object
@@ -2418,14 +2418,14 @@ def listSystemEvents(
             - struct - action
                 - int "failed_count" - Number of times action failed.
                 - string "modified" - Date modified.
-                                      (Deprecated by modified_date)
+                    (Deprecated by modified_date)
                 - dateTime.iso8601 "modified_date" - Date modified.
                 - string "created" - Date created.
                                      (Deprecated by created_date)
                 - dateTime.iso8601 "created_date" - Date created.
                 - string "action_type"
                 - int "successful_count" - Number of times action was
-                                           successful.
+                    successful.
                 - string "earliest_action" - Earliest date this action will
                                              occur.
                 - int "archived" - If this action is archived. (1 or 0)
@@ -2436,41 +2436,43 @@ def listSystemEvents(
                 - int "id" - Id of this action.
                 - string "version" - Version of action.
                 - string "completion_time" - The date/time the event was
-                                             completed.
-                                          Format ->YYYY-MM-dd hh:mm:ss.ms
-                                          Eg ->2007-06-04 13:58:13.0.(optional)
-                                          (Deprecated by completed_date)
+                    completed.
+                    Format ->YYYY-MM-dd hh:mm:ss.ms
+                    Eg ->2007-06-04 13:58:13.0.(optional)
+                    (Deprecated by completed_date)
                 - dateTime.iso8601 "completed_date" - The date/time the event
-                                                      was completed. (optional)
+                    was completed. (optional)
                 - string "pickup_time" - The date/time the action was picked
-                                         up. Format ->YYYY-MM-dd hh:mm:ss.ms
-                                         Eg ->2007-06-04 13:58:13.0. (optional)
-                                         (Deprecated by pickup_date)
+                     up. Format ->YYYY-MM-dd hh:mm:ss.ms
+                     Eg ->2007-06-04 13:58:13.0. (optional)
+                     (Deprecated by pickup_date)
                 - dateTime.iso8601 "pickup_date" - The date/time the action was
-                                                    picked up. (optional)
+                    picked up. (optional)
                 - string "result_msg" - The result string after the action
                                     executes at the client machine. (optional)
                 - array "additional_info" - This array contains additional
                                         information for the event, if available
                     - struct - info
-                        - string "detail" - The detail provided depends on the
-                                            specific event. For example, for a
-                                            package event, this will be the
-                                            package name, for an errata event,
-                                            this will be the advisory name and
-                                            synopsis, for a config file event,
-                                            this will be path and optional
-                                            revision information...etc.
-                        - string "result" - The result (if included) depends on
-                                            the specific event. For example,
-                                            for a package or errata event, no
-                                            result is included, for a config
-                                            file event, the result might
-                                            include an error (if one occurred,
-                                            such as the file was missing) or in
-                                            the case of a config file
-                                            comparison it might include the
-                                            differenes found.
+                        * string "detail" - The detail provided depends on the
+                            specific event. For example, for a
+                            package event, this will be the
+                            package name, for an errata event,
+                            this will be the advisory name and
+                            synopsis, for a config file event,
+                            this will be path and optional
+                            revision information...etc.
+
+                        * string "result" - The result (if included) depends on
+                            the specific event. For example,
+                            for a package or errata event, no
+                            result is included, for a config
+                            file event, the result might
+                            include an error (if one occurred,
+                            such as the file was missing) or in
+                            the case of a config file
+                            comparison it might include the
+                            differenes found.
+
                 Available since: 10.8
     """
     try:
@@ -2551,13 +2553,13 @@ def listSystemsWithPackage(
     Lists the systems that have the given installed package
 
     Parameters:
-        - object session
-        AND
-        - int package_id - the package id
-        OR
+        - object session AND
+        - int package_id OR
         - string name
         - string version
         - string release
+
+    So either package_id here, or the NVR
 
     Returns:
         - array:
@@ -2565,7 +2567,7 @@ def listSystemsWithPackage(
                 - int "id"
                 - string "name"
                 - dateTime.iso8601 "last_checkin" - Last time server
-                                                    successfully checked in
+                    successfully checked in
     """
     try:
         if package_id:
@@ -2881,12 +2883,9 @@ def scheduleApplyErrata(
 
     Parameters:
         - object session
-
         - array:
-            - int - server_id
-        OR
+            - int - server_id OR
         - int - server_id
-
         - array:
             - int - errataId (optional)
         - dateTime.iso8601 earliestOccurrence (optional)
@@ -3221,8 +3220,7 @@ def searchByName(
     Parameters:
 
         - session object
-        - string regexp - A regular expression. (as defined by
-        http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html)
+        - string regexp - A regular expression.
 
     Returns:
 
@@ -3231,7 +3229,9 @@ def searchByName(
                 - int "id"
                 - string "name"
                 - dateTime.iso8601 "last_checkin" - Last time server
-                                                    successfully checked in
+                    successfully checked in
+
+    http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html
     """
     try:
         result = sw.session.system.searchByName(
@@ -3660,7 +3660,7 @@ def whoRegistered(
             - string "login"
             - string "login_uc" - upper case version of the login
             - boolean "enabled" - true if user is enabled, false if the user
-            is disabled
+                is disabled
     """
     try:
         result = sw.session.system.whoRegistered(

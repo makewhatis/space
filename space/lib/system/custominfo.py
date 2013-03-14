@@ -1,6 +1,6 @@
 """
 ``Namespace: system.custominfo``
-======================
+================================
 
 Provides methods to access and modify custom system information.
 

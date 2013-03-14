@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.profile.software``
-======================
+=========================================
 
 Provides methods to access and modify the list of
 activation keys associated with a kickstart profile.

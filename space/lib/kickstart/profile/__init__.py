@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.profile``
-======================
+================================
 
 Provides methods to access and modify many aspects of a kickstart profile.
 

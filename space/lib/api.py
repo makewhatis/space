@@ -1,6 +1,6 @@
 """
 ``Namespace: api``
-======================
+==================
 
 Methods providing information about the API.
 

@@ -1,6 +1,6 @@
 """
 ``Namespace: system.search``
-======================
+============================
 
 Provides methods to perform system search requests using the
 search server.

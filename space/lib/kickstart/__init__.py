@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart``
-======================
+========================
 
 Provides methods to access and modify distribution channel information.
 

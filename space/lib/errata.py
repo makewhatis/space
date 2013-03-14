@@ -1,6 +1,6 @@
 """
 ``Namespace: errata``
-======================
+=====================
 
 Provides methods to access and modify distribution channel information.
 

@@ -1,6 +1,6 @@
 """
 ``Namespace: kickstart.keys``
-======================
+=============================
 
 Provides methods to manipulate kickstart keys.
 

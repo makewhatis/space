@@ -1,6 +1,6 @@
 """
 ``Namespace: satellite``
-======================
+========================
 
 Provides methods to obtain details on the Satellite.
 
