@@ -7,3 +7,6 @@ Spacewalk-cli is a command line tool + api wrapper for spacewalks xmlrpc library
 library available for use, and the number of command line options is growing.
 
 
+Docs are available at:
+
+[https://space.readthedocs.org/en/latest/index.html](https://space.readthedocs.org/en/latest/index.html)
