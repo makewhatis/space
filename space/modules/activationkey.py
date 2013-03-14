@@ -1,6 +1,9 @@
 # -*- coding: utf-8 *-*
 import argparse
+import sys
 from space.lib import activationkey
+from space.lib import systemgroup
+
 
 def add_child_channels(sw, args):
     """
@@ -25,7 +28,17 @@ def add_child_channels(sw, args):
         type=str,
         help="Channels listed in space delimitted list."
     )
-    parser.parse_args(args)
+    p = parser.parse_args(args)
+
+    result = activationkey.addChildChannels(
+        sw,
+        p.keyname,
+        p.channels
+    )
+    print("%s added to %s" % (
+        p.channels, p.keyname)
+    )
+    return True
 
 
 def create(sw, args):
@@ -77,6 +90,35 @@ def create(sw, args):
     )
     p = parser.parse_args(args)
 
+    entitlements = []
+    if p.monitoring_entitled:
+        entitlements.append('monitoring_entitled')
+
+    if p.provisioning_entitled:
+        entitlements.append('provisioning_entitled')
+
+    if p.virtualization_host:
+        entitlements.append('virtualization_host')
+
+    if p.virtualization_host_platform:
+        entitlements.append('virtualization_host_platform')
+
+    try:
+        result = activationkey.create(
+            sw,
+            p.keyname,
+            p.keyname,
+            p.basechannel,
+            entitlements
+        )
+    except Exception as e:
+        print("Error adding key: %s" % e.faultString)
+        return
+
+    if result:
+        print("%s created" % result)
+    return result
+
 
 def add_group(sw, args):
     """
@@ -103,6 +145,31 @@ def add_group(sw, args):
         type=str,
         help='Space delimitted list of system groups'
     )
-    print(dir(parser))
-    print(args)
     p = parser.parse_args(args)
+
+    groups_ids = []
+    for group in p.groups:
+        try:
+            groupid = systemgroup.getDetails(sw, group)
+            gid = groupid['id']
+            groups_ids.append(int(gid))
+        except Exception as e:
+            print("Failed: %s" % e.faultString)
+            raise
+
+    try:
+        result = activationkey.addServerGroups(
+            sw,
+            p.keyname,
+            groups_ids
+        )
+    except Exception as e:
+        print ("Adding key to group failed: %s" % e)
+        raise
+
+
+    if result == 1:
+        for group in p.groups:
+            print("%s has been added to %s" % (group, p.keyname))
+
+    return result
