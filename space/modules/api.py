@@ -2,6 +2,7 @@
 import argparse
 import space.lib.api as sapi
 
+
 def list(sw, args):
     """
     Lists all available api calls grouped by namespace
@@ -19,10 +20,9 @@ def list(sw, args):
     if calls:
         for call in calls:
             for name, info in calls.items():
-                #names.append(info)
-                for i,k in info.items():
-                    print("%s : %s - %s" % (name, k['name'], k['parameters']))
-    
+                for i, k in info.items():
+                    print("%s.%s(%s)" % (name, k['name'], k['parameters']))
+        return True
     else:
         print("No calls in api. Most likely lies")
-    return calls
+        return False

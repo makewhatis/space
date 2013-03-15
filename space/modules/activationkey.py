@@ -35,9 +35,7 @@ def add_child_channels(sw, args):
         p.keyname,
         p.channels
     )
-    print("%s added to %s" % (
-        p.channels, p.keyname)
-    )
+    print("%s added to %s" % (p.channels, p.keyname))
     return True
 
 
@@ -112,8 +110,8 @@ def create(sw, args):
             entitlements
         )
     except Exception as e:
-        print("Error adding key: %s" % e.faultString)
-        return
+        print("Error adding key: %s" % e)
+        return False
 
     if result:
         print("%s created" % result)
@@ -154,8 +152,8 @@ def add_group(sw, args):
             gid = groupid['id']
             groups_ids.append(int(gid))
         except Exception as e:
-            print("Failed: %s" % e.faultString)
-            raise
+            print("Failed: %s" % e)
+            return False
 
     try:
         result = activationkey.addServerGroups(
@@ -165,8 +163,7 @@ def add_group(sw, args):
         )
     except Exception as e:
         print ("Adding key to group failed: %s" % e)
-        raise
-
+        return False
 
     if result == 1:
         for group in p.groups:

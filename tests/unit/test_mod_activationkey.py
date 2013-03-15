@@ -9,12 +9,8 @@ else:
 import coverage
 
 sys.path.insert(0, "../../")
-print(sys.path)
+
 from space.modules import activationkey
-
-TEST_DIR = os.path.dirname(os.path.normpath(os.path.abspath(__file__)))
-
-CONFIG = '%s/test.ini' % TEST_DIR
 
 
 class TestModActKey(unittest.TestCase):
@@ -44,8 +40,12 @@ class TestModActKey(unittest.TestCase):
         self.assertEqual(result, 'test', "not returning 'test'")
 
         act_create.side_effect = Exception
-        with self.assertRaises(Exception):
-            activationkey.create(self.sw, args)
+        result = activationkey.create(self.sw, args)
+        self.assertEqual(
+            result,
+            False,
+            "Result not false: %s" % result
+        )
 
     @mock.patch('space.lib.systemgroup.getDetails')
     @mock.patch('space.lib.activationkey.addServerGroups')
@@ -59,16 +59,6 @@ class TestModActKey(unittest.TestCase):
         result = activationkey.add_group(self.sw, args)
         self.assertEqual(result, 1, 'Result not 1')
 
-        get_dets.side_effect = Exception
-        with self.assertRaises(Exception):
-            activationkey.add_group(self.sw, args)
-
-        #get_dets.side_effect = None
-        add_groups.side_effect = Exception
-        with self.assertRaises(Exception):
-            activationkey.add_group(self.sw, args)
-
-
     @mock.patch('space.lib.systemgroup.getDetails')
     @mock.patch('space.lib.activationkey.addServerGroups')
     def test_add_group_fail_grp(self, add_groups, get_dets):
@@ -79,9 +69,15 @@ class TestModActKey(unittest.TestCase):
             '--groups', 'it'
         ]
         get_dets.side_effect = Exception
-        with self.assertRaises(Exception):
-            activationkey.add_group(self.sw, args)
-
+        result = activationkey.add_group(
+            self.sw,
+            args
+        )
+        self.assertEquals(
+            result,
+            False,
+            "Result not False."
+        )
 
     @mock.patch('space.lib.systemgroup.getDetails')
     @mock.patch('space.lib.activationkey.addServerGroups')
@@ -93,5 +89,12 @@ class TestModActKey(unittest.TestCase):
             '--groups', 'it'
         ]
         add_groups.side_effect = Exception
-        with self.assertRaises(Exception):
-            activationkey.add_group(self.sw, args)
+        result = activationkey.add_group(
+            self.sw,
+            args
+        )
+        self.assertEquals(
+            result,
+            False,
+            "Result not False."
+        )
