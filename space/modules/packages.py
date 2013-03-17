@@ -8,7 +8,6 @@ if sys.version_info >= (3, 0):
 if sys.version_info <= (2, 8):
     import urllib
 
-from space.lib import packages
 
 
 def getpackage(sw, args):

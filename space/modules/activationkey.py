@@ -1,8 +1,6 @@
 # -*- coding: utf-8 *-*
 import argparse
 import sys
-from space.lib import activationkey
-from space.lib import systemgroup
 
 
 def add_child_channels(sw, args):

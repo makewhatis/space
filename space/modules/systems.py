@@ -1,7 +1,5 @@
 # -*- coding: utf-8 *-*
 import argparse
-from space.lib import system
-from space.lib import systemgroup
 
 
 def child_channels(
@@ -34,25 +32,32 @@ def child_channels(
     p = parser.parse_args(args)
 
     if p.sid:
-        channels = system.listSubscribedChildChannels(
-            sw,
-            int(p.sid)
+        channels = sw.run(
+            'system.listSubscribedChildChannels',
+            [int(p.sid)]
         )
 
     elif p.server:
-        server = system.searchByName(sw, p.server)
-
-        if len(server) > 1:
-            print("multiple servers by that name, please use server id")
+        try:
+            server = sw.run(
+                'system.getId',
+                [p.server]
+            )
+        except Exception as e:
+            print("Exception: %s" % p.server)
             return False
 
-        channels = system.listSubscribedChildChannels(
-            sw,
-            server[0]['id']
+        if not server:
+            print("No servers were found.")
+            return False
+
+        channels = sw.run(
+            'system.listSubscribedChildChannels',
+            [server[0]['id']]
         )
 
     else:
-        print("Need to give me something to work with here.")
+        parser.print_help()
         return False
 
     for channel in channels:
