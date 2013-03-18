@@ -51,7 +51,7 @@ def list_in_namespace(sw, args):
     p = parser.parse_args(args)
 
     try:
-        result = sw.run(
+        result = sw.call(
             'api.getApiNamespaceCallList',
             [p.namespace]
         )

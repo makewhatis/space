@@ -10,10 +10,10 @@ PY3 = py_version[0] == 3
 
 if PY3:
     if py_version < (3, 2):
-        raise RuntimeError('On Python 3, Pyramid requires Python 3.2 or better')
+        raise RuntimeError('On Python 3, Space requires Python 3.2 or better')
 else:
     if py_version < (2, 6):
-        raise RuntimeError('On Python 2, Pyramid requires Python 2.6 or better')
+        raise RuntimeError('On Python 2, Space requires Python 2.6 or better')
 
 version =  "0.0.1"
 tests_require = [
@@ -34,12 +34,12 @@ import sys
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = []
+        self.test_args = ['tests/unit']
         self.test_suite = True
     def run_tests(self):
          #import here, cause outside the eggs aren&#039;t loaded 
         import pytest
-        errno = pytest.main('tests/unit')
+        errno = pytest.main(self.test_args)
         sys.exit(errno)
 
 

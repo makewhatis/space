@@ -32,29 +32,24 @@ def child_channels(
     p = parser.parse_args(args)
 
     if p.sid:
-        channels = sw.run(
+        channels = sw.call(
             'system.listSubscribedChildChannels',
             [int(p.sid)]
         )
 
     elif p.server:
         try:
-            server = sw.run(
-                'system.getId',
-                [p.server]
-            )
+            server = _get_system(sw, p.server)
+
+            if server == []:
+                print("No servers were found.")
+                return False
+
+            channels = _get_channels(sw, [server[0]['id']])
+
         except Exception as e:
-            print("Exception: %s" % p.server)
+            print("Exception: %s" % e)
             return False
-
-        if not server:
-            print("No servers were found.")
-            return False
-
-        channels = sw.run(
-            'system.listSubscribedChildChannels',
-            [server[0]['id']]
-        )
 
     else:
         parser.print_help()
@@ -63,8 +58,22 @@ def child_channels(
     for channel in channels:
         print(channel['name'])
 
-    return channels
+    return True
 
+# helper functions
+def _get_system(sw, server):
+    res =  sw.call(
+            'system.getId',
+            [server]
+        )
+    return res
+
+def _get_channels(sw, serverid):
+    channels = sw.call(
+            'system.listSubscribedChildChannels',
+            [serverid]
+        )
+    return channels
 
 def list_systems(sw, args):
     """

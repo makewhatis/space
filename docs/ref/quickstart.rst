@@ -63,3 +63,13 @@ A config file can also be specified as a command line option::
 
     space --config=/path/to/config.cfg systems listsystems
 
+
+Working with the API to create new modules
+------------------------------------------
+
+Rather than porting the entire library, there is a single function in the swSession class `space.swSession.call` that allows the api function to be called. 
+
+::
+
+    sw = space.swSession()
+    sw.call('api.getApiNamespaceList', [arg])

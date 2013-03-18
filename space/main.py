@@ -637,8 +637,8 @@ class swSession(object):
         except xmlrpc.Fault as e:
             sys.exit("Login Failed: %s" % e)
 
-    def run(self, call, args):
-        func = getattr(self.session, call)
+    def call(self, ns, args):
+        func = getattr(self.session, ns)
 
         try:
             results = func(self.key, *args)
