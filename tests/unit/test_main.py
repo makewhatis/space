@@ -2,10 +2,12 @@
 import sys
 import os
 import mock
-if sys.version_info < (2, 7):
+if sys.version_info < (2, 8):
     import unittest2 as unittest
+    from io import BytesIO as strio
 else:
     import unittest
+    from io import StringIO as strio
 import coverage
 
 sys.path.insert(0, "../../")
@@ -25,9 +27,25 @@ def t_password(prompt):
 
 class TestMain(unittest.TestCase):
 
+    def setUp(self):
+        self.output = strio()
+        self.saved_stdout = sys.stdout
+        sys.stdout = self.output
+
+    def tearDown(self):
+        self.output.close()
+        sys.stdout = self.saved_stdout
+
     def test_main(self):
         from space.main import main
         sys.argv = ['space', 'system', 'listSystems']
+
+        result = main(config=CONFIG)
+        self.assertEqual(result, None, result)
+
+    def test_main_unrecognized_arg(self):
+        from space.main import main
+        sys.argv = ['space', '--dogman', 'list_dogs']
 
         result = main(config=CONFIG)
         self.assertEqual(result, None, result)
@@ -38,6 +56,27 @@ class TestMain(unittest.TestCase):
         result = main()
 
         self.assertEqual(result, '1.1', result)
+
+    def test_main_args_others(self):
+        """
+        Test to make sure variables are set from
+        flag options.
+        """
+        from space.main import main
+        sys.argv = ['space', '--docs']
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, '^Help Docs.*', result)
+
+        sys.argv = [
+            'space',
+            '--user=test',
+            '--config=test',
+            '--host=test'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, '^Help Docs.*', result)
 
     def test_print_help(self):
         from space.main import print_help
@@ -52,30 +91,24 @@ class TestMain(unittest.TestCase):
     def test_load_funcs_no_main(self):
         from space.main import load_funcs
         cfg = os.path.join(
-                os.path.dirname(
+            os.path.dirname(
                 os.path.abspath(__file__)), 'test-nomain.conf'
-            )
+        )
         functions = load_funcs(config=cfg)
         self.assertEqual(functions, False, "main should have failed")
 
     def test_load_funcs_no_conf(self):
         from space.main import load_funcs
         cfg = os.path.join(
-                os.path.dirname(
+            os.path.dirname(
                 os.path.abspath(__file__)), 'NOT_HERE.conf'
-            )
+        )
         functions = load_funcs(config=cfg)
         self.assertEqual(functions, False, "Should have returned False")
 
     def test_no_args(self):
         from space.main import main
-
-        if sys.version_info <= (2, 8):
-            from io import BytesIO
-            out = BytesIO()
-        elif sys.version_info >= (3, 0):
-            from io import StringIO
-            out = StringIO()
+        out = strio()
         sys.stdout = out
         sys.argv = ['space']
         main()
@@ -89,13 +122,7 @@ class TestMain(unittest.TestCase):
 
     def test_top_level_arg_only(self):
         from space.main import main
-        
-        if sys.version_info <= (2, 8):
-            from io import BytesIO
-            out = BytesIO()
-        elif sys.version_info >= (3, 0):
-            from io import StringIO
-            out = StringIO()
+        out = strio()
         sys.stdout = out
         sys.argv = ['space', 'packages']
         main()
@@ -119,20 +146,21 @@ class TestMain(unittest.TestCase):
     def test_get_auth(self):
         from space.main import getauth
         cfg = os.path.join(
-                os.path.dirname(
+            os.path.dirname(
                 os.path.abspath(__file__)), 'test.ini'
-            )
+        )
         moduledir = os.path.join(
-                os.path.dirname(
+            os.path.dirname(
                 os.path.abspath(__file__)), 'testmodules'
-            )
+        )
         with open(cfg, 'w+') as c:
-            c.write("[spacewalk]\n" +
+            c.write(
+                "[spacewalk]\n" +
                 "hostname = localhost \n" +
                 "login = testuser\n" +
                 "password = letmein\n" +
                 "[localhost]\n" +
-                "login = testuser\n" + 
+                "login = testuser\n" +
                 "password = letmein\n" +
                 "[main]\n" +
                 "module_dir = %s" % moduledir
@@ -189,48 +217,72 @@ class TestMain(unittest.TestCase):
             '%s' % user: 'blah',
             'hostname': 'spacewalk.test',
             'time': '%s' % int(now.strftime('%s'))
-            }
+        }
         s = json.dumps(session_data, session_file)
         with open(session_file, 'w+') as f:
             f.write(s)
 
+        # test session
         space.main._session(
             user=user,
             now=now.strftime('%s'),
             session_dir=session_dir,
             session_file=session_file,
             config=CONFIG
-            )
+        )
         with mock.patch('space.main.swSession') as user:
             user.return_value = 1234
             sw = space.main._session(
+                now=now.strftime('%s'),
+                session_dir=session_dir,
+                session_file=session_file,
+                config='%s/test-nologin.ini' % TEST_DIR
+            )
+            self.assertIsInstance(sw, object, "not object")
+
+        # test without config arg
+        with mock.patch('space.main.swSession') as user:
+            user.return_value = mock.Mock()
+            user.key.return_value = 'key'
+            with mock.patch('space.main.getuser') as getu:
+                getu.return_value = 'test'
+                sw = space.main._session(
                     now=now.strftime('%s'),
                     session_dir=session_dir,
                     session_file=session_file,
-                    config='%s/test-nologin.ini' % TEST_DIR
-                    )
-            self.assertIsInstance(sw, object, "not object")
+                    config=None
+                )
+                self.assertIsInstance(sw, object, "not object")
+
+                getu.return_value = 'test_me'
+                sw = space.main._session(
+                    now=None,
+                    session_dir=None,
+                    session_file=None,
+                    config='/fake/path'
+                )
+                self.assertIsInstance(sw, object, "not object")
 
         with mock.patch('space.main.swSession') as m:
             m.key.return_value = 1234
 
             sw = space.main._session(
-                    now=now.strftime('%s'),
-                    session_file='session.test',
-                    session_dir='testdir',
-                    config=CONFIG
-                    )
+                now=now.strftime('%s'),
+                session_file='session.test',
+                session_dir='testdir',
+                config=CONFIG
+            )
             self.assertIsInstance(sw, object, "not object")
 
             # test for expired login
             future = int(now.strftime('%s'))
             future = future + 40000
             sw = space.main._session(
-                    now=future,
-                    session_file='session.test',
-                    session_dir='testdir',
-                    config=CONFIG
-                    )
+                now=future,
+                session_file='session.test',
+                session_dir='testdir',
+                config=CONFIG
+            )
             self.assertIsInstance(sw, object, "not object")
 
         os.rmdir('testdir')
@@ -265,8 +317,8 @@ class TestMain(unittest.TestCase):
             m.return_value = True
             space.main.main(
                 config='%s/test.ini' % os.path.join(
-                                          os.path.dirname(
-                                            os.path.abspath(__file__))))
+                    os.path.dirname(
+                        os.path.abspath(__file__))))
 
 
 def suite():
@@ -307,5 +359,3 @@ if __name__ == '__main__':
         shutil.rmtree(report_dir)
     code_coverage.html_report(directory=report_dir)
     print('Done.\n')
-
-

@@ -6,3 +6,6 @@ def dosomething(what, args):
 
 def listSystems(what, args):
     return True
+
+def Error(what, args):
+    return True

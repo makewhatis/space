@@ -34,7 +34,7 @@ import sys
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['tests/unit']
+        self.test_args = ['tests/unit', '--capture=sys']
         self.test_suite = True
     def run_tests(self):
          #import here, cause outside the eggs aren&#039;t loaded 

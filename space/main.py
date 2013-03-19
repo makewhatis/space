@@ -71,6 +71,7 @@ def main(config=None):
     # check to see if we only have space + top level command
     # if so we throw a list of avail funcs for that top level
     # then exit
+
     if len(cargs) == 1:
         print(
             "Usage: space [options] '<namespace>'" +
@@ -270,12 +271,10 @@ def load_funcs(config=None):
                 continue
             if callable(getattr(mod, attr)):
                 func = getattr(mod, attr)
-
-                if isinstance(func, type):
-                    # Ignore exception functions
-                    if any(['Error' in func.__name__,
-                            'Exception' in func.__name__]):
-                        continue
+                # Ignore exception functions
+                if any(['Error' in func.__name__,
+                        'Exception' in func.__name__]):
+                    continue
                 # add callable function to our loaded lib
                 functions[attr_name] = func
 
@@ -299,11 +298,11 @@ def _session(
     """
     Will try and handle the session management here
     """
+    if not config:
+        config = CONFIG
 
     # checking for keyword params. This is mostly to make testing possible.
     if not user:
-        if not config:
-            config = CONFIG
         if os.path.exists(config):
             confparse = SafeConfigParser()
             confparse.read(config)
@@ -311,18 +310,17 @@ def _session(
             if confparse.has_section('spacewalk'):
                 if confparse.has_option('spacewalk', 'login'):
                     login = confparse.get('spacewalk', 'login')
-                if login is None:
+                if len(login) == 0:
                     user = getuser()
-                else:
-                    user = login
+                elif user is None:
+                    print("Could not get username, is your config present?")
+            user = login
         else:
             user = getuser()
             # need to implement logging
             #print("Config not present, using system login: %s" % user)
 
     if not url:
-        if not config:
-            config = CONFIG
         if os.path.exists(config):
             confparse = SafeConfigParser()
             confparse.read(config)
@@ -339,8 +337,6 @@ def _session(
     if not session_file:
         session_file = "%s/%s.session" % (session_dir, user)
 
-    if user is None:
-        sys.exit("Could not get username, is your config present?")
     session_data = {'%s' % user: 0, 'time': '%s' % int(now)}
 
     # handle initial creation of session dir
@@ -559,7 +555,8 @@ class swSession(object):
                 if confparse.has_section('spacewalk'):
                     if confparse.has_option('spacewalk', 'hostname'):
                         self.hostname = confparse.get('spacewalk', 'hostname')
-            else:
+
+            if self.hostname is None or len(self.hostname) == 0:
                 self.hostname = get_hostname()
 
         if login:
