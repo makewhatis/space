@@ -306,15 +306,13 @@ def _session(
         if os.path.exists(config):
             confparse = SafeConfigParser()
             confparse.read(config)
-            login = None
             if confparse.has_section('spacewalk'):
                 if confparse.has_option('spacewalk', 'login'):
-                    login = confparse.get('spacewalk', 'login')
-                if len(login) == 0:
+                    user = confparse.get('spacewalk', 'login')
+                if len(user) == 0:
                     user = getuser()
                 elif user is None:
                     print("Could not get username, is your config present?")
-            user = login
         else:
             user = getuser()
             # need to implement logging
@@ -579,7 +577,6 @@ class swSession(object):
         self.server_api = "https://%s/rpc/api" % self.hostname
         self.server_push = "https://%s/APP" % self.hostname
         # passwords are private variables. Cached, but not exposed
-
         if password:
             self._password = password
         else:
@@ -610,10 +607,10 @@ class swSession(object):
             self.login, self._password = getauth(self.config, self.hostname)
 
         # see what we got back and prompt if required:
-        if str(self.login) == 'None' and not key:
+        if len(self.login) == 0 and not key:
             self.login = get_user()
 
-        if str(self._password) == 'None' and not key:
+        if len(self._password) == 0 and not key:
             self._password = get_pass(self.login)
 
         try:
@@ -635,6 +632,10 @@ class swSession(object):
             sys.exit("Login Failed: %s" % e)
 
     def call(self, ns, args):
+        """
+        note: args must be a list that we can unpack, 
+        even if there is 0 args, it needs to unpack
+        """
         func = getattr(self.session, ns)
 
         try:

@@ -45,7 +45,7 @@ def child_channels(
                 print("No servers were found.")
                 return False
 
-            channels = _get_channels(sw, [server[0]['id']])
+            channels = _get_channels(sw, server[0]['id'])
 
         except Exception as e:
             print("Exception: %s" % e)
@@ -60,22 +60,25 @@ def child_channels(
 
     return True
 
+
 # helper functions
 def _get_system(sw, server):
-    res =  sw.call(
-            'system.getId',
-            [server]
-        )
+    res = sw.call(
+        'system.getId',
+        [server]
+    )
     return res
+
 
 def _get_channels(sw, serverid):
     channels = sw.call(
-            'system.listSubscribedChildChannels',
-            [serverid]
-        )
+        'system.listSubscribedChildChannels',
+        [serverid]
+    )
     return channels
 
-def list_systems(sw, args):
+
+def list(sw, args):
     """
     List Systems in spacewalk, either by group or
     just all of em.
@@ -101,9 +104,9 @@ def list_systems(sw, args):
 
     if p.group:
         try:
-            _systems = systemgroup.listSystems(
-                sw,
-                p.group
+            _systems = sw.call(
+                'systemgroup.listSystems',
+                [p.group]
             )
         except Exception as e:
             print("Error listing systems: %s" % e)
@@ -118,7 +121,10 @@ def list_systems(sw, args):
             return False
     else:
         try:
-            _systems = system.listSystems(sw)
+            _systems = sw.call(
+                'system.listSystems',
+                []
+            )
         except Exception as e:
             print("Error listing all systems: %s" % e)
             return False
