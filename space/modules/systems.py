@@ -40,11 +40,10 @@ def child_channels(
     elif p.server:
         try:
             server = _get_system(sw, p.server)
-
             if server == []:
                 print("No servers were found.")
                 return False
-
+            
             channels = _get_channels(sw, server[0]['id'])
 
         except Exception as e:
