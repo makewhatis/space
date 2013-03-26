@@ -4,7 +4,9 @@ import re
 import sys
 import subprocess
 
-from space.main import getauth, get_user, get_pass
+from space.main import getauth as _getauth
+from space.main import get_user as _get_user
+from space.main import get_pass as _get_pass
 
 if sys.version_info >= (3, 0):
     import urllib.request as urllib
@@ -67,25 +69,26 @@ def push(sw, args):
     p = parser.parse_args(args)
 
     if len(sw._password) is 0:
-        auth = getauth(sw.config, sw.hostname)
+        auth = _getauth(sw.config, sw.hostname)
     
     if auth[0] == 'None':
-        login = get_user()
+        login = _get_user()
     
     if auth[1] == 'None':
-        _pass = get_pass(username=login)
+        _pass = _get_pass(username=login)
 
     command = (
         "/usr/bin/rhnpush --nosig -vvv " +
         "--channel=%s --username=%s " % (
         p.channel, login
         ) +
-        "--password=%s --server=%s %s" % (
+        "--password=%s --server=https://%s %s" % (
             _pass,
             sw.hostname,
             p.package
         )
     )
+
     s = subprocess.Popen([command], shell=True)
     result = s.communicate()
     return True

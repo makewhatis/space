@@ -48,7 +48,7 @@ setup(name='space',
         description='Spacewalk Cli',
         author='David Johansen',
         packages=find_packages(),
-        setup_requires=['argparse'],
+        setup_requires=['argparse', 'prettytable'],
         namespace_packages=['space'],
         entry_points={
             'console_scripts': [
