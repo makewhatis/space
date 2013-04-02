@@ -250,6 +250,7 @@ class TestMain(unittest.TestCase):
                     now=now.strftime('%s'),
                     session_dir=session_dir,
                     session_file=session_file,
+                    url='test',
                     config=None
                 )
                 self.assertIsInstance(sw, object, "not object")

@@ -540,8 +540,7 @@ class swSession(object):
             confparse.read(config)
         else:
             confparse = None
-            #sys.exit("Cannot find config! ex. ~/.space/config.ini")
-
+            
         if url:
             self.hostname = url
         else:
