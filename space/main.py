@@ -17,11 +17,13 @@ if sys.version_info >= (3, 0):
     import xmlrpc.client
     xmlrpc = xmlrpc.client
     from configparser import SafeConfigParser
+    from configparser import NoOptionError
 
 if sys.version_info <= (2, 8):
     import xmlrpclib
     xmlrpc = xmlrpclib
     from ConfigParser import SafeConfigParser
+    from ConfigParser import NoOptionError
 
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -303,28 +305,23 @@ def _session(
 
     # checking for keyword params. This is mostly to make testing possible.
     if not user:
-        if os.path.exists(config):
+        try:
             confparse = SafeConfigParser()
             confparse.read(config)
-            if confparse.has_section('spacewalk'):
-                if confparse.has_option('spacewalk', 'login'):
-                    user = confparse.get('spacewalk', 'login')
-                if len(user) == 0:
-                    user = getuser()
-                elif user is None:
-                    print("Could not get username, is your config present?")
-        else:
+            user = confparse.get('spacewalk', 'login')
+        except Exception:
             user = getuser()
             # need to implement logging
             #print("Config not present, using system login: %s" % user)
 
     if not url:
-        if os.path.exists(config):
+        try:
             confparse = SafeConfigParser()
             confparse.read(config)
-            if confparse.has_section('spacewalk'):
-                if confparse.has_option('spacewalk', 'hostname'):
-                    url = confparse.get('spacewalk', 'hostname')
+            url = confparse.get('spacewalk', 'hostname')
+        except:
+            url = get_hostname()
+
 
     if not now:
         now = datetime.datetime.now().strftime('%s')
@@ -548,30 +545,17 @@ class swSession(object):
         if url:
             self.hostname = url
         else:
-            self.hostname = None
-            if confparse:
-                if confparse.has_section('spacewalk'):
-                    if confparse.has_option('spacewalk', 'hostname'):
-                        self.hostname = confparse.get('spacewalk', 'hostname')
-
-            if self.hostname is None or len(self.hostname) == 0:
+            try:
+                self.hostname = confparse.get('spacewalk', 'hostname')
+            except AttributeError:
                 self.hostname = get_hostname()
 
         if login:
             self.login = login
         else:
-            self.login = None
-            if confparse:
-                try:
-                    if confparse.has_section('spacewalk'):
-                        if confparse.has_option('spacewalk', 'login'):
-                            self.login = confparse.get('spacewalk', 'login')
-                            if len(self.login) == 0:
-                                self.login = None
-
-                except:
-                    sys.exit("config file in wrong format")
-            else:
+            try:
+                self.login = confparse.get('spacewalk', 'login')
+            except AttributeError:
                 login = get_user()
 
         self.server_api = "https://%s/rpc/api" % self.hostname
@@ -580,15 +564,10 @@ class swSession(object):
         if password:
             self._password = password
         else:
-            self._password = None
-            if confparse:
-                try:
-                    if confparse.has_section('spacewalk'):
-                        if confparse.has_option('spacewalk', 'password'):
-                            self._password = confparse.get(
-                                'spacewalk', 'password')
-                except:
-                    sys.exit("config file in wrong format")
+            try:
+                self._password = confparse.get('spacewalk', 'password')
+            except NoOptionError:
+                self._password = get_pass(self.login)
 
         self.config = config
 
@@ -599,22 +578,8 @@ class swSession(object):
 
         # If login and/or password are specified explicitly they override
         # the config file
-        if self.login is None \
-            and self._password is None \
-            and self.config is not None\
-                and not key:
-
-            self.login, self._password = getauth(self.config, self.hostname)
-
-        # see what we got back and prompt if required:
-        if len(self.login) == 0 and not key:
-            self.login = get_user()
-
-        if len(self._password) == 0 and not key:
-            self._password = get_pass(self.login)
-
+        
         try:
-
             self.session = xmlrpc.Server(self.server_api, verbose=0)
 
             if key:

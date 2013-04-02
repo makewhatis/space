@@ -259,6 +259,7 @@ class TestMain(unittest.TestCase):
                     now=None,
                     session_dir=None,
                     session_file=None,
+                    url='test',
                     config='/fake/path'
                 )
                 self.assertIsInstance(sw, object, "not object")
