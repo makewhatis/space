@@ -55,7 +55,7 @@ class TestMain(unittest.TestCase):
         sys.argv = ['space', '--version']
         result = main()
 
-        self.assertEqual(result, '1.1', result)
+        self.assertRegexpMatches(result, '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', result)
 
     def test_main_args_others(self):
         """
