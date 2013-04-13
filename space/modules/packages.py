@@ -45,7 +45,8 @@ def getpackage(sw, args):
 
 def push(sw, args):
     """
-    Push a package into a channel of your choice
+    Push a package into a channel of your choice. Probably the most
+    common command. 
     """
     parser = argparse.ArgumentParser(
         prog='space packages push',
@@ -65,25 +66,32 @@ def push(sw, args):
         default=None,
         help='pass path to package'
     )
-    
+
     p = parser.parse_args(args)
 
     if len(sw._password) is 0:
         auth = _getauth(sw.config, sw.hostname)
-    
+
     if auth[0] == 'None':
         login = _get_user()
-    
+
     if auth[1] == 'None':
         _pass = _get_pass(username=login)
 
+    #rhncache stuff although no idea if this will work. depending on
+    # if the rhncache stuff is the session. if not its totally hosed.
+    # and we will have to revert to the user/pass in the config. which
+    # would be laaaaameee
+    # maybe we can build the rhnpushcache file on authentication. idea.
+    with open("%s/%s" % (os.path.expanduser('~'), '.rhnpushcache')) as f:
+        f.write(self.session)
+
     command = (
         "/usr/bin/rhnpush --nosig -vvv " +
-        "--channel=%s --username=%s " % (
-        p.channel, login
+        "--channel=%s " % (
+        p.channel
         ) +
-        "--password=%s --server=https://%s %s" % (
-            _pass,
+        "--server=https://%s %s" % (
             sw.hostname,
             p.package
         )

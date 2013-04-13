@@ -21,7 +21,8 @@ tests_require = [
     'py',
     'pytest',
     'pytest-cov',
-    'coverage'
+    'coverage',
+    'prettytable',
     ]
 
 if not PY3:

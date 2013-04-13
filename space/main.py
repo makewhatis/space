@@ -13,6 +13,9 @@ from getpass import getpass
 from getpass import getuser
 import signal
 
+import pkg_resources  # part of setuptools
+version = pkg_resources.require("space")[0].version
+
 if sys.version_info >= (3, 0):
     import xmlrpc.client
     xmlrpc = xmlrpc.client
@@ -112,7 +115,7 @@ def main(config=None):
     # then for actual command args
     if 'version' in flags:
         # need to pull this dynamically
-        return '1.1'
+        return version
 
     if 'docs' in flags:
         print_help()
