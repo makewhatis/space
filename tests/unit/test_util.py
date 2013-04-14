@@ -83,11 +83,13 @@ class TestUtil(unittest.TestCase):
 
         if sys.version_info >= (3, 0):
             with mock.patch('builtins.input') as mockraw:
+                mockraw.return_value = 'pass'
                 passwd = get_password(config=CONFIG)
-                self.assertEqual(passwd, 'letmein', passwd)
+                self.assertEqual(passwd, 'pass', passwd)
 
         if sys.version_info <= (2, 8):
             with mock.patch('__builtin__.raw_input') as mockraw:
+                mockraw.return_value = 'pass'
                 passwd = get_password(config=CONFIG)
-                self.assertEqual(passwd, 'letmein', passwd)
+                self.assertEqual(passwd, 'pass', passwd)
 

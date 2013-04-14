@@ -6,6 +6,5 @@
 *htmlcov
 tests/testsession
 *pytestdebug.log
-*test.ini
 *_build
 *.test
