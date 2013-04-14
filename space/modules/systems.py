@@ -34,7 +34,7 @@ def child_channels(
     if p.sid:
         channels = sw.call(
             'system.listSubscribedChildChannels',
-            [int(p.sid)]
+            int(p.sid)
         )
 
     elif p.server:
@@ -105,7 +105,7 @@ def list(sw, args):
         try:
             _systems = sw.call(
                 'systemgroup.listSystems',
-                [p.group]
+                p.group
             )
         except Exception as e:
             print("Error listing systems: %s" % e)
@@ -121,8 +121,7 @@ def list(sw, args):
     else:
         try:
             _systems = sw.call(
-                'system.listSystems',
-                []
+                'system.listSystems'
             )
         except Exception as e:
             print("Error listing all systems: %s" % e)

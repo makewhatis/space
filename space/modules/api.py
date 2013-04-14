@@ -14,7 +14,7 @@ def list(sw, args):
 
     parser.parse_args(args)
 
-    calls = [] #sapi.getApiCallList(sw)
+    calls = sw.call('api.getApiCallList')
 
     if calls:
         for call in calls:
@@ -29,12 +29,11 @@ def list(sw, args):
 
 def list_in_namespace(sw, args):
     """
-    Lists
+    returns a dictionary of calls
     """
     parser = argparse.ArgumentParser(
         prog='space api list',
-        description='Add child channels to an activation key add an ' +
-        'activationkey for child channels.'
+        description='List calls available in namespace'
     )
     parser.add_argument(
         '--namespace',
@@ -53,7 +52,7 @@ def list_in_namespace(sw, args):
     try:
         result = sw.call(
             'api.getApiNamespaceCallList',
-            [p.namespace]
+            p.namespace
         )
     except Exception as e:
         print("Failed to run command: %s" % e)

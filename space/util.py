@@ -18,6 +18,27 @@ if sys.version_info <= (2, 8):
     from ConfigParser import NoOptionError
 
 
+def check_session_user(username):
+    from collections import namedtuple
+    now = int(datetime.datetime.now().strftime('%s'))
+    ref = hashlib.md5(username.encode('utf-8')).hexdigest()
+    session_file = '/var/tmp/space-%s' % (ref)
+
+    # load session data if file exists for user else create
+    if os.path.exists(session_file):
+        created = os.path.getctime(session_file)
+
+        f = open(session_file, 'r')
+
+        session_vars = f.readlines()[0].split(' ')
+
+        if (now - created) > int(session_vars[2]):
+            return False
+        else:
+            n = namedtuple('Session', 'key, hostname')
+            return n(session_vars[0], session_vars[1])
+
+
 def load_funcs(config=None):
 
     modules = list()
@@ -80,7 +101,10 @@ def _check_length(subject):
 
 
 def get_config():
-    return "%s/.space/config.ini" % os.path.expanduser('~')
+    if os.path.exists(("{0}/.space/config.ini").format(os.path.expanduser('~'))):
+        return "%s/.space/config.ini" % os.path.expanduser('~')
+    elif os.path.exists("/etc/space/config.ini"):
+        return "/etc/space/config.ini"
 
 
 def get_config_value(config, key):
@@ -112,7 +136,8 @@ def get_password(
     # This only happens on session init.
     if password is None:
         password = getpass(
-        'Please enter the spacewalk password: ')
+            'Please enter the spacewalk password: '
+        )
     return password.strip()
 
 
@@ -123,7 +148,7 @@ def get_username(
     This will get a username, whether from a config,
     or if nothing exists in the config, from getpass.getuser
     """
-    
+
     if not config:
         config = get_config()
     # hack to deal with py2/py3
@@ -135,7 +160,9 @@ def get_username(
     username = get_config_value(config, 'username')
 
     if username is None:
-        username = str(inputs('Please enter your spacewalk username: ')).strip()
+        username = str(
+            inputs('Please enter your spacewalk username: ')
+        ).strip()
     return username
 
 
@@ -210,24 +237,3 @@ def print_avail_namespace_help():
 
     for top in funcs:
         print(" %s" % (top))
-
-
-def check_session_user(username):
-    from collections import namedtuple
-    now = int(datetime.datetime.now().strftime('%s'))
-    ref = hashlib.md5(username.encode('utf-8')).hexdigest()
-    session_file = '/var/tmp/space-%s' % (ref)
-
-    # load session data if file exists for user else create
-    if os.path.exists(session_file):
-        created = os.path.getctime(session_file)
-
-        f = open(session_file, 'r')
-
-        session_vars = f.readlines()[0].split(' ')
-
-        if (now - created) > session_vars[2]:
-            return False
-        else:
-            n = namedtuple('Session', 'key, hostname')
-            return n(session_vars[0], session_vars[1])

@@ -17,7 +17,7 @@ def getpackage(sw, args):
     """
     Download a package to the current directory
 
-        -p, --pid       define a group to list systems in.
+        -p, --pid       define a package id.
 
     """
     parser = argparse.ArgumentParser(
@@ -32,9 +32,12 @@ def getpackage(sw, args):
         help="Package ID"
     )
 
-    argobj = parser.parse_args(args)
+    arg = parser.parse_args(args)
 
-    pkg_url = packages.getPackageUrl(sw, argobj.pid)
+    pkg_url = sw.call(
+        'packages.getPackageUrl',
+        int(arg.pid)
+    )
 
     pkg = re.match(".*/(.*.rpm$)", pkg_url)
     result = urllib.urlretrieve(pkg_url, pkg.group(1))
@@ -42,60 +45,38 @@ def getpackage(sw, args):
     return result[0]
 
 
-def push(sw, args):
+def copy(sw, args):
     """
-    Push a package into a channel of your choice. Probably the most
-    common command. 
+    Copy a package into a channel.
+
+        -p, --pid       define a package id.
+        -c, --channel   define spacewalk channel
     """
     parser = argparse.ArgumentParser(
-        prog='space packages push',
-        description='Push a package into a channel of your choice'
+        prog='space packages copy',
+        description='Copy a package into a channel by id.'
     )
-
+    parser.add_argument(
+        '-p',
+        '--pid',
+        default=None,
+        required=True,
+        help="Package ID"
+    )
     parser.add_argument(
         '-c',
         '--channel',
         default=None,
         required=True,
-        help='Channel to push package to.'
+        help="Channel ID"
     )
 
-    parser.add_argument(
-        'package',
-        default=None,
-        help='pass path to package'
+    arg = parser.parse_args(args)
+
+    result = sw.call(
+        'channel.software.addPackages',
+        arg.channel,
+        [int(arg.pid)]
+            
     )
-
-    p = parser.parse_args(args)
-
-    if len(sw._password) is 0:
-        auth = None #_getauth(sw.config, sw.hostname)
-
-    if auth[0] == 'None':
-        login = None #_get_user()
-
-    if auth[1] == 'None':
-        _pass = None #_get_pass(username=login)
-
-    #rhncache stuff although no idea if this will work. depending on
-    # if the rhncache stuff is the session. if not its totally hosed.
-    # and we will have to revert to the user/pass in the config. which
-    # would be laaaaameee
-    # maybe we can build the rhnpushcache file on authentication. idea.
-    with open("%s/%s" % (os.path.expanduser('~'), '.rhnpushcache')) as f:
-        f.write(self.session)
-
-    command = (
-        "/usr/bin/rhnpush --nosig -vvv " +
-        "--channel=%s " % (
-        p.channel
-        ) +
-        "--server=https://%s %s" % (
-            sw.hostname,
-            p.package
-        )
-    )
-
-    s = subprocess.Popen([command], shell=True)
-    result = s.communicate()
-    return True
+    return result

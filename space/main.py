@@ -330,11 +330,12 @@ class swSession(object):
 
         return self.key
 
-    def call(self, ns, args):
+    def call(self, ns, *args):
         """
         note: args must be a list that we can unpack, 
         even if there is 0 args, it needs to unpack
         """
+
         func = getattr(self.session, ns)
 
         try:
