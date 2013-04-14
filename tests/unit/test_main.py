@@ -131,15 +131,6 @@ class TestMain(unittest.TestCase):
         result = main()
         self.assertEqual(result, 'User logged out', result)
 
-        # test with config
-        sys.argv = [
-            'space',
-            'tulips',
-            'list'
-        ]
-        with self.assertRaises(TypeError):
-            main(config=CONFIG)
-
 
     @mock.patch('space.main.load_funcs')
     def test_key_error(self, load_funcs):
@@ -152,10 +143,6 @@ class TestMain(unittest.TestCase):
         ]
         with self.assertRaises(IOError):
             main()        
-
-
-
-
 
 def suite():
     suite = unittest.TestLoader().loadTestsFromTestCase(TestMain)

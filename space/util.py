@@ -1,4 +1,6 @@
+import datetime
 from getpass import getpass
+import hashlib
 import imp
 import os
 import sys
@@ -208,3 +210,24 @@ def print_avail_namespace_help():
 
     for top in funcs:
         print(" %s" % (top))
+
+
+def check_session_user(username):
+    from collections import namedtuple
+    now = int(datetime.datetime.now().strftime('%s'))
+    ref = hashlib.md5(username.encode('utf-8')).hexdigest()
+    session_file = '/var/tmp/space-%s' % (ref)
+
+    # load session data if file exists for user else create
+    if os.path.exists(session_file):
+        created = os.path.getctime(session_file)
+
+        f = open(session_file, 'r')
+
+        session_vars = f.readlines()[0].split(' ')
+
+        if (now - created) > session_vars[2]:
+            return False
+        else:
+            n = namedtuple('Session', 'key, hostname')
+            return n(session_vars[0], session_vars[1])

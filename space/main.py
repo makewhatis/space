@@ -17,8 +17,8 @@ from space.util import get_config_value
 from space.util import get_username
 from space.util import get_password
 from space.util import get_hostname
+from space.util import check_session_user
 from space.util import print_help
-from space.util import print_short_help
 from space.util import print_avail_namespace_help
 
 import pkg_resources  # part of setuptools
@@ -58,6 +58,34 @@ def main(config=None):
     # clean up args so that cargs only contains non-switch args
     args, cargs = clean_args(args)
 
+    try:
+        flags['version']
+        return version
+    except KeyError:
+        pass
+
+    try:
+        flags['docs']
+        return print_help()
+    except KeyError:
+        pass
+
+    try:
+        flags['logout']
+        _logout(
+            config=config
+        )
+        return "User logged out"
+    except KeyError:
+        pass  
+
+    # we already pass config as an arg to this def
+    # the flag will trumph all though
+    try:
+        config = os.path.expanduser(flags['config'])
+    except KeyError:
+        config = get_config()
+
     if len(cargs) == 1:
         print(
             "Usage: space [options] '<namespace>'" +
@@ -92,54 +120,38 @@ def main(config=None):
         return print_avail_namespace_help()
 
 
-    # we already pass config as an arg to this def
-    # the flag will trumph all though
-    try:
-        config = os.path.expanduser(flags['config'])
-    except KeyError:
-        config = get_config()
+    if len(cargs) < 1:
+        return print_avail_namespace_help()
+
 
     # first we check version
     # then check for major flags
     # then for actual command args
-    try:
-        flags['version']
-        return version
-    except KeyError:
-        pass
-
-    try:
-        flags['docs']
-        return print_help()
-    except KeyError:
-        pass
 
     try:
         username = flags['username']
     except KeyError:
         username = get_username(config)
 
-    try:
-        flags['logout']
-        _logout(
-            config=config
-        )
-        return "User logged out"
-    except KeyError:
-        pass  
 
-    try:
-        password = flags['password']
-    except KeyError:
-        password = get_password(config)
+    # if no session is cached, then prompt
+    sess_vars = check_session_user(username)
 
-    try:
-        hostname = flags['host']
-    except KeyError:
-        hostname = get_hostname(config) 
+    # set password here to none
+    password = None
+    
+    if not sess_vars:
+        try:            
+            password = flags['password']
+        except KeyError:
+            password = get_password(config)
 
-    if len(cargs) < 1:
-        return print_avail_namespace_help()
+        try:
+            hostname = flags['host']
+        except KeyError:
+            hostname = get_hostname(config)
+    else:
+        hostname = sess_vars.hostname
 
     # check initial arg to see if its in the modules
     if "%s.%s" % (cargs[0], cargs[1]) in functions.keys():
@@ -168,12 +180,16 @@ def main(config=None):
                     # if the compiled module is in our function dict, as a key,
                     # then lets feed it args and call it
                     if module_path in functions.keys():
+
                         sw = swSession(
-                            hostname,
                             username,
+                            hostname,
                             password
                         )
-                        sw.login()
+                        if not sess_vars:
+                            sw.login()
+                        else:
+                            sw.key = sess_vars.key
                         functions[module_path](sw, args)
     else:
         return print_avail_namespace_help()
@@ -240,11 +256,6 @@ def _logout(
     return
 
 
-def _write_session(filename, data):
-    with open(filename, 'w+') as f:
-        f.write(data)
-
-
 class swSession(object):
     """
     Spacewalk Class that will be handing us a session object back.
@@ -255,11 +266,11 @@ class swSession(object):
 
     def __init__(
         self,
-        hostname,
         username,
-        password,
+        hostname=None,
+        password=None,
         sess_key=None,
-        timeout=300
+        timeout=30
     ):
         """
         returns swsession
@@ -271,6 +282,8 @@ class swSession(object):
         self.key = sess_key
         self.server_api = "https://%s/rpc/api" % self.hostname
         self.server_push = "https://%s/APP" % self.hostname
+
+        self.session = xmlrpc.Server(self.server_api, verbose=0)
 
 
     def check_session(self):
@@ -288,21 +301,21 @@ class swSession(object):
                 f = open(session_file, 'r')
                 self.key = f.readlines()[0]
                 return True
+        return False
 
-    def save_session(self, key):
+    def save_session(self):
         ref = hashlib.md5(self.username).hexdigest()
         session_file = '/var/tmp/space-%s' % (ref)
         try:
             with open(session_file, 'w+') as f:
-                f.write(key)
+                f.write("%s %s %s" % (self.key, self.hostname, self.timeout))
+
         except OSError as e:
             print("Could not save session file: %s" % e)
             sys.exit(1)
 
 
     def login(self):
-        self.session = xmlrpc.Server(self.server_api, verbose=0)
-
         if self.check_session() is False:
             try:
                 # actually login
@@ -311,7 +324,7 @@ class swSession(object):
                     self.__password,
                     self.timeout
                 )
-                self.save_session(self.key)
+                self.save_session()
             except Exception as e:
                 sys.exit("Login to %s Failed. %s" % (self.server_api, e))
 
