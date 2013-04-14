@@ -67,15 +67,14 @@ def list(sw, args):
         try:
             results = sw.call(
                 api_calls[p.type],
-                [popcount]
+                popcount
             )
         except Exception as e:
             raise
     else:
         try:
             results = sw.call(
-                api_calls[p.type],
-                []
+                api_calls[p.type]
             )
         except Exception as e:
             raise

@@ -33,6 +33,7 @@ def check_session_user(username):
         session_vars = f.readlines()[0].split(' ')
 
         if (now - created) > int(session_vars[2]):
+            os.remove(session_file)
             return False
         else:
             n = namedtuple('Session', 'key, hostname')

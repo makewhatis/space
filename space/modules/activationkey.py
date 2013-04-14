@@ -13,13 +13,13 @@ def add_child_channels(sw, args):
     )
 
     parser.add_argument(
-        '--keyname',
+        '--keyname', '-k',
         default=None,
         required=True,
         help="Name of the activationkey"
     )
     parser.add_argument(
-        '--channels',
+        '--channels', '-c',
         default=None,
         required=True,
         nargs='+',
@@ -28,8 +28,8 @@ def add_child_channels(sw, args):
     )
     p = parser.parse_args(args)
 
-    result = activationkey.addChildChannels(
-        sw,
+    result = sw.call(
+        'activationkey.addChildChannels',
         p.keyname,
         p.channels
     )
@@ -84,6 +84,11 @@ def create(sw, args):
         action='store_true',
         help="virtualization_host_platform?"
     )
+    parser.add_argument(
+        '--universal_default',
+        action='store_true',
+        help="universal_default?"
+    )    
     p = parser.parse_args(args)
 
     entitlements = []
@@ -100,15 +105,16 @@ def create(sw, args):
         entitlements.append('virtualization_host_platform')
 
     try:
-        result = activationkey.create(
-            sw,
+        result = sw.call(
+            'activationkey.create',
             p.keyname,
             p.keyname,
             p.basechannel,
-            entitlements
+            entitlements,
+            p.universal_default
         )
     except Exception as e:
-        print("Error adding key: %s" % e)
+        print("Error adding key: %s" % e.faultString)
         return False
 
     if result:
@@ -146,7 +152,10 @@ def add_group(sw, args):
     groups_ids = []
     for group in p.groups:
         try:
-            groupid = systemgroup.getDetails(sw, group)
+            groupid = sw.call(
+                'systemgroup.getDetails',
+                group
+            )
             gid = groupid['id']
             groups_ids.append(int(gid))
         except Exception as e:
@@ -154,8 +163,8 @@ def add_group(sw, args):
             return False
 
     try:
-        result = activationkey.addServerGroups(
-            sw,
+        result = sw.call(
+            'activationkey.addServerGroups',
             p.keyname,
             groups_ids
         )

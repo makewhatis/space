@@ -32,6 +32,7 @@ if sys.version_info <= (2, 8):
     import xmlrpclib
     xmlrpc = xmlrpclib
 
+
 # handle ctrl+c
 def signal_handler(signal, frame):
         print("")
@@ -77,7 +78,7 @@ def main(config=None):
         )
         return "User logged out"
     except KeyError:
-        pass  
+        pass
 
     # we already pass config as an arg to this def
     # the flag will trumph all though
@@ -119,10 +120,8 @@ def main(config=None):
 
         return print_avail_namespace_help()
 
-
     if len(cargs) < 1:
         return print_avail_namespace_help()
-
 
     # first we check version
     # then check for major flags
@@ -133,15 +132,14 @@ def main(config=None):
     except KeyError:
         username = get_username(config)
 
-
     # if no session is cached, then prompt
     sess_vars = check_session_user(username)
 
     # set password here to none
     password = None
-    
+
     if not sess_vars:
-        try:            
+        try:
             password = flags['password']
         except KeyError:
             password = get_password(config)
@@ -155,14 +153,14 @@ def main(config=None):
 
     # check initial arg to see if its in the modules
     if "%s.%s" % (cargs[0], cargs[1]) in functions.keys():
-        
+
         # loop through loaded functions
         for f in functions.keys():
             m = re.match('([a-z]*)\.([a-z_]*)', f)
             if m:
                 top = m.group(1)
                 sub = m.group(2)
-            
+
             # check to see if a top level command has been called
             if top in args:
 
@@ -270,7 +268,7 @@ class swSession(object):
         hostname=None,
         password=None,
         sess_key=None,
-        timeout=30
+        timeout=300
     ):
         """
         returns swsession
@@ -284,7 +282,6 @@ class swSession(object):
         self.server_push = "https://%s/APP" % self.hostname
 
         self.session = xmlrpc.Server(self.server_api, verbose=0)
-
 
     def check_session(self):
         now = int(datetime.datetime.now().strftime('%s'))
@@ -314,7 +311,6 @@ class swSession(object):
             print("Could not save session file: %s" % e)
             sys.exit(1)
 
-
     def login(self):
         if self.check_session() is False:
             try:
@@ -332,7 +328,7 @@ class swSession(object):
 
     def call(self, ns, *args):
         """
-        note: args must be a list that we can unpack, 
+        note: args must be a list that we can unpack,
         even if there is 0 args, it needs to unpack
         """
 
@@ -344,9 +340,3 @@ class swSession(object):
             raise
 
         return results
-
-
-
-
-
-

@@ -36,7 +36,7 @@ your:
  * password
 
 Once autheticated, there will be a session activated, and until expired,
-will serve as authentication. 
+will serve as authentication.  
 
 To logout or kill your session, run::
 
@@ -55,9 +55,9 @@ add::
 
     [spacewalk]
     hostname= <HOSTNAME> eg. spacewalk.example.com
-    login = <LOGIN>
+    username = <LOGIN>
     password = <PASSWORD>
-
+    module_dir = <CUSTOM MODULE DIRECTORY>
 
 A config file can also be specified as a command line option::
 
