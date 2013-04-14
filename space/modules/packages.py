@@ -4,9 +4,8 @@ import re
 import sys
 import subprocess
 
-from space.main import getauth as _getauth
-from space.main import get_user as _get_user
-from space.main import get_pass as _get_pass
+from space.util import get_username
+from space.util import get_password
 
 if sys.version_info >= (3, 0):
     import urllib.request as urllib
@@ -70,13 +69,13 @@ def push(sw, args):
     p = parser.parse_args(args)
 
     if len(sw._password) is 0:
-        auth = _getauth(sw.config, sw.hostname)
+        auth = None #_getauth(sw.config, sw.hostname)
 
     if auth[0] == 'None':
-        login = _get_user()
+        login = None #_get_user()
 
     if auth[1] == 'None':
-        _pass = _get_pass(username=login)
+        _pass = None #_get_pass(username=login)
 
     #rhncache stuff although no idea if this will work. depending on
     # if the rhncache stuff is the session. if not its totally hosed.

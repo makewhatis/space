@@ -3,15 +3,23 @@
 """
 
 import datetime
-import imp
+import hashlib
 import json
 import os
 import re
 import sys
-import argparse
-from getpass import getpass
-from getpass import getuser
+
 import signal
+
+from space.util import load_funcs
+from space.util import get_config
+from space.util import get_config_value
+from space.util import get_username
+from space.util import get_password
+from space.util import get_hostname
+from space.util import print_help
+from space.util import print_short_help
+from space.util import print_avail_namespace_help
 
 import pkg_resources  # part of setuptools
 version = pkg_resources.require("space")[0].version
@@ -19,27 +27,10 @@ version = pkg_resources.require("space")[0].version
 if sys.version_info >= (3, 0):
     import xmlrpc.client
     xmlrpc = xmlrpc.client
-    from configparser import SafeConfigParser
-    from configparser import NoOptionError
 
 if sys.version_info <= (2, 8):
     import xmlrpclib
     xmlrpc = xmlrpclib
-    from ConfigParser import SafeConfigParser
-    from ConfigParser import NoOptionError
-
-sys.path.insert(0, os.path.dirname(__file__))
-
-MODULE_DIR = os.path.join(
-    os.path.dirname(
-        os.path.abspath(__file__)), 'modules'
-)
-
-CONFIG = os.path.join(
-    os.environ['HOME'], '.space/config.ini'
-)
-APP_NAME = "space"
-
 
 # handle ctrl+c
 def signal_handler(signal, frame):
@@ -66,16 +57,6 @@ def main(config=None):
 
     # clean up args so that cargs only contains non-switch args
     args, cargs = clean_args(args)
-
-    # debug stuff
-    #print("flags: %d" % len(flags))
-    #print("commands: %d\n\n" % len(cargs))
-    #print("commands: %s\n\n" % cargs)
-    #print("args: %s" % args)
-
-    # check to see if we only have space + top level command
-    # if so we throw a list of avail funcs for that top level
-    # then exit
 
     if len(cargs) == 1:
         print(
@@ -106,55 +87,70 @@ def main(config=None):
                 "\n* For help on any individual command, " +
                 "just use the --help flag after."
             )
-            return
+            return False
 
         return print_avail_namespace_help()
+
+
+    # we already pass config as an arg to this def
+    # the flag will trumph all though
+    try:
+        config = os.path.expanduser(flags['config'])
+    except KeyError:
+        config = get_config()
 
     # first we check version
     # then check for major flags
     # then for actual command args
-    if 'version' in flags:
-        # need to pull this dynamically
+    try:
+        flags['version']
         return version
+    except KeyError:
+        pass
 
-    if 'docs' in flags:
-        print_help()
-        return
+    try:
+        flags['docs']
+        return print_help()
+    except KeyError:
+        pass
 
-    if 'user' in flags:
-        user = flags['user']
-    else:
-        user = None
+    try:
+        username = flags['username']
+    except KeyError:
+        username = get_username(config)
 
-    # we already pass config as an arg to this def
-    # the flag will trumph all though
-    if 'config' in flags:
-        config = flags['config']
+    try:
+        flags['logout']
+        _logout(
+            config=config
+        )
+        return "User logged out"
+    except KeyError:
+        pass  
 
-    if 'host' in flags:
-        host = flags['host']
-    else:
-        host = None
+    try:
+        password = flags['password']
+    except KeyError:
+        password = get_password(config)
 
-    if 'logout' in flags:
-            _logout(
-                user=user,
-                config=config
-            )
-            return
+    try:
+        hostname = flags['host']
+    except KeyError:
+        hostname = get_hostname(config) 
 
     if len(cargs) < 1:
         return print_avail_namespace_help()
 
     # check initial arg to see if its in the modules
     if "%s.%s" % (cargs[0], cargs[1]) in functions.keys():
+        
         # loop through loaded functions
         for f in functions.keys():
             m = re.match('([a-z]*)\.([a-z_]*)', f)
             if m:
                 top = m.group(1)
                 sub = m.group(2)
-
+            
             # check to see if a top level command has been called
             if top in args:
 
@@ -172,13 +168,15 @@ def main(config=None):
                     # if the compiled module is in our function dict, as a key,
                     # then lets feed it args and call it
                     if module_path in functions.keys():
-                        sw = _session(
-                            user=user,
-                            url=host,
-                            config=config
+                        sw = swSession(
+                            hostname,
+                            username,
+                            password
                         )
+                        sw.login()
                         functions[module_path](sw, args)
-                        return True
+    else:
+        return print_avail_namespace_help()
 
 
 def clean_args(args):
@@ -221,210 +219,18 @@ def parse_flags(args):
     return args, result
 
 
-def load_funcs(config=None):
-
-    modules = list()
-    modules_dict = dict()
-    functions = dict()
-    module_dir = None
-
-    if not config:
-        module_dir = os.path.join(
-            os.path.dirname(
-                os.path.abspath(__file__)),
-            'modules'
-        )
-    else:
-        conffile = os.path.expanduser(config)
-        confparse = SafeConfigParser()
-        # does the file exist, if so, read from it...
-        if os.path.isfile(conffile):
-
-            confparse.read(conffile)
-            if confparse.has_section('main'):
-                module_dir = confparse.get('main', 'module_dir')
-            else:
-                print("main section not found!")
-                return False
-        else:
-            print("Conf file not found!")
-            return False
-
-    # loop through files in the module dir
-    for mod_ in os.listdir(module_dir):
-        if mod_.startswith('_'):
-            continue
-        bare_ = mod_.rfind('.')
-        if bare_ > 0:
-            naked_ = mod_[:bare_]
-        modules_dict[naked_] = mod_
-
-    # loop through dict and load modules. Using the imp module here
-    # to programatically load these modules
-    for m, k in modules_dict.items():
-        mod_, path, desc = imp.find_module(m, [module_dir])
-        module = imp.load_module(m, mod_, path, desc)
-        modules.append(module)
-
-    # ripping out the name and functions of each module
-    for mod in modules:
-        module_name = mod.__name__.rsplit('.', 1)[-1]
-        # listing attributes to find actual functions
-        for attr in dir(mod):
-            attr_name = '{0}.{1}'.format(module_name, attr)
-            if attr.startswith('_'):
-                continue
-            if callable(getattr(mod, attr)):
-                func = getattr(mod, attr)
-                # Ignore exception functions
-                if any(['Error' in func.__name__,
-                        'Exception' in func.__name__]):
-                    continue
-                # add callable function to our loaded lib
-                functions[attr_name] = func
-
-    # Loop through and inject some sweetness into here.
-    for mod in modules:
-        if not hasattr(mod, '__sweet__'):
-            mod.__sweet__ = functions
-
-    return functions
-
-
-def _session(
-    user=None,
-    password=None,
-    now=None,
-    url=None,
-    session_dir=None,
-    session_file=None,
-    config=None
-):
-    """
-    Will try and handle the session management here
-    """
-    if not config:
-        config = CONFIG
-
-    # checking for keyword params. This is mostly to make testing possible.
-    if not user:
-        try:
-            confparse = SafeConfigParser()
-            confparse.read(config)
-            user = confparse.get('spacewalk', 'login')
-        except Exception:
-            user = getuser()
-            # need to implement logging
-            #print("Config not present, using system login: %s" % user)
-
-    if not url:
-        try:
-            confparse = SafeConfigParser()
-            confparse.read(config)
-            url = confparse.get('spacewalk', 'hostname')
-        except:
-            url = get_hostname()
-
-
-    if not now:
-        now = datetime.datetime.now().strftime('%s')
-
-    if not session_dir:
-        session_dir = '%s/.swsession' % (os.environ['HOME'])
-
-    if not session_file:
-        session_file = "%s/%s.session" % (session_dir, user)
-
-    session_data = {'%s' % user: 0, 'time': '%s' % int(now)}
-
-    # handle initial creation of session dir
-    if not os.path.exists(session_dir):
-        os.makedirs(session_dir)
-
-    # load session data if file exists for user else create
-    if os.path.exists(session_file):
-
-        with open(session_file, 'r') as f:
-            s = json.load(f)
-
-        # if session time is not 0
-        if s['time'] is not 0:
-            # calculate time session was last validated/init
-            c = int(now) - int(s['time'])
-            if c > 3600:
-                print("expired. please login again")
-                sw = swSession(
-                    login=user,
-                    config=config,
-                    password=password
-                )
-                s[user] = str(sw.key)
-                s['hostname'] = str(sw.hostname)
-                s['time'] = int(now)
-                d = json.dumps(s, session_file)
-                _write_session(session_file, d)
-                return sw
-            else:
-                # just refresh the time in the session file
-                s['time'] = int(now)
-                j = json.dumps(s, session_file)
-                _write_session(session_file, j)
-                return swSession(
-                    login=user,
-                    password=password,
-                    config=config,
-                    key=s.get(user),
-                    url=s['hostname']
-                )
-        else:
-            sw = swSession(
-                login=user,
-                password=password,
-                config=config,
-                url=url
-            )
-            session_data[user] = str(sw.key)
-            session_data['hostname'] = str(sw.hostname)
-            s = json.dumps(session_data, session_file)
-            _write_session(session_file, s)
-            return sw
-
-    else:
-        sw = swSession(
-            login=user,
-            password=password,
-            config=config,
-            url=url
-        )
-        session_data[user] = str(sw.key)
-        session_data['hostname'] = str(sw.hostname)
-        s = json.dumps(session_data, session_file)
-        _write_session(session_file, s)
-        return sw
-
-
 def _logout(
-    user=None,
     config=None
 ):
     """
     Will try and handle the session logout here
     """
-    if config:
-        if os.path.exists(config):
-            confparse = SafeConfigParser()
-            confparse.read(config)
-            user = None
-            if confparse.has_section('spacewalk'):
-                if confparse.has_option('spacewalk', 'login'):
-                    user = confparse.get('spacewalk', 'login')
+    login = get_username(config)
 
     # check for current session file
-    if not user:
-        user = getuser()
 
     session_dir = '%s/.swsession' % (os.environ['HOME'])
-    session_file = "%s/%s.session" % (session_dir, user)
+    session_file = "%s/%s.session" % (session_dir, login)
 
     if os.path.exists(session_file):
         os.remove(session_file)
@@ -439,84 +245,6 @@ def _write_session(filename, data):
         f.write(data)
 
 
-def get_user(user=None):
-    """
-    asks user for username.
-    """
-    # hack to deal with py2/py3
-    try:
-        inputs = raw_input
-    except:
-        inputs = input
-        pass
-    if user:
-        inputs = user
-
-    user = str(inputs('Please enter your spacewalk login: ')).strip()
-    return user
-
-
-def get_hostname(hostname=None):
-    """
-    asks user for username.
-    """
-    # hack to deal with py2/py3
-    try:
-        inputs = raw_input
-    except:
-        inputs = input
-        pass
-    if hostname:
-        inputs = hostname
-
-    hostname = str(inputs('Please enter a spacewalk host: ')).strip()
-    return hostname
-
-
-def get_pass(username='', getpass=getpass):
-    """
-    prompts for a password for an existing user
-    """
-    # we only need the getpass stuff if prompting for passwords.
-    # This only happens on session init.
-
-    passwd = getpass(
-        'Please enter the spacewalk creds for user %s: ' % username)
-    return passwd.strip()
-
-
-def getauth(conffile, hostname):
-    """
-    config format:
-    [hostname]
-    login = username
-    password = pass
-
-    returns:
-    tuple: (username, password)
-
-    parameters:
-    filename(str)           - configuration file path
-    hostname(str)         - spacewalk hostname
-    """
-
-    login = None
-    passwd = None
-
-    # create
-    srcfile = os.path.expanduser(conffile)
-
-    confparse = SafeConfigParser()
-    # does the file exist, if so, read from it...
-    if os.path.isfile(srcfile):
-        confparse.read(srcfile)
-        if confparse.has_section(hostname):
-            login = confparse.get(hostname, 'login')
-            passwd = confparse.get(hostname, 'password')
-
-    return str(login).strip(), str(passwd).strip()
-
-
 class swSession(object):
     """
     Spacewalk Class that will be handing us a session object back.
@@ -526,77 +254,68 @@ class swSession(object):
     """
 
     def __init__(
-            self,
-            url=None,
-            login=None,
-            password=None,
-            config=None,
-            key=None
+        self,
+        hostname,
+        username,
+        password,
+        sess_key=None,
+        timeout=300
     ):
         """
         returns swsession
         """
-        if not config:
-            config = CONFIG
-        if os.path.isfile(config):
-            confparse = SafeConfigParser()
-            confparse.read(config)
-        else:
-            confparse = None
-            
-        if url:
-            self.hostname = url
-        else:
-            try:
-                self.hostname = confparse.get('spacewalk', 'hostname')
-            except AttributeError:
-                self.hostname = get_hostname()
-
-        if login:
-            self.login = login
-        else:
-            try:
-                self.login = confparse.get('spacewalk', 'login')
-            except AttributeError:
-                login = get_user()
-
+        self.hostname = hostname
+        self.username = username
+        self.__password = password
+        self.timeout = timeout
+        self.key = sess_key
         self.server_api = "https://%s/rpc/api" % self.hostname
         self.server_push = "https://%s/APP" % self.hostname
-        # passwords are private variables. Cached, but not exposed
-        if password:
-            self._password = password
-        else:
-            try:
-                self._password = confparse.get('spacewalk', 'password')
-            except NoOptionError:
-                self._password = get_pass(self.login)
 
-        self.config = config
 
-        # authentication config (order of precedence)
-        # 1. login and password as args
-        # 2. login and password from config file
-        # 3. prompt for missing information
+    def check_session(self):
+        now = int(datetime.datetime.now().strftime('%s'))
+        ref = hashlib.md5(self.username).hexdigest()
+        session_file = '/var/tmp/space-%s' % (ref)
 
-        # If login and/or password are specified explicitly they override
-        # the config file
-        
-        try:
-            self.session = xmlrpc.Server(self.server_api, verbose=0)
+        # load session data if file exists for user else create
+        if os.path.exists(session_file):
+            created = os.path.getctime(session_file)
 
-            if key:
-                self.key = key
+            if (now - created) > self.timeout:
+                return False
             else:
-                try:
-                    # actually login
-                    self.key = self.session.auth.login(
-                        self.login, self._password
-                    )
-                except Exception as e:
-                    sys.exit("Login to %s Failed." % self.server_api)
+                f = open(session_file, 'r')
+                self.key = f.readlines()[0]
+                return True
 
-        except xmlrpc.Fault as e:
-            sys.exit("Login Failed: %s" % e)
+    def save_session(self, key):
+        ref = hashlib.md5(self.username).hexdigest()
+        session_file = '/var/tmp/space-%s' % (ref)
+        try:
+            with open(session_file, 'w+') as f:
+                f.write(key)
+        except OSError as e:
+            print("Could not save session file: %s" % e)
+            sys.exit(1)
+
+
+    def login(self):
+        self.session = xmlrpc.Server(self.server_api, verbose=0)
+
+        if self.check_session() is False:
+            try:
+                # actually login
+                self.key = self.session.auth.login(
+                    self.username,
+                    self.__password,
+                    self.timeout
+                )
+                self.save_session(self.key)
+            except Exception as e:
+                sys.exit("Login to %s Failed. %s" % (self.server_api, e))
+
+        return self.key
 
     def call(self, ns, args):
         """
@@ -613,54 +332,7 @@ class swSession(object):
         return results
 
 
-def print_help():
-    functions = load_funcs()
-    print("Help Docs\n")
-    for func, inst in functions.items():
-        print("space %s %s" % (
-            func.split(".")[0], func.split(".")[1])
-        )
-        print(inst.__doc__)
-    return functions
 
 
-def print_short_help():
-    functions = load_funcs()
-    print(
-        "Usage: space [options] '<namespace>' <command> [arguments]" +
-        "\nFor detailed help on " +
-        "any one command: [command] --help \n" +
-        "\nAvailable Commands\n" +
-        "------------------"
-    )
-    for func, inst in functions.items():
-        print("space %s %s" % (
-              func.split(".")[0], func.split(".")[1])
-              )
-    return functions
 
 
-def print_avail_namespace_help():
-    functions = load_funcs()
-    print(
-        "Usage: space [options] '<namespace>' <command> [arguments]\n" +
-        "Options:\n" +
-        "    --user         Spacewalk login name\n" +
-        "    --password     Spacewalk password\n" +
-        "    --host         Spacewalk host\n" +
-        "    --config       optional config file to pass user/pass/host\n" +
-        "                   info\n" +
-        "    --docs         Print full docs to the terminal\n"
-        "\nFor detailed help on \n" +
-        "any one command: [command] --help \n" +
-        "\nAvailable Namespaces\n" +
-        "------------------"
-    )
-    funcs = []
-    for func, inst in functions.items():
-        f = func.split(".")[0]
-        if f not in funcs:
-            funcs.append(f)
-
-    for top in funcs:
-        print(" %s" % (top))
