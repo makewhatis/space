@@ -8,7 +8,10 @@ python:
 before_install: 
   - pip install -q -r requirements.txt
 
-script: "py.test -v --cov space --cov-report term-missing tests/unit/"
+script: 
+   - python setup.py install
+   - py.test -v --cov space --cov-report term-missing tests/unit/
+
 
 after_success:
   - coveralls
