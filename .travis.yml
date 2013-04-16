@@ -9,7 +9,7 @@ before_install:
   - pip install -q -r requirements.txt
 
 script: 
-   - sed  "s|module_dir.*|module_dir=$(pwd)|g" tests/unit/test.ini
+   - sed -i "s|module_dir.*|module_dir=$(pwd)|g" tests/unit/test.ini
    - python setup.py test
 
 after_success:
