@@ -45,7 +45,7 @@ def load_funcs(config=None):
     modules = list()
     modules_dict = dict()
     functions = dict()
-    module_dir = None
+    module_dir=None
 
     module_dir = get_config_value(config, 'module_dir')
     if module_dir is None:
