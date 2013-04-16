@@ -149,8 +149,7 @@ def get_username(
     This will get a username, whether from a config,
     or if nothing exists in the config, from getpass.getuser
     """
-
-    if not config:
+    if config == None:
         config = get_config()
     # hack to deal with py2/py3
     try:
@@ -159,8 +158,7 @@ def get_username(
         inputs = input
 
     username = get_config_value(config, 'username')
-
-    if username is None:
+    if not username:
         username = str(
             inputs('Please enter your spacewalk username: ')
         ).strip()

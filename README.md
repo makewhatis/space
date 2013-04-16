@@ -1,7 +1,7 @@
 Spacewalk CLI
 =============
 
-[![Build Status](https://travis-ci.org/makewhatis/space.png)](https://travis-ci.org/makewhatis/space)
+[![Build Status](https://travis-ci.org/makewhatis/space.png)](https://travis-ci.org/makewhatis/space) [![Coverage Status](https://coveralls.io/repos/makewhatis/space/badge.png?branch=master)](https://coveralls.io/r/makewhatis/space)
 
 Spacewalk-cli is a command line tool + api wrapper for spacewalks xmlrpc library. It contains every api call in its
 library available for use, and the number of command line options is growing.

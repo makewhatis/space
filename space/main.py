@@ -82,10 +82,11 @@ def main(config=None):
 
     # we already pass config as an arg to this def
     # the flag will trumph all though
-    try:
-        config = os.path.expanduser(flags['config'])
-    except KeyError:
-        config = get_config()
+    if not config:
+        try:
+            config = os.path.expanduser(flags['config'])
+        except KeyError:
+            config = get_config()
 
     if len(cargs) == 1:
         print(

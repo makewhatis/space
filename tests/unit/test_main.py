@@ -36,6 +36,29 @@ class TestMain(unittest.TestCase):
         self.output.close()
         sys.stdout = self.saved_stdout
 
+    def test_main(self):
+        from space.main import main
+        sys.argv = ['space', 'system', 'listSystems']
+
+        result = main(config=CONFIG)
+        self.assertEqual(result, None, result)
+
+    def test_main_one_carg(self):
+        from space.main import main
+        sys.argv = ['space', 'systems']
+
+        result = main(config=CONFIG)
+        self.assertEqual(result, None, result)
+
+    @mock.patch('space.main.swSession')
+    def test_main_test_funcs(self, sw_mock):
+        sw_mock.return_value = mock.Mock()
+        from space.main import main
+        sys.argv = ['space', 'fakemodule', 'dosomething']
+
+        result = main(config=CONFIG)
+        self.assertEqual(result, None, result)
+
     def test_cmd_doc(self):
         from space.main import main
         sys.argv = ['space', '--docs']
@@ -48,6 +71,30 @@ class TestMain(unittest.TestCase):
         result = main()
 
         self.assertRegexpMatches(result, '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', result)
+
+    @mock.patch('space.main.swSession')
+    @mock.patch('space.modules.systems.list')
+    def test_main_args(self, sys_list, sw_mock):
+        """
+        Test to make sure variables are set from
+        flag options.
+        """
+        sys_list.return_value = mock.Mock()
+        sw_mock.return_value = mock.Mock()
+        from space.main import main
+
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test.ini',
+            '--host=test',
+            '--password=test',
+            'fakemodule',
+            'listSystems'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, '^Usage: space.*', result)
 
     def test_main_args_others(self):
         """
@@ -131,7 +178,6 @@ class TestMain(unittest.TestCase):
         result = main()
         self.assertEqual(result, 'User logged out', result)
 
-
     @mock.patch('space.main.load_funcs')
     def test_key_error(self, load_funcs):
         from space.main import main  
@@ -143,6 +189,7 @@ class TestMain(unittest.TestCase):
         ]
         with self.assertRaises(IOError):
             main()        
+
 
 def suite():
     suite = unittest.TestLoader().loadTestsFromTestCase(TestMain)

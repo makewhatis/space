@@ -38,10 +38,10 @@ class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
         self.test_args = [
-            'tests/unit',
+            'tests/unit/',
             '--capture=sys',
             '--cov=space',
-            '--cov-report=term-missing'
+            '--cov-report=html'
         ]
         self.test_suite = True
     def run_tests(self):
