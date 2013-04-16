@@ -10,8 +10,6 @@ before_install:
 
 script: 
    - python setup.py install
-   - py.test -v --cov space --cov-report term-missing tests/unit/
-
 
 after_success:
   - coveralls
