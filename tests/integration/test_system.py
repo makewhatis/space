@@ -1,6 +1,7 @@
 # -*- coding: utf-8 *-*
 from space.modules import systems
-from space.main import _session
+from space.main import swSession
+from space.main import main
 
 import sys
 if sys.version_info < (2, 7):
@@ -11,25 +12,22 @@ import sys
 import os
 import mock
 
-sys.path.insert(0, "../../")
-
-TEST_DIR = os.path.dirname(os.path.normpath(os.path.abspath(__file__)))
-CONFIG = '%s/test.ini' % TEST_DIR
-
-SERVER_GROUP = 'space'
-
-if sys.version_info >= (3, 0):
-    from configparser import SafeConfigParser
-
-if sys.version_info <= (2, 8):
-    from ConfigParser import SafeConfigParser
-
 
 class TestSystems(unittest.TestCase):
 
-    def test_listsystems(self):
-        sw = _session(config=CONFIG)
-        args = ['-g', SERVER_GROUP]
-        result = systems.listsystems(sw, args)
+    @mock.patch('space.main.swSession')
+    def test_listsystems(self, sw_mock):
+        sw_call = sw_mock.return_value = mock.Mock()
+        sw_call.call.return_value = ['test']
+        
+        args = [
+            'space',
+            '--username=test',
+            '--host=test',
+            '--password=test',
+            'systems',
+            'list'
+            '--group', 'test_group']
+        result = main()
 
         self.assertIsInstance(result, list, result)

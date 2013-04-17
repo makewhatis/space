@@ -57,7 +57,7 @@ class TestMain(unittest.TestCase):
         sys.argv = ['space', 'fakemodule', 'dosomething']
 
         result = main(config=CONFIG)
-        self.assertEqual(result, None, result)
+        self.assertEqual(result, True, result)
 
     def test_cmd_doc(self):
         from space.main import main

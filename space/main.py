@@ -189,7 +189,7 @@ def main(config=None):
                             sw.login()
                         else:
                             sw.key = sess_vars.key
-                        functions[module_path](sw, args)
+                        return functions[module_path](sw, args)
     else:
         return print_avail_namespace_help()
 
