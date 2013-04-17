@@ -7,10 +7,25 @@ import mock
 
 import unittest
 import sys
+if sys.version_info < (2, 8):
+    import unittest2 as unittest
+    from io import BytesIO as strio
+else:
+    import unittest
+    from io import StringIO as strio
 import os
 
 
 class TestPackages(unittest.TestCase):
+
+    def setUp(self):
+        self.output = strio()
+        self.saved_stdout = sys.stdout
+        sys.stdout = self.output
+
+    def tearDown(self):
+        self.output.close()
+        sys.stdout = self.saved_stdout
 
     @mock.patch('space.main.swSession')
     @mock.patch('space.modules.packages.urllib.urlretrieve')
@@ -31,7 +46,8 @@ class TestPackages(unittest.TestCase):
             '-p',
             '1'
         ]
-        result = main()
-        self.assertEqual(result, True, result)
+        main()        
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, 'True', result)
 
 

@@ -42,7 +42,8 @@ def getpackage(sw, args):
     pkg = re.match(".*/(.*.rpm$)", pkg_url)
     result = urllib.urlretrieve(pkg_url, pkg.group(1))
 
-    return result[0]
+    print("Downloaded %s" % result[0])
+    return
 
 
 def copy(sw, args):

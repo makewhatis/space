@@ -60,28 +60,20 @@ def list(sw, args):
     if p.type == 'popular' and not p.popcount:
         print("Popular requires popcount arg.")
         parser.print_help()
-        return
+        return False
 
     if p.popcount:
         popcount = int(p.popcount)
-        try:
-            results = sw.call(
-                api_calls[p.type],
-                popcount
-            )
-        except Exception as e:
-            raise
+        results = sw.call(
+            api_calls[p.type],
+            popcount
+        )
     else:
-        try:
-            results = sw.call(
-                api_calls[p.type]
-            )
-        except Exception as e:
-            raise
-
+        results = sw.call(
+            api_calls[p.type]
+        )
     if results == []:
         print("Empty result set.")
-        return
 
     channels = []
     for result in results:
@@ -110,7 +102,7 @@ def list(sw, args):
             t.align["Parent Label"] = "l"
             t.padding_width = 1
             for c in results:
- 
+
                 t.add_row([
                     c['label'],
                     c['name'],
@@ -148,7 +140,7 @@ def list(sw, args):
     elif p.format == 'json':
         output = json.dumps(dict(channels=channels))
         print(output)
-        return output
     else:
         for result in results:
             print(result)
+    return results

@@ -189,7 +189,7 @@ def main(config=None):
                             sw.login()
                         else:
                             sw.key = sess_vars.key
-                        return functions[module_path](sw, args)
+                        functions[module_path](sw, args)
     else:
         return print_avail_namespace_help()
 
@@ -286,7 +286,8 @@ class swSession(object):
 
     def check_session(self):
         now = int(datetime.datetime.now().strftime('%s'))
-        ref = hashlib.md5(self.username).hexdigest()
+        username = self.username.encode('utf-8')
+        ref = hashlib.md5(username).hexdigest()
         session_file = '/var/tmp/space-%s' % (ref)
 
         # load session data if file exists for user else create
@@ -302,7 +303,8 @@ class swSession(object):
         return False
 
     def save_session(self):
-        ref = hashlib.md5(self.username).hexdigest()
+        username = self.username.encode('utf-8')
+        ref = hashlib.md5(username).hexdigest()
         session_file = '/var/tmp/space-%s' % (ref)
         try:
             with open(session_file, 'w+') as f:
@@ -336,8 +338,7 @@ class swSession(object):
         func = getattr(self.session, ns)
 
         try:
-            results = func(self.key, *args)
+            return func(self.key, *args)
         except Exception as e:
-            raise
-
-        return results
+            print(e)
+            return False

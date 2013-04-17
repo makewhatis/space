@@ -1,11 +1,11 @@
 # -*- coding: utf-8 *-*
 
 def dosomething(what, args):
-    return True
+    print('dosomething')
 
 
 def listSystems(what, args):
-    return True
+    print('listSystems')
 
 def Error(what, args):
-    return True
+    print('Error')

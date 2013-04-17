@@ -4,16 +4,27 @@ from space.main import swSession
 from space.main import main
 
 import sys
-if sys.version_info < (2, 7):
+if sys.version_info < (2, 8):
     import unittest2 as unittest
+    from io import BytesIO as strio
 else:
     import unittest
+    from io import StringIO as strio
 import sys
 import os
 import mock
 
 
 class TestSystems(unittest.TestCase):
+
+    def setUp(self):
+        self.output = strio()
+        self.saved_stdout = sys.stdout
+        sys.stdout = self.output
+
+    def tearDown(self):
+        self.output.close()
+        sys.stdout = self.saved_stdout
 
     @mock.patch('space.main.swSession')
     def test_listsystems(self, sw_mock):
@@ -28,6 +39,8 @@ class TestSystems(unittest.TestCase):
             'systems',
             'list',
             '--group', 'test_group']
-        result = main()
+        main()        
+        result = self.output.getvalue()
 
-        self.assertIsInstance(result, list, result)
+        self.assertRegexpMatches(result, 'blah.com who', result)
+

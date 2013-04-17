@@ -38,7 +38,7 @@ class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
         self.test_args = [
-            'tests/unit/',
+            'tests/unit',
             '--capture=sys',
             '--cov=space',
             '--cov-report=html'
