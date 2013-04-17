@@ -217,7 +217,7 @@ def print_avail_namespace_help():
     print(
         "Usage: space [options] '<namespace>' <command> [arguments]\n" +
         "Options:\n" +
-        "    --user         Spacewalk login name\n" +
+        "    --username         Spacewalk login name\n" +
         "    --password     Spacewalk password\n" +
         "    --host         Spacewalk host\n" +
         "    --config       optional config file to pass user/pass/host\n" +

@@ -16,7 +16,7 @@ Installation
 
     git clone git://github.com/makewhatis/spacewalk-cli.git
     cd spacewalk-cli
-    python setup.py
+    python setup.py install
 
 
 Authenticating
@@ -61,7 +61,7 @@ add::
 
 A config file can also be specified as a command line option::
 
-    space --config=/path/to/config.cfg systems listsystems
+    space --config=/path/to/config.ini systems list
 
 
 Working with the API to create new modules
@@ -72,4 +72,4 @@ Rather than porting the entire library, there is a single function in the swSess
 ::
 
     sw = space.swSession()
-    sw.call('api.getApiNamespaceList', [arg])
+    sw.call('api.getApiNamespaceList', arg)
