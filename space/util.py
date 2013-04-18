@@ -1,28 +1,33 @@
 import datetime
-from getpass import getpass
 import hashlib
 import imp
 import os
 import sys
 
-if sys.version_info >= (3, 0):
+from collections import namedtuple
+from getpass import getpass
+
+if sys.version_info >= (3, 0):  # pragma: no cover
     import xmlrpc.client
     xmlrpc = xmlrpc.client
     from configparser import ConfigParser
     from configparser import NoOptionError
 
-if sys.version_info <= (2, 8):
+if sys.version_info <= (2, 8):  # pragma: no cover
     import xmlrpclib
     xmlrpc = xmlrpclib
     from ConfigParser import ConfigParser
     from ConfigParser import NoOptionError
 
 
-def check_session_user(username):
-    from collections import namedtuple
+def check_session_user(
+    username,
+    session_file=None
+):
     now = int(datetime.datetime.now().strftime('%s'))
     ref = hashlib.md5(username.encode('utf-8')).hexdigest()
-    session_file = '/var/tmp/space-%s' % (ref)
+    if session_file is None:
+        session_file = '/var/tmp/space-%s' % (ref)
 
     # load session data if file exists for user else create
     if os.path.exists(session_file):
@@ -38,6 +43,7 @@ def check_session_user(username):
         else:
             n = namedtuple('Session', 'key, hostname')
             return n(session_vars[0], session_vars[1])
+    return False
 
 
 def load_funcs(config=None):
@@ -45,7 +51,7 @@ def load_funcs(config=None):
     modules = list()
     modules_dict = dict()
     functions = dict()
-    module_dir=None
+    module_dir = None
 
     module_dir = get_config_value(config, 'module_dir')
     if module_dir is None:
@@ -102,10 +108,19 @@ def _check_length(subject):
 
 
 def get_config():
-    if os.path.exists(("{0}/.space/config.ini").format(os.path.expanduser('~'))):
-        return "%s/.space/config.ini" % os.path.expanduser('~')
-    elif os.path.exists("/etc/space/config.ini"):
-        return "/etc/space/config.ini"
+    """
+    Check for a config in all the usual places, should you 
+    not find it, return None
+    """
+    places = [
+        "{0}/.space/config.ini".format(os.path.expanduser('~')),
+        "/etc/space/config.ini"
+    ]
+
+    for place in places:
+        if os.path.exists(place):
+            return place
+    return None
 
 
 def get_config_value(config, key):
@@ -128,7 +143,7 @@ def get_password(
     prompts for a password for an existing user
     """
 
-    if not config:
+    if config is None:
         config = get_config()
 
     password = get_config_value(config, 'password')
@@ -149,13 +164,13 @@ def get_username(
     This will get a username, whether from a config,
     or if nothing exists in the config, from getpass.getuser
     """
-    if config == None:
+    if config is None:
         config = get_config()
     # hack to deal with py2/py3
-    try:
-        inputs = raw_input
-    except:
+    try:  # pragma: no cover
         inputs = input
+    except:  # pragma: no cover
+        inputs = raw_input
 
     username = get_config_value(config, 'username')
     if not username:
@@ -174,9 +189,9 @@ def get_hostname(
     if not config:
         config = get_config()
     # hack to deal with py2/py3
-    try:
+    try:  # pragma: no cover
         inputs = raw_input
-    except:
+    except:  # pragma: no cover
         inputs = input
 
     hostname = get_config_value(config, 'hostname')

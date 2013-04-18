@@ -290,7 +290,7 @@ class swSession(object):
         ref = hashlib.md5(username).hexdigest()
         session_file = '/var/tmp/space-%s' % (ref)
 
-        # load session data if file exists for user else create
+        # load session data if file exists
         if os.path.exists(session_file):
             created = os.path.getctime(session_file)
 

@@ -2,7 +2,7 @@
 import sys
 import os
 import mock
-if sys.version_info < (2, 8):
+if sys.version_info < (2, 8):   # pragma: no cover
     import unittest2 as unittest
     from io import BytesIO as strio
 else:

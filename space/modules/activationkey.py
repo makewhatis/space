@@ -115,10 +115,9 @@ def create(sw, args):
         )
     except Exception as e:
         print("Error adding key: %s" % e.faultString)
-        return False
 
     if result:
-        print("%s created" % result)
+        print("%s created" % result[0])
     return result
 
 
@@ -150,6 +149,7 @@ def add_group(sw, args):
     p = parser.parse_args(args)
 
     groups_ids = []
+    result = None
     for group in p.groups:
         try:
             groupid = sw.call(
@@ -158,9 +158,9 @@ def add_group(sw, args):
             )
             gid = groupid['id']
             groups_ids.append(int(gid))
+
         except Exception as e:
             print("Failed: %s" % e)
-            return False
 
     try:
         result = sw.call(
@@ -170,10 +170,12 @@ def add_group(sw, args):
         )
     except Exception as e:
         print ("Adding key to group failed: %s" % e)
-        return False
 
     if result == 1:
         for group in p.groups:
             print("%s has been added to %s" % (group, p.keyname))
+    else:
+        print(result)
 
     return result
+
