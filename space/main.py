@@ -24,17 +24,17 @@ from space.util import print_avail_namespace_help
 import pkg_resources  # part of setuptools
 version = pkg_resources.require("space")[0].version
 
-if sys.version_info >= (3, 0):
+if sys.version_info >= (3, 0):   # pragma: no cover
     import xmlrpc.client
     xmlrpc = xmlrpc.client
 
-if sys.version_info <= (2, 8):
+if sys.version_info <= (2, 8):   # pragma: no cover
     import xmlrpclib
     xmlrpc = xmlrpclib
 
 
 # handle ctrl+c
-def signal_handler(signal, frame):
+def signal_handler(signal, frame):   # pragma: no cover
         print("")
         sys.exit(0)
 
