@@ -46,8 +46,26 @@ class TestPackages(unittest.TestCase):
             '-p',
             '1'
         ]
-        main()        
+        main()
         result = self.output.getvalue()
         self.assertRegexpMatches(result, 'True', result)
 
+    @mock.patch('space.main.swSession')
+    def test_copy(self, sw_mock):
+        sw_call = sw_mock.return_value = mock.Mock()
+        sw_call.call.return_value = 1
 
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test',
+            '--host=test',
+            '--password=test',
+            'packages',
+            'copy',
+            '-p', '1',
+            '-c', 'blah'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, '1', result)

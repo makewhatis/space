@@ -55,7 +55,9 @@ class TestChannel(unittest.TestCase):
         ]
         main()
         result = self.output.getvalue()
-        self.assertRegexpMatches(result, "^{\'name\': \'fedora-16-x86_64-updates\'*", result)
+        self.assertRegexpMatches(
+            result, "^{\'name\': \'fedora-16-x86_64-updates\'*", result
+        )
 
     @mock.patch('space.main.swSession')
     def test_listchannels_popcount_no_arg(self, sw_mock):

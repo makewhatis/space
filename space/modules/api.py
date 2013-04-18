@@ -56,6 +56,5 @@ def list_in_namespace(sw, args):
         )
     except Exception as e:
         print("Failed to run command: %s" % e)
-        return False
 
     print(result)

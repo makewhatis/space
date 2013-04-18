@@ -7,9 +7,9 @@ import subprocess
 from space.util import get_username
 from space.util import get_password
 
-if sys.version_info >= (3, 0):
+if sys.version_info >= (3, 0):  # pragma: no cover
     import urllib.request as urllib
-if sys.version_info <= (2, 8):
+if sys.version_info <= (2, 8):  # pragma: no cover
     import urllib
 
 
@@ -80,4 +80,4 @@ def copy(sw, args):
         [int(arg.pid)]
             
     )
-    return result
+    print("Result: %s" % result)
