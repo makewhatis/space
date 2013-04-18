@@ -7,4 +7,3 @@
 tests/testsession
 *pytestdebug.log
 *_build
-*.test

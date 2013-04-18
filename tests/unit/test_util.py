@@ -117,11 +117,13 @@ class TestUtil(unittest.TestCase):
             session_file="%s/session.test" % TEST_DIR)
         self.assertEqual(result, False, "Should be False")
 
-        with open("%s/session.test" % TEST_DIR, 'r') as f:
-            lines = f.read()
+        lines = [
+        '1195xc476906524215c806e08bd5c61f7901b',
+        'spacewalk.local.makewhatis.com',
+        '300'
+        ]
 
         with open("%s/session.new" % TEST_DIR, 'w+') as n:
-            lines = lines.split(' ')
             lines[2] = '300'
             n.write(' '.join(lines))
 
