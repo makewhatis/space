@@ -28,8 +28,8 @@ packages = [
 ]
 
 requires = [
-    'argparse==1.2.1',
-    'prettytable==0.7.2'
+    'argparse',
+    'prettytable'
 ]
 
 tests_require = [

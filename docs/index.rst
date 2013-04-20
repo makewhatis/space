@@ -11,7 +11,7 @@ Space: A Spacewalk CLI
 
     It should also be noted that there is no actual modules written yet, just the API wrapper and cli functionality.
 
-Space is a command line interface python wrapper aimed at exposing the Spacewalk/RHN api to a easy to use command line interface. 
+Space is a command line interface, and python wrapper, which gives access to the Spacewalk/RHN api via python and the CLI.
 
 Some of the tasks and queries performed via Spacewalk UI can be cumbersome, and time consuming, especially if you work with a fairly large implementation. Space helps ease the pain. 
 
@@ -20,7 +20,19 @@ Some of the tasks and queries performed via Spacewalk UI can be cumbersome, and 
     
     ~]$ space systems listsystems -g test_group
 
-If you don't wish to use the CLI, then all methods are available as imports. Just give the api method an authenticated session object as the first parameter, and follow the docs for the rest. 
+If you don't wish to use the CLI, then all methods are available via the `swSession.call` method.
+
+::
+
+    from space.main import swSession
+
+    sw = swSession(
+        username='testuser',
+        hostname='test.spacewalk.blah,
+        password='password'
+    )
+    sw.login()
+    sw.call('api method', arg, arg, arg)
 
 
 
