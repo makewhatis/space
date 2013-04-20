@@ -241,11 +241,9 @@ def _logout(
     Will try and handle the session logout here
     """
     login = get_username(config)
-
-    # check for current session file
-
-    session_dir = '%s/.swsession' % (os.environ['HOME'])
-    session_file = "%s/%s.session" % (session_dir, login)
+    username = login.encode('utf-8')
+    ref = hashlib.md5(username).hexdigest()
+    session_file = '/var/tmp/space-%s' % (ref)    
 
     if os.path.exists(session_file):
         os.remove(session_file)

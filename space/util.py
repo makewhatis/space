@@ -168,12 +168,12 @@ def get_username(
         config = get_config()
     # hack to deal with py2/py3
     try:  # pragma: no cover
-        inputs = input
-    except:  # pragma: no cover
         inputs = raw_input
+    except:  # pragma: no cover
+        inputs = input
 
     username = get_config_value(config, 'username')
-    if not username:
+    if username is None:
         username = str(
             inputs('Please enter your spacewalk username: ')
         ).strip()

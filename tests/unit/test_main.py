@@ -231,17 +231,14 @@ class TestMain(unittest.TestCase):
 
     @mock.patch('os.path')
     @mock.patch('os.remove')
-    @mock.patch('space.main.get_username')
-    def test_logout(self, path, rem, username):
+    def test_logout(self, path, rem):
         from space.main import _logout
         p = path.return_value = mock.Mock()
         p.exists.return_value = 'path'
 
         rem.return_value = True
-        u = username.return_value = mock.Mock()
-        u.return_value = 'test'
-
-        _logout()
+    
+        _logout(config=CONFIG)
         result = self.output.getvalue()
         self.assertRegexpMatches(result, "Logged out.", result)
 
