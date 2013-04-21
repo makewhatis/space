@@ -77,7 +77,7 @@ class PyTest(TestCommand):
 setup(
     name='python-space',
     version=version,
-    description='Spacewalk Cli',
+    description='A command line tool for the Spacewalk API',
     long_description=open('README.rst').read(),
     author='David Johansen',
     author_email='david@makewhatis.com',

@@ -18,7 +18,7 @@ Some of the tasks and queries performed via Spacewalk UI can be cumbersome, and 
 
 ::
     
-    ~]$ space systems listsystems -g test_group
+    ~]$ space systems list -g test_group
 
 If you don't wish to use the CLI, then all methods are available via the `swSession.call` method.
 
@@ -45,6 +45,7 @@ This section will cover basic usage of this tool.
    :maxdepth: 2
 
    ref/quickstart.rst
+   ref/modules.rst
 
 
 

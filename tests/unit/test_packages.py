@@ -68,4 +68,4 @@ class TestPackages(unittest.TestCase):
         ]
         main()
         result = self.output.getvalue()
-        self.assertRegexpMatches(result, '1', result)
+        self.assertRegexpMatches(result, 'Copied package id: \[ blah \]  INTO \[ blah \] successfully!\\n', result)

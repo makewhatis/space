@@ -338,5 +338,5 @@ class swSession(object):
         try:
             return func(self.key, *args)
         except Exception as e:
-            print(e)
+            print("Action failed: %s" % e.faultString)
             return False

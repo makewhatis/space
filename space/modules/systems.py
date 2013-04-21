@@ -84,7 +84,7 @@ def list(sw, args):
     """
 
     parser = argparse.ArgumentParser(
-        prog='space systems listsystems',
+        prog='space systems list',
         epilog='For detailed help ' +
         'pass --help to a target',
         description=('This command will ' +
@@ -126,6 +126,7 @@ def list(sw, args):
         except Exception as e:
             print("Error listing all systems: %s" % e)
             return False
+
         if _systems:
             for s in _systems:
                 print("%s %s" % (s['name'], s['id']))

@@ -14,20 +14,23 @@ Installation
 
 ::
 
-    git clone git://github.com/makewhatis/spacewalk-cli.git
-    cd spacewalk-cli
-    python setup.py install
-
+    pip install python-space
+    
 
 Authenticating
 --------------
 
-Authenticating can be done one of two ways:
+Authenticating can be done one of three ways:
 
- * CLI prompt
  * Auth credentials stored in a config file
+ * Command-line Flags
+ * Command-line prompt
 
-CLI prompt is going to be the easiest one-off method of interfacing
+Space will check in the above order for credentials and config
+info. If it doesn't find a valid config, and no flags are given
+with the needed info, then it will prompt for info.
+
+The prompt is going to be the easiest one-off method of interfacing
 with spacewalk. Simply run a command, and it will prompt you for 
 your:
 
@@ -35,8 +38,15 @@ your:
  * username
  * password
 
+You can also throw your info in flags::
+
+    ~]$ space --username=me --hostname=example.spacewalk.server --password=blah
+
 Once autheticated, there will be a session activated, and until expired,
-will serve as authentication.  
+will serve as a means for space to get session, and hostname info for your instance.
+
+Note: you will still need to give auth info right now, the session was put there
+to alleviate the amount of sessions getting created in spacewalk on big loops.
 
 To logout or kill your session, run::
 
@@ -59,17 +69,14 @@ add::
     password = <PASSWORD>
     module_dir = <CUSTOM MODULE DIRECTORY>
 
+This config can also be placed at /etc/space/config.ini
+
 A config file can also be specified as a command line option::
 
     space --config=/path/to/config.ini systems list
 
+The order that space checks for configs is:
 
-Working with the API to create new modules
-------------------------------------------
-
-Rather than porting the entire library, there is a single function in the swSession class `space.swSession.call` that allows the api function to be called. 
-
-::
-
-    sw = space.swSession()
-    sw.call('api.getApiNamespaceList', arg)
+    1. --config flag
+    2. $HOME/.space/config.ini
+    3. /etc/space/config.ini

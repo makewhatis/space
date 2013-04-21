@@ -181,7 +181,7 @@ class TestMain(unittest.TestCase):
         ]
         main()
         result = self.output.getvalue()
-        self.assertRegexpMatches(result, 'No servers in group', result)
+        self.assertRegexpMatches(result, 'Error listing all systems', result)
 
     @mock.patch('space.main.load_funcs')
     @mock.patch('space.main.get_hostname')
