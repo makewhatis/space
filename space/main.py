@@ -307,12 +307,13 @@ class swSession(object):
         try:
             with open(session_file, 'w+') as f:
                 f.write("%s %s %s" % (self.key, self.hostname, self.timeout))
+            return True
 
-        except OSError as e:
+        except IOError as e:
             print("Could not save session file: %s" % e)
-            sys.exit(1)
+            return False
 
-    def login(self):
+    def login(self):    # pragma: no cover
         if self.check_session() is False:
             try:
                 # actually login

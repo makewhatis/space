@@ -254,6 +254,11 @@ class TestMain(unittest.TestCase):
         sw = swSession('test')
         self.assertIsInstance(sw, object, "sw is not object")
 
+        # check with no session_file found
+        p.exists.return_value = False
+        sw.check_session()
+
+        # mock out session file found
         p.exists.return_value = 'path'
         p.getctime.return_value = 0
         sw.check_session()
@@ -268,6 +273,27 @@ class TestMain(unittest.TestCase):
             with mock.patch('__builtin__.open') as check:
                 check.return_value = strio("blah blah blah")
                 sw.check_session()
+
+    def test_save_session(self):
+        from space.main import swSession
+
+        sw = swSession('test')
+        result = sw.save_session()
+        self.assertEqual(result, True)
+
+    def test_save_session_exception(self):
+        from space.main import swSession
+        sw = swSession('test')
+
+        if sys.version_info <= (2, 8):
+            open_name = '__builtin__.open'
+        else:
+            open_name = 'builtins.open'    
+
+        with mock.patch(open_name) as mock_open:
+            mock_open.side_effect = IOError
+            sw.save_session()
+
 
 def suite():
     suite = unittest.TestLoader().loadTestsFromTestCase(TestMain)

@@ -100,6 +100,8 @@ def copy(sw, args):
         
         # return tuple for lucene search
         pkg = _lookup_package(arg.nvr)
+        if not pkg:
+            return False
 
         # need try/except to catch failed match
         try:

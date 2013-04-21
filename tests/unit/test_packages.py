@@ -51,7 +51,7 @@ class TestPackages(unittest.TestCase):
         self.assertRegexpMatches(result, 'True', result)
 
     @mock.patch('space.main.swSession')
-    def test_copy(self, sw_mock):
+    def test_copy_pid(self, sw_mock):
         sw_call = sw_mock.return_value = mock.Mock()
         sw_call.call.return_value = 1
 
@@ -69,3 +69,44 @@ class TestPackages(unittest.TestCase):
         main()
         result = self.output.getvalue()
         self.assertRegexpMatches(result, 'Copied package id: \[ blah \]  INTO \[ blah \] successfully!\\n', result)
+
+    @mock.patch('space.main.swSession')
+    def test_copy_nvr_bad_package_nvr(self, sw_mock):
+        sw_call = sw_mock.return_value = mock.Mock()
+        sw_call.call.return_value = []
+
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test',
+            '--host=test',
+            '--password=test',
+            'packages',
+            'copy',
+            '--nvr', 'devhelp.i386',
+            '-c', 'blah'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, 'Could not parse Name-Version-Relase', result)
+
+
+    @mock.patch('space.main.swSession')
+    def test_copy_nvr_empty_result(self, sw_mock):
+        sw_call = sw_mock.return_value = mock.Mock()
+        sw_call.call.return_value = []
+
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test',
+            '--host=test',
+            '--password=test',
+            'packages',
+            'copy',
+            '--nvr', 'devhelp-0.12-22.el5_8.i386',
+            '-c', 'blah'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, 'Returned empty list.', result)
