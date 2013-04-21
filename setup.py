@@ -20,7 +20,7 @@ else:
     if py_version < (2, 6):
         raise RuntimeError('On Python 2, Space requires Python 2.6 or better')
 
-version = "0.0.1"
+version = "0.0.2"
 
 packages = [
     'space',
@@ -71,7 +71,7 @@ class PyTest(TestCommand):
 
 
 setup(
-    name='space',
+    name='python-space',
     version=version,
     description='Spacewalk Cli',
     author='David Johansen',
@@ -98,7 +98,6 @@ setup(
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.1',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
     ),
