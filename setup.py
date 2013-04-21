@@ -1,4 +1,5 @@
 import multiprocessing
+import os
 import sys
 
 try:
@@ -8,6 +9,9 @@ except ImportError:
 
 from setuptools.command.test import test as TestCommand
 
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    sys.exit()
 
 py_version = sys.version_info[:2]
 
@@ -74,6 +78,7 @@ setup(
     name='python-space',
     version=version,
     description='Spacewalk Cli',
+    long_description=open('README.rst').read(),
     author='David Johansen',
     author_email='david@makewhatis.com',
     url='https://space.readthedocs.org',
