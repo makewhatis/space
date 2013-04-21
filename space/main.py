@@ -22,7 +22,7 @@ from space.util import print_help
 from space.util import print_avail_namespace_help
 
 import pkg_resources  # part of setuptools
-version = pkg_resources.require("space")[0].version
+version = pkg_resources.require("python-space")[0].version
 
 if sys.version_info >= (3, 0):   # pragma: no cover
     import xmlrpc.client
