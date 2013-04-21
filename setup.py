@@ -24,7 +24,7 @@ else:
     if py_version < (2, 6):
         raise RuntimeError('On Python 2, Space requires Python 2.6 or better')
 
-version = "0.0.2"
+version = "0.0.4"
 
 packages = [
     'space',
@@ -78,7 +78,8 @@ setup(
     name='python-space',
     version=version,
     description='A command line tool for the Spacewalk API',
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst').read() + '\n\n' +
+                     open('CHANGES.rst').read(),
     author='David Johansen',
     author_email='david@makewhatis.com',
     url='https://space.readthedocs.org',
