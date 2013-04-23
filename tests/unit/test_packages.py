@@ -53,7 +53,7 @@ class TestPackages(unittest.TestCase):
     @mock.patch('space.main.swSession')
     def test_copy_pid(self, sw_mock):
         sw_call = sw_mock.return_value = mock.Mock()
-        sw_call.call.return_value = 1
+        sw_mock.call.return_value = True
 
         sys.argv = [
             'space',
@@ -68,7 +68,35 @@ class TestPackages(unittest.TestCase):
         ]
         main()
         result = self.output.getvalue()
-        self.assertRegexpMatches(result, 'Copied package id: \[ blah \]  INTO \[ blah \] successfully!\\n', result)
+        self.assertRegexpMatches(
+            result,
+            'Copied package id: \[ blah \]  INTO \[ blah \] successfully!\\n',
+            result
+        )
+
+    @mock.patch('space.main.swSession.call')
+    def test_copy_nvr(self, sw_mock):
+        sw_call = sw_mock.return_value = mock.Mock()
+        sw_mock.return_value = [{'id': 1}]
+
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test',
+            '--host=test',
+            '--password=test',
+            'packages',
+            'copy',
+            '--nvr', 'devhelp-0.12-22.el5_8.i386',
+            '-c', 'blah'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(
+            result,
+            'Copied package: \[ 1 \] \( devhelp-0.12-22.el5_8.i386 \) INTO \[ blah \] successfully!\\n',
+            result
+        )
 
     @mock.patch('space.main.swSession')
     def test_copy_nvr_bad_package_nvr(self, sw_mock):
@@ -90,7 +118,6 @@ class TestPackages(unittest.TestCase):
         result = self.output.getvalue()
         self.assertRegexpMatches(result, 'Could not parse Name-Version-Relase', result)
 
-
     @mock.patch('space.main.swSession')
     def test_copy_nvr_empty_result(self, sw_mock):
         sw_call = sw_mock.return_value = mock.Mock()
@@ -110,3 +137,27 @@ class TestPackages(unittest.TestCase):
         main()
         result = self.output.getvalue()
         self.assertRegexpMatches(result, 'Returned empty list.', result)
+
+    @mock.patch('space.main.swSession')
+    def test_copy_nvr_type_error(self, sw):
+        sw.call.side_effect = TypeError
+        self.assertEqual(
+            packages._search_package_advanced(sw, 123),
+            False,
+            "Should be False"
+        )
+
+    def test_copy_no_nvr_no_pid(self):
+        sys.argv = [
+            'space',
+            '--username=test',
+            '--config=test',
+            '--host=test',
+            '--password=test',
+            'packages',
+            'copy',
+            '-c', 'blah'
+        ]
+        main()
+        result = self.output.getvalue()
+        self.assertRegexpMatches(result, 'Need to pass either Package ID or NVR.', result)

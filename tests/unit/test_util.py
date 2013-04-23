@@ -38,8 +38,17 @@ class TestUtil(unittest.TestCase):
 
     def test_load_funcs(self):
         from space.util import load_funcs
+        import re
         functions = load_funcs()
         self.assertIsInstance(functions, dict, "not a dict")
+
+        # check for any loaded defs that begin with _
+        for key, value in functions.items():
+            f = re.match('(\w)._(\w)', key)
+            if f:
+                self.fail(
+                    "%s: should not be in list of loaded defs" % f.group(1)
+                )
 
     def test_load_funcs_no_main(self):
         from space.util import load_funcs

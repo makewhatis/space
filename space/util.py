@@ -94,9 +94,9 @@ def load_funcs(config=None):
                 # add callable function to our loaded lib
                 functions[attr_name] = func
 
-    # Loop through and inject some sweetness into here.
+    # Loop through and inject some space into here.
     for mod in modules:
-        if not hasattr(mod, '__sweet__'):
+        if not hasattr(mod, '__space__'):
             mod.__sweet__ = functions
 
     return functions
