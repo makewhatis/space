@@ -4,9 +4,6 @@ import re
 import sys
 import subprocess
 
-from space.util import get_username
-from space.util import get_password
-
 if sys.version_info >= (3, 0):  # pragma: no cover
     import urllib.request as urllib
 if sys.version_info <= (2, 8):  # pragma: no cover
