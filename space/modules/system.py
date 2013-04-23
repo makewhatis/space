@@ -64,7 +64,7 @@ def child_channels(
 def _get_system(sw, server):
     res = sw.call(
         'system.getId',
-        [server]
+        server
     )
     return res
 
@@ -72,7 +72,7 @@ def _get_system(sw, server):
 def _get_channels(sw, serverid):
     channels = sw.call(
         'system.listSubscribedChildChannels',
-        [serverid]
+        serverid
     )
     return channels
 
