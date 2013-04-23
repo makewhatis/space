@@ -335,9 +335,11 @@ class swSession(object):
         """
 
         func = getattr(self.session, ns)
-
         try:
             return func(self.key, *args)
         except Exception as e:
-            print("Action failed: %s" % e.faultString)
+            try:
+                print("Action failed: %s" % e.faultString)
+            except:
+                print("Action failed: %s" % e)
             return False

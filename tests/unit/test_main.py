@@ -3,6 +3,7 @@ import sys
 import os
 import mock
 import datetime
+
 if sys.version_info < (2, 8):   # pragma: no cover
     import unittest2 as unittest
     from io import BytesIO as strio
@@ -25,7 +26,6 @@ def login_name(prompt):
 def t_password(prompt):
     return 'letmein'
 
-
 class TestMain(unittest.TestCase):
 
     def setUp(self):
@@ -46,7 +46,7 @@ class TestMain(unittest.TestCase):
 
     def test_main_one_carg(self):
         from space.main import main
-        sys.argv = ['space', 'systems']
+        sys.argv = ['space', 'system']
 
         result = main(config=CONFIG)
         self.assertEqual(result, None, result)
@@ -78,7 +78,7 @@ class TestMain(unittest.TestCase):
         )
 
     @mock.patch('space.main.swSession')
-    @mock.patch('space.modules.systems.list')
+    @mock.patch('space.modules.system.list')
     def test_main_args(self, sys_list, sw_mock):
         """
         Test to make sure variables are set from
@@ -131,7 +131,7 @@ class TestMain(unittest.TestCase):
             '--config=test',
             '--host=test',
             '--password=test',
-            'systems'
+            'system'
         ]
         main()
         result = self.output.getvalue()
@@ -177,11 +177,11 @@ class TestMain(unittest.TestCase):
             '--config=test',
             '--host=test',
             '--password=test',
-            'systems', 'list'
+            'system', 'list'
         ]
         main()
         result = self.output.getvalue()
-        self.assertRegexpMatches(result, 'Error listing all systems', result)
+        self.assertRegexpMatches(result, 'Action failed:', result)
 
     @mock.patch('space.main.load_funcs')
     @mock.patch('space.main.get_hostname')
@@ -203,7 +203,7 @@ class TestMain(unittest.TestCase):
         # test with no flags
         sys.argv = [
             'space',
-            'systems',
+            'system',
             'list'
         ]
         result = main()
@@ -223,7 +223,7 @@ class TestMain(unittest.TestCase):
         load_funcs.return_value = dict()
         sys.argv = [
             'space',
-            'systems',
+            'system',
             'list'
         ]
         with self.assertRaises(IOError):
@@ -237,7 +237,7 @@ class TestMain(unittest.TestCase):
         p.exists.return_value = 'path'
 
         rem.return_value = True
-    
+
         _logout(config=CONFIG)
         result = self.output.getvalue()
         self.assertRegexpMatches(result, "Logged out.", result)
@@ -250,7 +250,7 @@ class TestMain(unittest.TestCase):
     @mock.patch('os.path')
     def test_swsession_check_session(self, p):
         from space.main import swSession
-        
+
         sw = swSession('test')
         self.assertIsInstance(sw, object, "sw is not object")
 
@@ -288,11 +288,19 @@ class TestMain(unittest.TestCase):
         if sys.version_info <= (2, 8):
             open_name = '__builtin__.open'
         else:
-            open_name = 'builtins.open'    
+            open_name = 'builtins.open'
 
         with mock.patch(open_name) as mock_open:
             mock_open.side_effect = IOError
             sw.save_session()
+    
+    def test_call_fail(self):
+        from space.main import swSession
+        with mock.patch('space.main.swSession') as sess:
+            sess.call.side_effect = Exception
+            sw = swSession('test')
+            result = sw.call('blah', 'g')
+            self.assertEqual(result, False, 'blah')
 
 
 def suite():
